@@ -1,0 +1,52 @@
+<snippet>
+    <content><![CDATA[
+<link rel="import" href="${1:/bower_components}/polymer/polymer.html">
+
+<dom-module id="${2}">
+    <style>
+        :host {
+            ${3:/**/}
+        }
+
+        ::content {
+            ${4:/**/}
+        }
+
+        @media only screen
+        and (max-width: 480px) {
+            ${5:/**/}
+        }
+    </style>
+
+    <template>
+        ${6}
+
+        ${7:<content></content>}
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: '${2}',
+
+        ${9:extends: '${8}',}
+
+        properties: {
+            ${10:myVar}:  ${11:{
+                type: ${12:Boolean},
+                ${13:value: ${14:false},}
+                ${15:readOnly: ${16:true},}
+                ${17:observer: '${18:_toObserve}'}
+            }}
+        },
+
+        ${18:_toObserve}: function (${19}) {}
+    });
+</script>
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>pm_element</tabTrigger>
+    <!-- <description>Polymer 1.0: Create Polymer element</description> -->
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>text.html.basic</scope>
+</snippet>

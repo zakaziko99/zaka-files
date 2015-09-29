@@ -1,0 +1,57 @@
+[
+    {
+        "keys": [
+            "shift+ctrl+!"
+        ],
+        "args": {
+            "action": "remove_tag"
+        },
+        "command": "run_emmet_action",
+        "context": [
+            {
+                "key": "emmet_action_enabled.remove_tag"
+            }
+        ]
+    },
+    {
+        "keys": [
+            "shift+ctrl+:"
+        ],
+        "command": "rename_tag",
+        "context": [
+            {
+                "key": "emmet_action_enabled.rename_tag"
+            }
+        ]
+    },
+    {
+        "keys": [
+            "ctrl+("
+        ],
+        "command": "toggle_comment",
+        "args": {
+            "block": false
+        }
+    },
+    {
+        "keys": [
+            "ctrl+shift+("
+        ],
+        "command": "toggle_comment",
+        "args": {
+            "block": true
+        }
+    },
+    { "keys": ["alt+d"], "command": "soft_undo" },
+    { "keys": ["alt+shift+d"], "command": "find_all_under" },
+    { "keys": ["ctrl+k", "ctrl+t"], "command": "title_case" },
+    { "keys": ["ctrl+k", "ctrl+f"], "command": "fold_tag_attributes" },
+    {
+        "keys": ["ctrl+e", "ctrl+e"],
+        "command": "run_macro_file",
+        "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"}
+    },
+    { "keys": ["ctrl+t", "ctrl+i"], "command": "indent" },
+    { "keys": ["ctrl+t", "ctrl+u"], "command": "unindent" },
+
+]

@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+<link rel="import" href="${1:/bower_components}/${2:web_element}/${2:web_element}.html">
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>pm_import</tabTrigger>
+    <!-- <description>Polymer 1.0: import a web component</description> -->
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>text.html.basic</scope>
+</snippet>

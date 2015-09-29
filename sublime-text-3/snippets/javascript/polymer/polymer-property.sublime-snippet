@@ -1,0 +1,15 @@
+<snippet>
+    <content><![CDATA[
+${1:myVar}:  ${2:{
+    type: ${3:Boolean},
+    ${4:value: ${5:false},}
+    ${6:readOnly: ${7:true},}
+    ${8:observer: '${9:_toObserve}'}
+}}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>pm_property</tabTrigger>
+    <!-- <description>Polymer 1.0: Add a property</description> -->
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js.embedded.html</scope>
+</snippet>
