@@ -5,6 +5,7 @@ ${1:myVar}:  ${2:{
     ${4:value: ${5:false},}
     ${6:readOnly: ${7:true},}
     ${8:observer: '${9:_toObserve}'}
+    ${10:computed: '${11:_toCompute}'}
 }}
 ]]></content>
     <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->

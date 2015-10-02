@@ -40,6 +40,8 @@
             }}
         },
 
+        ${20:ready}: function () {}
+
         ${18:_toObserve}: function (${19}) {}
     });
 </script>
