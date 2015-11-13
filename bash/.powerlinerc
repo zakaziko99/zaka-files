@@ -1,0 +1,384 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# Source global definitions
+if [ -f /etc/bash.bashrc ]; then
+    . /etc/bash.bashrc
+fi
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoredups:ignorespace
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+#
+# Nicely formatted terminal prompt
+if [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion
+fi
+
+__has_parent_dir () {
+    # Utility function so we can test for things like .git/.hg without firing up a
+    # separate process
+    test -d "$1" && return 0;
+
+    current="."
+    while [ ! "$current" -ef "$current/.." ]; do
+        if [ -d "$current/$1" ]; then
+            return 0;
+        fi
+        current="$current/..";
+    done
+
+    return 1;
+}
+
+__vcs_name() {
+    GIT_PS1_SHOWDIRTYSTATE=1
+    GIT_PS1_SHOWUNTRACKEDFILES=1
+    if [ -d .svn ]; then
+        echo "-[svn]";
+    elif __has_parent_dir ".git"; then
+        echo "-[$(__git_ps1 '%s')]";
+    elif __has_parent_dir ".hg"; then
+        echo "-[hg $(hg branch)]"
+    fi
+}
+
+# black=$(tput -Txterm setaf 0)
+# red=$(tput -Txterm setaf 1)
+# green=$(tput -Txterm setaf 2)
+# yellow=$(tput -Txterm setaf 3)
+# dk_blue=$(tput -Txterm setaf 4)
+# pink=$(tput -Txterm setaf 5)
+# lt_blue=$(tput -Txterm setaf 6)
+
+bold=$(tput -Txterm bold)
+reset=$(tput -Txterm sgr0)
+
+# # special chars: » → ╰→ ↳ ❱ ❯ ❭ ✒ ► ▶ › ʎ
+#  export PS1='\n\[$bold\]\[$black\][\[$dk_blue\]\d - \[$dk_blue\]\A\[$black\]]-[\[\033[1;32m\]\u\[\033[00m\]\[$pink\]@\[$dk_blue\]\h\[$black\]]-[\[$pink\]\w\[$black\]]\[\033[1;32m\]$(__vcs_name) \[\033[00m\]\[$reset\]\n\[$reset\]▶  '
+
+# CURRENT_BG='NONE'
+# PRIMARY_FG=black
+
+# # Characters
+# SEGMENT_SEPARATOR="\ue0b0"
+# PLUSMINUS="\u00b1"
+# BRANCH="\ue0a0"
+# DETACHED="\u27a6"
+# CROSS="\u2718"
+# LIGHTNING="\u26a1"
+# GEAR="\u2699"
+
+CURRENT_BG='NONE'
+SEGMENT_SEPARATOR=''
+
+text_effect() {
+  case "$1" in
+    reset)     echo '\[\033['$reset'm\]';;
+    bold)      echo '\[\033['$bold'm\]';;
+    underline) echo 4;;
+  esac
+}
+
+text_effecta() {
+  case "$1" in
+    reset)     echo $(tput -Txterm sgr0);;
+    bold)      echo $(tput -Txterm bold);;
+    underline) echo 4;;
+  esac
+}
+
+black=$(tput -Txterm setaf 0)
+red=$(tput -Txterm setaf 1)
+green=$(tput -Txterm setaf 2)
+yellow=$(tput -Txterm setaf 3)
+blue=$(tput -Txterm setaf 4)
+magenta=$(tput -Txterm setaf 5)
+cyan=$(tput -Txterm setaf 6)
+white=$(tput -Txterm setaf 7)
+
+fg_color() {
+  case "$1" in
+    black)   echo '\[\033['$black'm\]';;
+    red)     echo '\[\033['$red'm\]';;
+    green)   echo '\[\033['$green'm\]';;
+    yellow)  echo '\[\033['$yellow'm\]';;
+    blue)    echo '\[\033['$blue'm\]';;
+    magenta) echo '\[\033['$magenta'm\]';;
+    cyan)    echo '\[\033['$cyan'm\]';;
+    white)   echo '\[\033['$white'm\]';;
+  esac
+}
+
+fg_colora() {
+  case "$1" in
+    black)   echo 30;;
+    red)     echo 31;;
+    green)   echo 32;;
+    yellow)  echo 33;;
+    blue)    echo 34;;
+    magenta) echo 35;;
+    cyan)    echo 36;;
+    white)   echo 37;;
+  esac
+}
+
+bg_color() {
+  case "$1" in
+    black)   echo 40;;
+    red)     echo 41;;
+    green)   echo 42;;
+    yellow)  echo 43;;
+    blue)    echo 44;;
+    magenta) echo 45;;
+    cyan)    echo 46;;
+    white)   echo 47;;
+  esac;
+}
+
+ansi() {
+  local seq
+  declare -a codes=("${!1}")
+
+  seq=""
+  for ((i = 0; i < ${#codes[@]}; i++)); do
+    if [[ -n $seq ]]; then
+      seq="${seq};"
+    fi
+    seq="${seq}${codes[$i]}"
+  done
+  echo -ne '\[\033['${seq}'m\]'
+}
+
+ansi_single() {
+  echo -ne '\[\033['$1'm\]'
+}
+
+ansi_mingle() {
+  echo -ne $1
+}
+
+# Begin a segment
+# Takes two arguments, background and foreground. Both can be omitted,
+# rendering default background/foreground.
+prompt_segment() {
+  local bg fg pre
+  declare -a codes
+  if [[ -z $1 || ( -z $2 && $2 != default ) ]]; then
+    pre=$(text_effect reset)
+    # codes=("${codes[@]}" $(text_effecta reset))
+  fi
+  if [[ -n $1 ]]; then
+    bg=$(bg_color $1)
+    codes=("${codes[@]}" $bg)
+  fi
+  if [[ -n $2 ]]; then
+    fg=$(fg_colora $2)
+    codes=("${codes[@]}" $fg)
+  fi
+
+  if [[ $CURRENT_BG != NONE && $1 != $CURRENT_BG ]]; then
+    declare -a intermediate=($(fg_colora $CURRENT_BG) $(bg_color $1))
+    echo -ne " $(ansi intermediate[@])$SEGMENT_SEPARATOR$pre$(ansi codes[@]) "
+  else
+    echo -ne "$(ansi codes[@]) "
+  fi
+  CURRENT_BG=$1
+  [[ -n $3 ]] && echo -n $3
+}
+
+# End the prompt, closing any open segments
+prompt_end() {
+  if [[ -n $CURRENT_BG ]]; then
+    declare -a codes=($(text_effect reset) $(fg_colora $CURRENT_BG))
+    echo -ne " $(ansi codes[@])$SEGMENT_SEPARATOR"
+  fi
+  declare -a reset=($(text_effect reset))
+  echo -ne " $(ansi reset[@])"
+  CURRENT_BG=''
+}
+
+### Prompt components
+# Each component will draw itself, and hide itself if no information needs to be shown
+
+# Context: user@hostname (who am I and where am I)
+prompt_context() {
+  local user=`whoami`
+
+  if [[ $user != $DEFAULT_USER || -n $SSH_CLIENT ]]; then
+    prompt_segment black default "$user@\h"
+  fi
+}
+
+git_status_dirty() {
+  dirty=$(git status -s 2> /dev/null | tail -n 1)
+  [[ -n $dirty ]] && echo "*"
+}
+
+# Git: branch/detached head, dirty status
+prompt_git() {
+  local ref dirty
+  if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
+    ZSH_THEME_GIT_PROMPT_DIRTY='±'
+    dirty=$(git_status_dirty)
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
+    if [[ -n $dirty ]]; then
+      prompt_segment yellow black
+    else
+      prompt_segment green black
+    fi
+    echo -n "${ref/refs\/heads\//⭠ }$dirty"
+  fi
+}
+
+# Dir: current working directory
+prompt_dir() {
+  prompt_segment blue black '\w'
+}
+
+# Status:
+# - was there an error
+# - am I root
+# - are there background jobs?
+prompt_status() {
+  local symbols
+  symbols=()
+  [[ $RETVAL -ne 0 ]] && symbols+="$(fg_color red)✘"
+  [[ $UID -eq 0 ]] && symbols+="$(fg_color yellow)⚡"
+  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="$(fg_color cyan)⚙"
+
+  [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
+}
+
+## Main prompt
+build_prompt() {
+  RETVAL=$?
+  # prompt_status
+  prompt_context
+  prompt_dir
+  prompt_git
+  prompt_end
+}
+
+PS1='$(text_effecta reset)$(build_prompt) '
+
+# source /home/zakaria/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+
+export NVM_DIR="/home/zakaria/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+source /usr/local/share/chruby/chruby.sh
+#source ~/addon-sdk-1.17/bin/activate
+#source ~/myshells/mycommands.sh
