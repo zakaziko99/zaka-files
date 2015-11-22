@@ -16,7 +16,8 @@
 		".git",
 		".vagrant",
 		".hg",
-		"CVS"
+		"CVS",
+		"node_modules"
 	],
 	"font_size": 9,
 	"highlight_line": true,
