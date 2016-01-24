@@ -47,9 +47,14 @@ alias untargz="tar -zxvf"
 alias untarbz1="tar -jxvf"
 alias ungz2="bunzip2 -k"
 
+# Git
+alias gup_master="git checkout master && git fetch origin && git pull origin master"
 
 # edit hosts and vhosts
 alias xampp='sudo xampp'
+alias xampp_start='xampp start'
+alias xampp_stop='xampp stop'
+alias xampp_restart='xampp restart'
 alias hosts='sudo gedit /etc/hosts'
 alias vhosts='sudo gedit /opt/lampp/etc/extra/httpd-vhosts.conf'
 # alias logg='tail -f /var/log/apache2/error.log'
@@ -57,12 +62,38 @@ alias logg='tail -f /opt/lampp/logs/error_log'
 
 # PHP
 alias phpini_cli='sudo gedit /etc/php5/cli/php.ini'
+alias phpini_xampp='sudo gedit /opt/lampp/etc/php.ini'
+
+# Composer
+alias get_composer='curl -sS https://getcomposer.org/installer | php'
+alias composer='php composer.phar'
+alias composer_update='composer self-update'
+
+# Symfony1.4 commands
+alias symfony='php symfony'
+alias sf_project='php lib/vendor/symfony/symfony1/data/bin/symfony generate:project' #My symfony 1.4's files are always placed on lib/vendor directory of the project
+alias sf_app='symfony generate:app'
+alias sf_module='symfony generate:module'
+alias sf_schema='symfony doctrine:build-schema'
+alias sf_model='symfony doctrine:build-model'
+alias sf_forms='symfony doctrine:build-forms'
+alias sf_classes='symfony doctrine:build --all-classes'
+alias sf_build_all='symfony doctrine:build --all --no-confirmation'
+alias sf_cc='symfony cc'
+alias sf_clear='sf_cc'
+alias sf_create_cache='mkdir cache && chmod -R 777 cache'
+alias sf_create_log='mkdir log && chmod -R 777 log'
+
+
+# Symfony2 commands
+alias sf2_console='php app/console'
+alias sf2_cc='sudo rm -rf app/cache/dev/* && sudo chmod -R 777 app/cache/ app/logs/'
+alias sf2_fix='sudo chown -R zakaria:zakaria app/cache/ app/logs/'
+alias sf2_clear='sf2_cc'
+alias sf2_cc_fix='sf2_cc && sf2_fix'
+
+# install latest node & npm
+alias get_latest_npm='sudo npm cache clean -f && sudo npm install -g n && sudo n stable'
 
 # Usefull fixes
 alias grunt_watch_fix='echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p' #This is to fix grunt watch task with the warning watch ENOSPC
-
-# Symfony2 aliases
-alias sf2_fix='sudo chown -R zakaria:zakaria app/cache/* app/logs/* && chmod -R 777 app/cache app/logs'
-alias sf2_cc='sudo rm -rf app/cache/dev/*'
-alias sf2_cc_fix='sf2_cc && sf2_fix'
-alias sf2_console='php app/console'
