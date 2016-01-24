@@ -8,6 +8,9 @@ the most important config files for workflow
   * Aliases (common, Git, ...)
   * Bashrc
 
+### Git config files
+  * .gitconfig file
+
 ### Zsh files (based on oh-my-zsh)
   * Theme (agnosterzak)
   * Zshrc

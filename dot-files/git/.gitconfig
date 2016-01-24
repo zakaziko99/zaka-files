@@ -1,0 +1,58 @@
+[user]
+	name = Zakaria Amarifi
+	email = z.amarifi@dm73.net
+[alias]
+    st              = status
+    ci              = commit -v
+    cim             = commit -v -m "--"
+    co              = checkout
+    br              = branch -v
+    bra             = branch -v -a
+    lg              = log --graph --pretty=tformat:'%Cred%h%Creset -%C(cyan)%d %Creset%s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative
+    lga             = log --graph --pretty=tformat:'%Cred%h%Creset -%C(cyan)%d %Creset%s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative --all
+    lg-grep         = ! git rev-list --all | xargs git grep -F
+    di              = diff -M
+    diff-highlight  = "!f() { git diff \"$@\" | ~/src/git/contrib/diff-highlight/diff-highlight; }; f"
+    sdi             = diff --cached -M
+    dis             = diff --ignore-all-space -M
+    logfull         = log --pretty=fuller --graph --stat -p
+    cat             = cat-file -p
+    unstage         = reset HEAD
+    uncommit        = update-ref HEAD HEAD^
+    uncommithard    = reset --hard HEAD^
+    oups            = commit --amend -C HEAD
+    tagg            = ! git fetch origin -t && git tag -f -a -m 'created tag : `cat VERSION`' `cat VERSION` && git push origin --tags
+    tagc            = ! TAG=`git describe --tags $(git rev-list --tags --max-count=1) | sed 's/v//' | awk -F . '{ printf "v%d.%d.%d", $1, $2, $3 + 1 }'` && echo $TAG > VERSION && git ci -m "Bumped to version : $TAG" VERSION && git tag -a -m "Created tag $TAG" $TAG  && git push &&  git push --tags
+    rebc            = rebase --continue
+    rebt            = rebase --abort
+    rebs            = rebase --skip
+    prev            = checkout HEAD^1
+    next            = "!sh -c 'git log --reverse --pretty=%H master | awk \"/$(git rev-parse HEAD)/{getline;print}\" | xargs git checkout'"
+    lint            = ! git status --porcelain | /bin/grep -e '^[AUM ][UM ].*\\.php$' | awk '{print $2}' | xargs -L 1 php -l
+    php-cs-fixer    = ! git status --porcelain | /bin/grep -e '^[AUM ][UM ].*\\.php$' | awk '{print $2}' | xargs -L 1 php-cs-fixer fix
+    notes-fetch     = fetch origin refs/notes/*:refs/notes/*
+    notes-push      = push origin refs/notes/*
+[color]
+    ui              = true
+[color "branch"]
+    current         = yellow bold
+    local           = yellow
+[color "diff"]
+    meta            = cyan
+[color "status"]
+    untracked       = cyan
+[core]
+    autocrlf        = input
+    excludesfile    = ~/.gitglobalexclude
+    pager           = less
+[branch]
+    autosetupmerge  = true
+    rebase          = true
+[merge]
+    summary         = true
+[rerere]
+    enabled         = 1
+[github]
+    user            = zakaziko99
+[push]
+    default         = tracking
