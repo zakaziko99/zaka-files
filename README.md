@@ -19,3 +19,5 @@ Run the enable.sh to copy the dotfiles into ~/bin/dotfiles & create link files t
   * Preferences
   * Key shortcuts
   * Snippets
+    - Polymer Snippets (HTML & Javascript)
+    - Init Functions (Javascript)

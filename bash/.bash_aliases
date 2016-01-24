@@ -34,10 +34,6 @@ alias adel=" apt-get remove"
 alias asearch="apt-cache search"
 
 
-# Sublime Text 3
-alias subl='sudo subl' #open all the files with the sudo command, preventing the duplication of ST3 project windows
-
-
 # Archive
 alias untar="tar xvf"
 alias ungz="gunzip"
@@ -71,14 +67,21 @@ alias xampp='sudo xampp'
 alias xampp_start='xampp start'
 alias xampp_stop='xampp stop'
 alias xampp_restart='xampp restart'
-alias hosts='sudo subl /etc/hosts'
-alias vhosts='sudo subl /opt/lampp/etc/extra/httpd-vhosts.conf'
+alias hosts='sudo gedit /etc/hosts'
+alias vhosts='sudo gedit /opt/lampp/etc/extra/httpd-vhosts.conf'
 # alias logg='tail -f /var/log/apache2/error.log'
 alias logg='tail -f /opt/lampp/logs/error_log'
 
 
 # PHP
-alias phpini_cli='sudo subl /etc/php5/cli/php.ini'
+alias phpini_cli='sudo gedit /etc/php5/cli/php.ini'
+alias phpini_xampp='sudo gedit /opt/lampp/etc/php.ini'
+
+
+# Composer
+alias get_composer='curl -sS https://getcomposer.org/installer | php'
+alias composer='php composer.phar'
+alias composer_update='composer self-update'
 
 
 # Symfony1.4 commands
@@ -103,6 +106,10 @@ alias sf2_cc='sudo rm -rf app/cache/dev/* && sudo chmod -R 777 app/cache/ app/lo
 alias sf2_fix='sudo chown -R zakaria:zakaria app/cache/ app/logs/'
 alias sf2_clear='sf2_cc'
 alias sf2_cc_fix='sf2_cc && sf2_fix'
+
+
+# install latest node & npm
+alias get_latest_npm='sudo npm cache clean -f && sudo npm install -g n && sudo n stable'
 
 
 # Usefull fixes

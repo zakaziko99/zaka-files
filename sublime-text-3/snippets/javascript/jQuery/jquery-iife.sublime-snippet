@@ -1,0 +1,14 @@
+<snippet>
+    <content><![CDATA[
+(function(${1:scripting}) \{
+    ${1:scripting}(${2:window, document, window.jQuery});
+}(function(${3:window, document, \$}) {
+    ${4:// Your jQuery script here ...}
+\}));
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>jquery</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js,source.js.embedded.html</scope>
+    <description>jQuery IIFE ready function</description>
+</snippet>
