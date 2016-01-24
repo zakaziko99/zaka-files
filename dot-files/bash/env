@@ -1,0 +1,3 @@
+# ENVIRONMENT
+
+export PATH="~/bin:$PATH"
