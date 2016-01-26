@@ -24,3 +24,6 @@ Run the enable.sh to copy the dotfiles into ~/bin/dotfiles & create link files t
   * Snippets
     - Polymer Snippets (HTML & Javascript)
     - Init Functions (Javascript)
+
+## Other files & some useful things
+  * My Linux Terminal scheme (Based on Solaris Dark scheme)

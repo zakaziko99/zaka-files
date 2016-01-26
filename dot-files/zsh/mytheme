@@ -79,9 +79,9 @@ prompt_end() {
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
   if [[ -n "$SSH_CLIENT" ]]; then
-    prompt_segment blue yellow "$fg_bold[yellow]%(!.%{%F{yellow}%}.)$USER@%m$fg_no_bold[yellow]"
+    prompt_segment magenta white "$fg_bold[white]%(!.%{%F{white}%}.)$USER@%m$fg_no_bold[white]"
   else
-    prompt_segment blue yellow "$fg_bold[yellow]%(!.%{%F{yellow}%}.)@$USER$fg_no_bold[yellow]"
+    prompt_segment yellow magenta "$fg_bold[magenta]%(!.%{%F{magenta}%}.)@$USER$fg_no_bold[magenta]"
   fi
 }
 
@@ -284,7 +284,7 @@ prompt_virtualenv() {
 }
 
 prompt_time() {
-  prompt_segment blue cyan "$fg_bold[cyan]%D{%a %e %b - %H:%M}$fg_no_bold[cyan]"
+  prompt_segment blue white "$fg_bold[white]%D{%a %e %b - %H:%M}$fg_no_bold[white]"
 }
 
 # Status:

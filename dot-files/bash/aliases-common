@@ -97,3 +97,7 @@ alias get_latest_npm='sudo npm cache clean -f && sudo npm install -g n && sudo n
 
 # Usefull fixes
 alias grunt_watch_fix='echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p' #This is to fix grunt watch task with the warning watch ENOSPC
+
+
+# import some private aliases like access to SSH accounts
+source ~/bin/dotfiles/bash/private-aliases
