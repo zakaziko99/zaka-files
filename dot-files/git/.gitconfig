@@ -8,6 +8,7 @@
     co              = checkout
     br              = branch -v
     bra             = branch -v -a
+    brc             = ! git branch --no-color  --merged  | grep -v '*' | grep -v master | xargs --no-run-if-empty git branch -d
     lg              = log --graph --pretty=tformat:'%Cred%h%Creset -%C(cyan)%d %Creset%s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative
     lga             = log --graph --pretty=tformat:'%Cred%h%Creset -%C(cyan)%d %Creset%s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative --all
     lg-grep         = ! git rev-list --all | xargs git grep -F
@@ -26,12 +27,14 @@
     rebc            = rebase --continue
     rebt            = rebase --abort
     rebs            = rebase --skip
+    new             = ! git checkout origin/master -b $(echo "$@" | sed 's/ /\\-/g') && echo $@ >/dev/null
     prev            = checkout HEAD^1
     next            = "!sh -c 'git log --reverse --pretty=%H master | awk \"/$(git rev-parse HEAD)/{getline;print}\" | xargs git checkout'"
     lint            = ! git status --porcelain | /bin/grep -e '^[AUM ][UM ].*\\.php$' | awk '{print $2}' | xargs -L 1 php -l
     php-cs-fixer    = ! git status --porcelain | /bin/grep -e '^[AUM ][UM ].*\\.php$' | awk '{print $2}' | xargs -L 1 php-cs-fixer fix
     notes-fetch     = fetch origin refs/notes/*:refs/notes/*
     notes-push      = push origin refs/notes/*
+    daily           = log --no-merges --all --author='Zakaria Amarifi' --since='midnight today' --format='%s'
 [color]
     ui              = true
 [color "branch"]
@@ -56,3 +59,5 @@
     user            = zakaziko99
 [push]
     default         = tracking
+[status]
+    showUntrackedFiles = all
