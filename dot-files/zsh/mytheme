@@ -165,7 +165,8 @@ prompt_git() {
     local current_commit_hash=$(git rev-parse HEAD 2> /dev/null)
 
     local number_of_untracked_files=$(\grep -c "^??" <<< "${git_status}")
-    if [[ $number_of_untracked_files -gt 0 ]]; then untracked=" $number_of_untracked_files◆"; fi
+    # if [[ $number_of_untracked_files -gt 0 ]]; then untracked=" $number_of_untracked_files◆"; fi
+    if [[ $number_of_untracked_files -gt 0 ]]; then untracked=" $number_of_untracked_files☀"; fi
 
     local number_added=$(\grep -c "^A" <<< "${git_status}")
     if [[ $number_added -gt 0 ]]; then added=" $number_added✚"; fi
@@ -210,10 +211,13 @@ prompt_git() {
 
     if [[ $number_added -gt 0 || $number_added_modified -gt 0 || $number_added_deleted -gt 0 ]]; then ready_commit=' ⚑'; fi
 
+    local upstream_prompt=''
     if [[ $has_upstream == true ]]; then
       commits_diff="$(git log --pretty=oneline --topo-order --left-right ${current_commit_hash}...${upstream} 2> /dev/null)"
       commits_ahead=$(\grep -c "^<" <<< "$commits_diff")
       commits_behind=$(\grep -c "^>" <<< "$commits_diff")
+      upstream_prompt="$(git rev-parse --symbolic-full-name --abbrev-ref @{upstream} 2> /dev/null)"
+      upstream_prompt=$(sed -e 's/\/.*$/ ☊ /g' <<< "$upstream_prompt")
     fi
 
     has_diverged=false
@@ -231,7 +235,7 @@ prompt_git() {
 
     prompt_segment $bgclr $fgclr
 
-    echo -n "$fg_bold[$fgclr]${ref/refs\/heads\//$PL_BRANCH_CHAR }${mode}$to_push$to_pull$clean$tagged$stashed$untracked$modified$deleted$added$ready_commit$fg_no_bold[$fgclr]"
+    echo -n "$fg_bold[$fgclr]${ref/refs\/heads\//$PL_BRANCH_CHAR $upstream_prompt}${mode}$to_push$to_pull$clean$tagged$stashed$untracked$modified$deleted$added$ready_commit$fg_no_bold[$fgclr]"
   fi
 }
 
