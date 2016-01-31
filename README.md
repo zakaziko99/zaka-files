@@ -36,7 +36,7 @@ added to the prompt:
     + Green background if there is no untracked, deleted or modified files, and no stashes
     + Magenta Background if there is no untracked, deleted or modified files, but have stashes
     + Yellow background if there is untracked or staged files but no deleted or modified files
-    + Red background if there is udeleted or modified files
+    + Red background if there is deleted or modified files
 
 ### Enable shell script file
 Run the enable.sh to copy the dotfiles into ~/bin/dotfiles & create link files to .bashrc, .zshrc & zsh theme
