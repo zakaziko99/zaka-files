@@ -49,6 +49,7 @@ alias ungz2="bunzip2 -k"
 
 # Git
 alias gup_master="git checkout master && git fetch origin && git pull origin master"
+alias gcob="git checkout -b"
 
 # edit hosts and vhosts
 alias xampp='sudo xampp'
