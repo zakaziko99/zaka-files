@@ -179,10 +179,11 @@ prompt_git() {
     fi
 
     local number_added_modified=$(\grep -c "^M" <<< "${git_status}")
+    local number_added_renamed=$(\grep -c "^R" <<< "${git_status}")
     if [[ $number_modified -gt 0 && $number_added_modified -gt 0 ]]; then
-      modified="$modified$number_added_modified±"
+      modified="$($modified$number_added_modified+$number_added_renamed)±"
     elif [[ $number_added_modified -gt 0 ]]; then
-      modified=" ●$number_added_modified±"
+      modified=" ●$($modified$number_added_modified+$number_added_renamed)±"
     fi
 
     local number_deleted=$(\grep -c "^.D" <<< "${git_status}")

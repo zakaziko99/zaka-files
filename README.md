@@ -30,8 +30,8 @@ added to the prompt:
     + number of added files from the untracked ones
     + number of deleted files
     + number of staged files from the deleted ones
-    + number of modified files
-    + number of staged files from the modified ones
+    + number of modified & files
+    + number of staged files from the modified ones including those renamed
     + number of stash stored
     + Green background if there is no untracked, deleted or modified files, and no stashes
     + Magenta Background if there is no untracked, deleted or modified files, but have stashes
