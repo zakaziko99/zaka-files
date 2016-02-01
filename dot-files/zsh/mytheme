@@ -179,10 +179,11 @@ prompt_git() {
     fi
 
     local number_added_modified=$(\grep -c "^M" <<< "${git_status}")
+    local number_added_renamed=$(\grep -c "^R" <<< "${git_status}")
     if [[ $number_modified -gt 0 && $number_added_modified -gt 0 ]]; then
-      modified="$modified$number_added_modified±"
+      modified="$modified$((number_added_modified+number_added_renamed))±"
     elif [[ $number_added_modified -gt 0 ]]; then
-      modified=" ●$number_added_modified±"
+      modified=" ●$((number_added_modified+number_added_renamed))±"
     fi
 
     local number_deleted=$(\grep -c "^.D" <<< "${git_status}")
@@ -222,7 +223,13 @@ prompt_git() {
 
     has_diverged=false
     if [[ $commits_ahead -gt 0 && $commits_behind -gt 0 ]]; then has_diverged=true; fi
-    if [[ $has_diverged == false && $commits_ahead -gt 0 ]]; then to_push=" $fg_bold[black]↑$commits_ahead$fg_bold[$fgclr]"; fi
+    if [[ $has_diverged == false && $commits_ahead -gt 0 ]]; then
+      if [[ $bgclr == 'red' || $bgclr == 'magenta' ]] then
+        to_push=" $fg_bold[white]↑$commits_ahead$fg_bold[$fgclr]"
+      else
+        to_push=" $fg_bold[black]↑$commits_ahead$fg_bold[$fgclr]"
+      fi
+    fi
     if [[ $has_diverged == false && $commits_behind -gt 0 ]]; then to_pull=" $fg_bold[magenta]↓$commits_behind$fg_bold[$fgclr]"; fi
 
     if [[ -e "${repo_path}/BISECT_LOG" ]]; then
