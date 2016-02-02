@@ -52,6 +52,11 @@ alias gup_master="git checkout master && git fetch origin && git pull origin mas
 alias gcob="git checkout -b"
 alias gcm="git commit -m"
 alias gcom="git checkout master"
+alias gpu="git push -u"
+gcobo () {
+    gcob $1
+    gpu origin $1
+}
 
 # edit hosts and vhosts
 alias xampp='sudo xampp'
