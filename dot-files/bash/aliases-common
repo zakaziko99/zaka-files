@@ -53,9 +53,12 @@ alias gcob="git checkout -b"
 alias gcm="git commit -m"
 alias gcom="git checkout master"
 alias gpu="git push -u"
-gcobo () {
+gcobo () { # create new branch with tracking from origin
     gcob $1
     gpu origin $1
+}
+gbdo () { # delete branche from remote origin
+    git push origin :$1
 }
 
 # edit hosts and vhosts
