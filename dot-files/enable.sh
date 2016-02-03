@@ -20,6 +20,11 @@ elif [ -L ~/.bashrc ]; then #file exists & it is symlink
 fi
 ln -s ~/bin/dotfiles/bash/mybashit.bashrc ~/.bashrc
 
+# Create empty file if there's no file ~/bin/dotfiles/bash/private-aliases
+if [ ! -f ~/bin/dotfiles/bash/private-aliases ]; then
+    touch ~/bin/dotfiles/bash/private-aliases
+fi
+
 # Copy the gitconfig file to the home directory
 if [ -f ~/.gitconfig ]; then
     mv -f ~/.gitconfig ~/.gitconfig.bak
