@@ -1,5 +1,5 @@
 # zaka-files
-the most important config files for workflow
+the most important & personnal config files for workflow
 
 ## My Dot files
 
@@ -8,7 +8,7 @@ the most important config files for workflow
   * Aliases (common, Git, ...)
   * Bashrc
 
-### Git config files
+### Git files
   * .gitconfig file
 
 ### Zsh files (based on oh-my-zsh)
@@ -38,8 +38,16 @@ added to the prompt:
     + Yellow background if there is untracked or staged files but no deleted or modified files
     + Red background if there is deleted or modified files
 
-### Enable shell script file
-Run the enable.sh to copy the dotfiles into ~/bin/dotfiles & create link files to .bashrc, .zshrc & zsh theme
+### Enable the dot files
+Run the enable.sh to copy the dotfiles into ~/bin/dotfiles & create link files
+to .bashrc, .zshrc & zsh theme
+```sh
+cd <path_to_local_repo>
+
+chmod u+x ./dot-files/enable.sh
+
+./dot-files/enable.sh
+```
 
 ## Sublime text files
   * Preferences
@@ -49,4 +57,4 @@ Run the enable.sh to copy the dotfiles into ~/bin/dotfiles & create link files t
     - Init Functions (Javascript)
 
 ## Other files & some useful things
-  * My Linux Terminal scheme (Based on Solaris Dark scheme)
+  * My Linux Terminal color scheme (Based on Solaris Dark color scheme)
