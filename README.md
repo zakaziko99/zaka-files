@@ -3,6 +3,14 @@ the most important & personnal config files for workflow
 
 ## My Dot files
 
+### Must be installed
+
+To work fine on your terminal, you have to install those:
+
+  * [Bash-it](https://github.com/Bash-it/bash-it)
+  * [Powerline fonts](https://github.com/powerline/fonts)
+  * [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh)
+
 ### Bash files (based on bash-it)
   * Environment ($PATH)
   * Aliases (common, Git, ...)
@@ -43,9 +51,13 @@ Run the enable.sh to copy the dotfiles into ~/bin/dotfiles & create link files
 to .bashrc, .zshrc & zsh theme
 ```sh
 cd <path_to_local_repo>
+```
 
+```sh
 chmod u+x ./dot-files/enable.sh
+```
 
+```sh
 ./dot-files/enable.sh
 ```
 
