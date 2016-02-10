@@ -8,6 +8,7 @@ the most important & personnal config files for workflow
 To work fine on your terminal, you have to install those:
 
   * [Bash-it](https://github.com/Bash-it/bash-it)
+  * [Powerline fonts](https://github.com/powerline/fonts)
   * [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh)
 
 ### Bash files (based on bash-it)
