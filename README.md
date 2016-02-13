@@ -11,6 +11,8 @@ To work fine on your terminal, you have to install those:
   * [Powerline fonts](https://github.com/powerline/fonts)
   * [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh)
 
+otherwise it won't work correctly
+
 ### Bash files (based on bash-it)
   * Environment ($PATH)
   * Aliases (common, Git, ...)
