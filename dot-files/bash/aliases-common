@@ -51,21 +51,24 @@ alias untarbz1="tar -jxvf"
 alias ungz2="bunzip2 -k"
 
 # Git
-alias gup_master="git checkout master && git fetch origin && git pull origin master"
-alias gcob="git checkout -b"
-alias gcm="git commit -m"
-alias gcom="git checkout master"
-alias gpu="git push -u"
-gcobo () { # create new branch and create push with remote tracking from origin
-    gcob $1
-    gpu origin $1
+alias gbrn="git branch -m" # Rename a branch
+gbdo () { # delete branche from remote origin
+    git push origin :$1
 }
 gcbo () { # create new branch with tracking from origin
     git checkout -b $1 origin/$1
 }
-gbdo () { # delete branche from remote origin
-    git push origin :$1
+alias gcm="git commit -m"
+alias gcob="git checkout -b"
+gcobo () { # create new branch and create push with remote tracking from origin
+    gcob $1
+    gpu origin $1
 }
+alias gcom="git checkout master"
+alias gpu="git push -u"
+alias gstk="git stash -k" # Stash the unstaged changes only
+alias gstu="git stash -u" # Stash the untracked files
+alias gup_master="git checkout master && git fetch origin && git pull origin master"
 
 # The variable $MY_EDITOR must be set on the file ~/bin/dotfiles/bash/private-aliases
 # otherwise it will be set by defaut to the nano editor
