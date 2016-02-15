@@ -72,7 +72,7 @@ alias gup_master="git checkout master && git fetch origin && git pull origin mas
 
 # The variable $MY_EDITOR must be set on the file ~/bin/dotfiles/bash/private-aliases
 # otherwise it will be set by defaut to the nano editor
-if [[ ! -z $MY_EDITOR ]]; then
+if [[ -z $MY_EDITOR ]]; then
     MY_EDITOR='nano'
 fi
 
