@@ -53,8 +53,8 @@ alias ungz2="bunzip2 -k"
 # Git
 alias gbrn="git branch -m" # Rename a branch
 gbrn_hard () { # Rename a branch, delete remote branch & create brand new one from remote origin
-    gbdo $1
     gco master
+    gbdo $1
     gb -D $1
     gcobo $1
 }
@@ -62,11 +62,13 @@ gbdo () { # Delete branch from remote origin
     git push origin :$1
 }
 gcbo () { # Create new branch with tracking from origin
+    gco master
     git checkout -b $1 origin/$1
 }
 alias gcm="git commit -m"
 alias gcob="git checkout -b"
 gcobo () { # Create new branch and create push with remote tracking from origin
+    gco master
     gcob $1
     gpu origin $1
 }
