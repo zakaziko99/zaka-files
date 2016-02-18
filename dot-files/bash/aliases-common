@@ -84,6 +84,15 @@ if [[ -z $MY_EDITOR ]]; then
     MY_EDITOR='nano'
 fi
 
+# Update Bash & Zsh rcs if they exists
+update_rcs() {
+    if [[ ! -z $BASH_VERSION ]]; then
+        source ~/.bashrc
+    elif [[ ! -z $ZSH_VERSION ]]; then
+        source ~/.zshrc
+    fi
+}
+
 # edit hosts and vhosts
 alias xampp='sudo xampp'
 alias xampp_start='xampp start'
