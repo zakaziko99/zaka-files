@@ -1,7 +1,7 @@
 Foreground
 ============================
-normal color:        #839496
-intense color:       #93A1A1
+normal color:        #D3D9DA
+intense color:       #EDF2F3
 ============================
 Background
 ============================
@@ -17,11 +17,11 @@ Color 2 (Red)
 ============================
 normal color:        #DC322F
 intense color:       #CB4B16
-============================
+===========================
 Color 3 (Green)
 ============================
-normal color:        #859900
-intense color:       #32A562
+normal color:        #31B235
+intense color:       #859900
 ============================
 Color 4 (Yellow)
 ============================
@@ -40,7 +40,7 @@ intense color:       #8A1D52
 ============================
 Color 7 (Cyan)
 ============================
-normal color:        #27D3C5
+normal color:        #00B6B6
 intense color:       #1F7971
 ============================
 Color 8 (White)

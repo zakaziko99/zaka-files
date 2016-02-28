@@ -22,10 +22,10 @@ otherwise it won't work correctly
   * .gitconfig file
 
 ### Zsh files (based on oh-my-zsh)
-  * Theme (agnosterzak)
+  * Theme ([AgnosterZak Oh-My-Zsh Theme](https://github.com/zakaziko99/agnosterzak-ohmyzsh-theme))
   * Zshrc
 
-#### Theme (agnosterzak)
+#### AgnosterZak Theme [source](https://github.com/zakaziko99/agnosterzak-ohmyzsh-theme)
 Based on agnoster theme by oh-my-zsh (must install & set one of the powerline fonts to work fine)
 
 added to the prompt:
