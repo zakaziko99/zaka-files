@@ -26,7 +26,7 @@ otherwise it won't work correctly
   * Zshrc
 
 #### AgnosterZak Theme [source](https://github.com/zakaziko99/agnosterzak-ohmyzsh-theme)
-Based on agnoster theme by oh-my-zsh (must install & set one of the powerline fonts to work fine)
+Based on [Agnoster theme](https://gist.github.com/agnoster/3712874) by oh-my-zsh (must install & set one of the powerline fonts to work fine)
 
 added to the prompt:
 
