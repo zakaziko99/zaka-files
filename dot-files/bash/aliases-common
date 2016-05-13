@@ -24,9 +24,9 @@ alias dir='dir -F --color=always'
 alias ll='ls -lh'
 alias lla='ll -a'
 
-alias cp='cp -iv'
+alias cp='cp -i'
 #alias rm='rm -i'
-alias mv='mv -iv'
+alias mv='mv -i'
 
 alias grep='grep --color=auto -in --exclude-dir ".svn" --exclude-dir ".git" --exclude tagsi'
 
