@@ -1,0 +1,3 @@
+MY_EDITOR='nano'
+
+#PHP_INI_PATH='/etc/php/7.0/cli/php.ini'

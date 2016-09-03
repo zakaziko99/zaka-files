@@ -84,6 +84,12 @@ if [[ -z $MY_EDITOR ]]; then
     MY_EDITOR='nano'
 fi
 
+# The variable $PHP_INI_PATH must be set on the file ~/bin/dotfiles/bash/private-aliases
+# otherwise it will be set by defaut to the known location of PHP 5 ini file
+if [[ -z $PHP_INI_PATH ]]; then
+    PHP_INI_PATH='/etc/php5/cli/php.ini'
+fi
+
 # Update Bash & Zsh rcs if they exists
 update_rcs() {
     if [[ ! -z $BASH_VERSION ]]; then
@@ -105,7 +111,7 @@ alias xampp_phpini="sudo $MY_EDITOR /opt/lampp/etc/php.ini"
 alias hosts="sudo $MY_EDITOR /etc/hosts"
 
 # PHP
-alias phpini_cli="sudo $MY_EDITOR /etc/php5/cli/php.ini"
+alias phpini_cli="sudo $MY_EDITOR $PHP_INI_PATH"
 
 # Composer
 alias get_composer='curl -sS https://getcomposer.org/installer | php'
