@@ -63,6 +63,9 @@ chmod u+x ./dot-files/enable.sh
 ./dot-files/enable.sh
 ```
 
+### Your private aliases
+On the folder `~/bin/dotfiles/bash`, you will find the `private-aliases` file wich you may store your own private aliases
+
 ## Sublime text files
   * Preferences
   * Key shortcuts
