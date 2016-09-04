@@ -63,19 +63,25 @@ gbdo () { # Delete branch from remote origin
     git push origin :$1
 }
 gcbo () { # Create new branch with tracking from origin
-    gco master
-    git checkout -b $1 origin/$1
+    local checkout2Master=$(gcom 2&>/dev/null)
+    if [ $checkout2Master -eq 0 ]; then
+        git checkout -b $1 origin/$1
+    fi
 }
 gcobo () { # Create new branch and create push with remote tracking from origin
-    gco master
-    gcob $1
-    gpu origin $1
+    local checkout2Master=$(gcom 2&>/dev/null)
+    if [ $checkout2Master -eq 0 ]; then
+        gcob $1
+        gpu origin $1
+    fi
 }
 gbrn_hard () { # Rename a branch, delete remote branch & create brand new one from remote origin
-    gco master
-    gbdo $1
-    gb -D $1
-    gcobo $1
+    local checkout2Master=$(gcom 2&>/dev/null)
+    if [ $checkout2Master -eq 0 ]; then
+        gbdo $1
+        gb -D $1
+        gcobo $1
+    fi
 }
 
 # The variable $MY_EDITOR must be set on the file ~/bin/dotfiles/bash/private-aliases
