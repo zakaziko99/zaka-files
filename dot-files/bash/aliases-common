@@ -101,7 +101,7 @@ update_rcs() {
 
 # edit hosts and vhosts
 ## xampp case
-XAMPP_COMMAND_STATE=${xampp}
+XAMPP_COMMAND_STATE=$(xampp 2&>/dev/null)
 if [ XAMPP_COMMAND_STATE -eq 0]; then
     alias xampp='sudo xampp'
     alias xampp_logg='tail -f /opt/lampp/logs/error_log'
