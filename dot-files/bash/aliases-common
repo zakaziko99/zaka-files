@@ -60,27 +60,43 @@ alias gstk="git stash -k" # Stash the unstaged changes only
 alias gstu="git stash -u" # Stash the untracked files
 alias gup_master="git checkout master && git fetch origin && git pull origin master"
 gbdo () { # Delete branch from remote origin
-    git push origin :$1
+    if [[ -n $1]]; then
+        git push origin :$1
+    else
+        echo -n 'You must provide a branch name to delete from origin remote'
+    fi
 }
 gcbo () { # Create new branch with tracking from origin
     local checkout2Master=$(gcom 2&>/dev/null)
     if [ $checkout2Master -eq 0 ]; then
-        git checkout -b $1 origin/$1
+        if [[ -n $1]]; then
+            git checkout -b $1 origin/$1
+        else
+            echo -n 'You must provide a branch name to pull up from origin remote'
+        fi
     fi
 }
 gcobo () { # Create new branch and create push with remote tracking from origin
     local checkout2Master=$(gcom 2&>/dev/null)
     if [ $checkout2Master -eq 0 ]; then
-        gcob $1
-        gpu origin $1
+        if [[ -n $1]]; then
+            gcob $1
+            gpu origin $1
+        else
+            echo -n 'You must provide a branch name to create and push to origin remote'
+        fi
     fi
 }
 gbrn_hard () { # Rename a branch, delete remote branch & create brand new one from remote origin
     local checkout2Master=$(gcom 2&>/dev/null)
     if [ $checkout2Master -eq 0 ]; then
-        gbdo $1
-        gb -D $1
-        gcobo $1
+        if [[ -n $1]]; then
+            gbdo $1
+            gb -D $1
+            gcobo $1
+        else
+            echo -n 'You must provide a branch name to delete from origin remote'
+        fi
     fi
 }
 
