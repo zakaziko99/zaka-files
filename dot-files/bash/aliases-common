@@ -33,6 +33,7 @@ alias grep='grep --color=auto -in --exclude-dir ".svn" --exclude-dir ".git" --ex
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias home='cd ~'
 alias back='cd -'
 alias cc='clear'
 
