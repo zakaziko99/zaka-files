@@ -31,6 +31,8 @@ alias mv='mv -i'
 alias grep='grep --color=auto -in --exclude-dir ".svn" --exclude-dir ".git" --exclude tagsi'
 
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 alias back='cd -'
 alias cc='clear'
 
