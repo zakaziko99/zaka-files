@@ -179,6 +179,9 @@ alias sf2_cc_fix='sf2_cc && sf2_fix && gco app/cache/.gitkeep app/logs/.gitkeep'
 # Serve commands
 alias ptserve='python -m SimpleHTTPServer'
 
+# System commands
+alias kernel='uname -r'
+
 # install latest node & npm
 alias get_latest_npm='sudo npm cache clean -f && sudo npm install -g n && sudo n stable'
 
