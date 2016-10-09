@@ -31,6 +31,11 @@ alias mv='mv -i'
 alias grep='grep --color=auto -in --exclude-dir ".svn" --exclude-dir ".git" --exclude tagsi'
 
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ~='cd ~'
+alias home='cd ~'
+alias -='cd -'
 alias back='cd -'
 alias cc='clear'
 
@@ -60,28 +65,67 @@ alias gstk="git stash -k" # Stash the unstaged changes only
 alias gstu="git stash -u" # Stash the untracked files
 alias gup_master="git checkout master && git fetch origin && git pull origin master"
 gbdo () { # Delete branch from remote origin
-    git push origin :$1
+    if [[ -n $1]]; then
+        git push origin :$1
+    else
+        echo -n 'You must provide a branch name to delete from origin remote'
+    fi
+}
+gbdoo () { # Delete branch from remote origin & local repository
+    local checkout2Master=$(gcom 2&>/dev/null)
+    if [[ -n $1]]; then
+        if [ $checkout2Master -eq 0 ]; then
+            gbdo $1
+            gb -D $1
+        fi
+    else
+        echo -n 'You must provide a branch name to delete from origin remote & local repository'
+    fi
 }
 gcbo () { # Create new branch with tracking from origin
-    gco master
-    git checkout -b $1 origin/$1
+    local checkout2Master=$(gcom 2&>/dev/null)
+    if [[ -n $1]]; then
+        if [ $checkout2Master -eq 0 ]; then
+            git checkout -b $1 origin/$1
+        fi
+    else
+        echo -n 'You must provide a branch name to pull up from origin remote'
+    fi
 }
 gcobo () { # Create new branch and create push with remote tracking from origin
-    gco master
-    gcob $1
-    gpu origin $1
+    local checkout2Master=$(gcom 2&>/dev/null)
+    if [[ -n $1]]; then
+        if [ $checkout2Master -eq 0 ]; then
+            gcob $1
+            gpu origin $1
+        fi
+    else
+        echo -n 'You must provide a branch name to create and push to origin remote'
+    fi
 }
 gbrn_hard () { # Rename a branch, delete remote branch & create brand new one from remote origin
-    gco master
-    gbdo $1
-    gb -D $1
-    gcobo $1
+    local checkout2Master=$(gcom 2&>/dev/null)
+    if [[ -n $1]]; then
+        if [ $checkout2Master -eq 0 ]; then
+            gbdo $1
+            gb -D $1
+            gcobo $1
+        fi
+    else
+        echo -n 'You must provide a branch name to delete from origin remote'
+    fi
 }
 
 # The variable $MY_EDITOR must be set on the file ~/bin/dotfiles/bash/private-aliases
 # otherwise it will be set by defaut to the nano editor
 if [[ -z $MY_EDITOR ]]; then
     MY_EDITOR='nano'
+fi
+
+# The variable $PHP_INI_PATH must be set on the file ~/bin/dotfiles/bash/private-aliases
+# otherwise it will be set by defaut to the known location of PHP 5 ini file
+if [[ -z $PHP_INI_PATH ]]; then
+    PHP_INI_PATH='/etc/php5/cli/php.ini'
 fi
 
 # Update Bash & Zsh rcs if they exists
@@ -94,24 +138,34 @@ update_rcs() {
 }
 
 # edit hosts and vhosts
-alias xampp='sudo xampp'
+## xampp case
+XAMPP_COMMAND_STATE=$(xampp 2&>/dev/null)
+if [ XAMPP_COMMAND_STATE -eq 0]; then
+    alias xampp='sudo xampp'
+    alias xampp_logg='tail -f /opt/lampp/logs/error_log'
+    alias xampp_vhosts="sudo $MY_EDITOR /opt/lampp/etc/extra/httpd-vhosts.conf"
+    alias xampp_phpini="sudo $MY_EDITOR /opt/lampp/etc/php.ini"
+else
+    alias xampp='sudo service apache2'
+    alias xampp_error_logg='tail -f /var/logs/apache2/error.log'
+    alias xampp_access_logg='tail -f /var/logs/apache2/access.log'
+fi
 alias xampp_start='xampp start'
 alias xampp_stop='xampp stop'
 alias xampp_restart='xampp restart'
-alias xampp_logg='tail -f /opt/lampp/logs/error_log'
-alias xampp_vhosts="sudo $MY_EDITOR /opt/lampp/etc/extra/httpd-vhosts.conf"
-alias xampp_phpini="sudo $MY_EDITOR /opt/lampp/etc/php.ini"
 
 alias hosts="sudo $MY_EDITOR /etc/hosts"
 
 # PHP
-alias phpini_cli="sudo $MY_EDITOR /etc/php5/cli/php.ini"
+alias phpini_cli="sudo $MY_EDITOR $PHP_INI_PATH"
 
 # Composer
 alias get_composer='curl -sS https://getcomposer.org/installer | php'
 alias composer='php composer.phar'
+alias composer_momory='php --dmemory=2G composer.phar'
 alias composer_update='composer self-update'
 
+CURRENT_USER=$(whoami)
 # Symfony1.4 commands
 alias symfony='php symfony'
 alias sf_project='php lib/vendor/symfony/symfony1/data/bin/symfony generate:project' #My symfony 1.4's files are always placed on lib/vendor directory of the project
@@ -131,9 +185,15 @@ alias sf_create_log='mkdir log && chmod -R 777 log'
 # Symfony2 commands
 alias sf2_console='php app/console'
 alias sf2_cc='sudo rm -rf app/cache/* && sudo chmod -R 777 app/cache/ app/logs/'
-alias sf2_fix='sudo chown -R zakaria:zakaria app/cache/ app/logs/'
+alias sf2_fix="sudo chown -R $CURRENT_USER:$CURRENT_USER app/cache/ app/logs/"
 alias sf2_clear='sf2_cc'
 alias sf2_cc_fix='sf2_cc && sf2_fix && gco app/cache/.gitkeep app/logs/.gitkeep'
+
+# Serve commands
+alias ptserve='python -m SimpleHTTPServer'
+
+# System commands
+alias kernel='uname -r'
 
 # install latest node & npm
 alias get_latest_npm='sudo npm cache clean -f && sudo npm install -g n && sudo n stable'
