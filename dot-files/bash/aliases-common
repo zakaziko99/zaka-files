@@ -165,6 +165,7 @@ alias composer='php composer.phar'
 alias composer_momory='php --dmemory=2G composer.phar'
 alias composer_update='composer self-update'
 
+CURRENT_USER=$(whoami)
 # Symfony1.4 commands
 alias symfony='php symfony'
 alias sf_project='php lib/vendor/symfony/symfony1/data/bin/symfony generate:project' #My symfony 1.4's files are always placed on lib/vendor directory of the project
@@ -184,7 +185,7 @@ alias sf_create_log='mkdir log && chmod -R 777 log'
 # Symfony2 commands
 alias sf2_console='php app/console'
 alias sf2_cc='sudo rm -rf app/cache/* && sudo chmod -R 777 app/cache/ app/logs/'
-alias sf2_fix='sudo chown -R zakaria:zakaria app/cache/ app/logs/'
+alias sf2_fix="sudo chown -R $CURRENT_USER:$CURRENT_USER app/cache/ app/logs/"
 alias sf2_clear='sf2_cc'
 alias sf2_cc_fix='sf2_cc && sf2_fix && gco app/cache/.gitkeep app/logs/.gitkeep'
 
