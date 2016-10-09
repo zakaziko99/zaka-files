@@ -71,6 +71,17 @@ gbdo () { # Delete branch from remote origin
         echo -n 'You must provide a branch name to delete from origin remote'
     fi
 }
+gbdoo () { # Delete branch from remote origin & local repository
+    local checkout2Master=$(gcom 2&>/dev/null)
+    if [[ -n $1]]; then
+        if [ $checkout2Master -eq 0 ]; then
+            gbdo $1
+            gb -D $1
+        fi
+    else
+        echo -n 'You must provide a branch name to delete from origin remote & local repository'
+    fi
+}
 gcbo () { # Create new branch with tracking from origin
     local checkout2Master=$(gcom 2&>/dev/null)
     if [[ -n $1]]; then
