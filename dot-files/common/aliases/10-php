@@ -1,0 +1,13 @@
+# PHP ALIASES
+# ===========
+
+# The variable $PHP_INI_PATH must be set on the file ~/bin/dotfiles/bash/private-aliases
+# otherwise it will be set by defaut to the known location of PHP 5 ini file
+if [[ -z $PHP_INI_PATH ]]; then
+    PHP_INI_PATH='/etc/php5/cli/php.ini'
+fi
+
+alias hosts="sudo $MY_EDITOR /etc/hosts"
+
+# PHP
+alias phpini_cli="sudo $MY_EDITOR $PHP_INI_PATH"

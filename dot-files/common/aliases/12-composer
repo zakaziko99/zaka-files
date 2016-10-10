@@ -1,0 +1,7 @@
+# COMPOSER ALIASES
+# ================
+
+alias get_composer='curl -sS https://getcomposer.org/installer | php'
+alias composer='php composer.phar'
+alias composer_momory='php --dmemory=2G composer.phar'
+alias composer_update='composer self-update'

@@ -1,0 +1,9 @@
+# NODEJS ALIASES
+# ==============
+
+# install latest node & npm
+alias get_latest_npm='sudo npm cache clean -f && sudo npm install -g n && sudo n stable'
+
+# Usefull fixes
+alias grunt_watch_fix='echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p'
+#This is to fix grunt watch task with the warning watch ENOSPC

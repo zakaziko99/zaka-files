@@ -21,8 +21,10 @@ fi
 ln -s ~/bin/dotfiles/bash/mybashit.bashrc ~/.bashrc
 
 # Create private aliases file sample if there's no file ~/bin/dotfiles/bash/private-aliases
-if [ ! -f ~/bin/dotfiles/bash/private-aliases ]; then
-    mv ~/bin/dotfiles/bash/private-aliases-sample ~/bin/dotfiles/bash/private-aliases
+if [ -L ~/bin/dotfiles/bash/private-aliases ]; then #file exists
+    mv -f ~/bin/dotfiles/bash/private-aliases ~/bin/dotfiles/common/private-aliases
+elif [ ! -f ~/bin/dotfiles/common/private-aliases ]; then
+    mv ~/bin/dotfiles/common/private-aliases-sample ~/bin/dotfiles/common/private-aliases
 fi
 
 # Copy the gitconfig file to the home directory

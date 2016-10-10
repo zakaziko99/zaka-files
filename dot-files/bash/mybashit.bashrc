@@ -30,6 +30,7 @@ export SCM_CHECK=true
 source $BASH_IT/bash_it.sh
 
 # include my personnal customisation bashes
-source ~/bin/dotfiles/bash/env
-source ~/bin/dotfiles/bash/aliases-common
+source ~/bin/dotfiles/common/env
+source ~/bin/dotfiles/common/private-aliases
+source ~/bin/dotfiles/common/aliases/*
 source ~/bin/dotfiles/bash/aliases-git

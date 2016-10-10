@@ -1,0 +1,47 @@
+# BASIC ALIASES
+# =============
+
+alias disks='df -h'
+alias du="du -h"
+alias memory='free -m'
+alias network="netstat -ap"
+alias whatsmyip="curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
+alias servstats='sudo service --status-all'
+alias process='top'
+alias top_process="ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
+alias destroy='kill -9'
+
+alias ls='ls -F --color=always'
+alias dir='dir -F --color=always'
+alias ll='ls -lh'
+alias lla='ll -a'
+
+alias cp='cp -i'
+#alias rm='rm -i'
+alias mv='mv -i'
+
+alias grep='grep --color=auto -in --exclude-dir ".svn" --exclude-dir ".git" --exclude tagsi'
+
+# The variable $MY_EDITOR must be set on the file ~/bin/dotfiles/bash/private-aliases
+# otherwise it will be set by defaut to the nano editor
+if [[ -z $MY_EDITOR ]]; then
+    MY_EDITOR='nano'
+fi
+
+# Update Bash & Zsh rcs if they exists
+update_rcs() {
+    if [[ ! -z $BASH_VERSION ]]; then
+        source ~/.bashrc
+    elif [[ ! -z $ZSH_VERSION ]]; then
+        source ~/.zshrc
+    fi
+}
+
+# Serve commands
+alias ptserve='python -m SimpleHTTPServer'
+
+# System commands
+alias kernel='uname -r'
+
+# Ubuntu commands
+alias ubuntu_version='lsb_release -r'

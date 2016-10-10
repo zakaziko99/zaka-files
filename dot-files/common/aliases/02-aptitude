@@ -1,0 +1,10 @@
+# APTITUDE ALIASES
+# ================
+
+alias agi="apt-get install"
+alias agua="apt-get update"
+alias agup="apt-get upgrade"
+alias aguap="apt-get update && apt-get upgrade"
+alias adel=" apt-get remove"
+alias asearch="apt-cache search"
+
