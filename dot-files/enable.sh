@@ -11,6 +11,7 @@ fi
 # Copy the dot files to bin dotfiles directory
 cp -Rf $BASEDIR/* ~/bin/dotfiles/
 rm ~/bin/dotfiles/enable.sh
+rm ~/bin/dotfiles/update.sh
 
 # Link mybashit to the home bashrc
 if [ -f ~/.bashrc ]; then # file exists & not symlink
@@ -20,7 +21,7 @@ elif [ -L ~/.bashrc ]; then #file exists & it is symlink
 fi
 ln -s ~/bin/dotfiles/bash/mybashit.bashrc ~/.bashrc
 
-# Create private aliases file sample if there's no file ~/bin/dotfiles/bash/private-aliases
+# Create private aliases file sample if there's no file ~/bin/dotfiles/common/private-aliases
 if [ -L ~/bin/dotfiles/bash/private-aliases ]; then #file exists
     mv -f ~/bin/dotfiles/bash/private-aliases ~/bin/dotfiles/common/private-aliases
 elif [ ! -f ~/bin/dotfiles/common/private-aliases ]; then
