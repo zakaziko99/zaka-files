@@ -6,8 +6,8 @@ if [ ! -d ~/bin ]; then
 elif [ ! -d ~/bin/dotfiles ]; then
     echo -n 'You must run the enable commande first! For more information check the README file'
 else
-    rm ~/bin/dotfiles/bash/env
-    rm ~/bin/dotfiles/bash/aliases-common
+    rm -f ~/bin/dotfiles/bash/env
+    rm -f ~/bin/dotfiles/bash/aliases-common
 
     # Copy the dot files to bin dotfiles directory
     cp -Rf $BASEDIR/* ~/bin/dotfiles/

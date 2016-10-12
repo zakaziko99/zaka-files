@@ -87,4 +87,7 @@ source $ZSH/oh-my-zsh.sh
 # include my personnal customisation aliases
 source ~/bin/dotfiles/common/env
 source ~/bin/dotfiles/common/private-aliases
-source ~/bin/dotfiles/common/aliases/*
+for file in ~/bin/dotfiles/common/aliases/*
+do
+    source "${file}"
+done

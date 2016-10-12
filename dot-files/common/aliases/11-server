@@ -2,7 +2,7 @@
 # ==============
 
 XAMPP_COMMAND_STATE=$(xampp 2&>/dev/null)
-if [ XAMPP_COMMAND_STATE -eq 0]; then
+if [[ $XAMPP_COMMAND_STATE -eq 0 ]]; then
     alias xampp='sudo xampp'
     alias xampp_logg='tail -f /opt/lampp/logs/error_log'
     alias xampp_vhosts="sudo $MY_EDITOR /opt/lampp/etc/extra/httpd-vhosts.conf"
