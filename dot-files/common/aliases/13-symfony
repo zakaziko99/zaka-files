@@ -24,3 +24,7 @@ alias sf2_cc='sudo rm -rf app/cache/* && sudo chmod -R 777 app/cache/ app/logs/'
 alias sf2_fix="sudo chown -R $CURRENT_USER:$CURRENT_USER app/cache/ app/logs/"
 alias sf2_clear='sf2_cc'
 alias sf2_cc_fix='sf2_cc && sf2_fix && gco app/cache/.gitkeep app/logs/.gitkeep'
+alias sf2_project='composer create-project symfony/framework-standard-edition' #Ex: sf2_project my-project "2.7.*"
+alias sf2_bundle='sf2_console generate:bundle' #Ex: sf2_bundle --namespace=Acme/TestBundle
+alias sf2_server='sf2_console server:run'
+alias sf2_security='sf2_console security:check'
