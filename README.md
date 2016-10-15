@@ -63,6 +63,21 @@ chmod u+x ./dot-files/enable.sh
 ./dot-files/enable.sh
 ```
 
+### Update the dot files
+Run the update.sh to update the dotfiles into ~/bin/dotfiles & create link files
+to .bashrc, .zshrc & zsh theme
+```sh
+cd <path_to_local_repo>
+```
+
+```sh
+chmod u+x ./dot-files/update.sh
+```
+
+```sh
+./dot-files/update.sh
+```
+
 ### Your private aliases
 On the folder `~/bin/dotfiles/bash`, you will find the `private-aliases` file wich you may store your own private aliases
 
