@@ -1,17 +1,16 @@
 # SERVER ALIASES
 # ==============
 
-XAMPP_COMMAND_STATE=$(xampp 2&>/dev/null)
-if [[ $XAMPP_COMMAND_STATE -eq 0 ]]; then
-    alias xampp='sudo xampp'
+xampp version &> /dev/null
+if [ $? -eq 0 ]; then
     alias xampp_logg='tail -f /opt/lampp/logs/error_log'
     alias xampp_vhosts="sudo $MY_EDITOR /opt/lampp/etc/extra/httpd-vhosts.conf"
     alias xampp_phpini="sudo $MY_EDITOR /opt/lampp/etc/php.ini"
 else
-    alias xampp='sudo service apache2'
+    alias xampp='service apache2'
     alias xampp_error_logg='tail -f /var/logs/apache2/error.log'
     alias xampp_access_logg='tail -f /var/logs/apache2/access.log'
 fi
-alias xampp_start='xampp start'
-alias xampp_stop='xampp stop'
-alias xampp_restart='xampp restart'
+alias xampp_start='sudo xampp start'
+alias xampp_stop='sudo xampp stop'
+alias xampp_restart='sudo xampp restart'
