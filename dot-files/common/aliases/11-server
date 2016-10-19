@@ -14,3 +14,6 @@ fi
 alias xampp_start='sudo xampp start'
 alias xampp_stop='sudo xampp stop'
 alias xampp_restart='sudo xampp restart'
+
+# Serve commands
+alias ptserve='python -m SimpleHTTPServer'

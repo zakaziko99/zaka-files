@@ -37,9 +37,6 @@ update_rcs() {
     fi
 }
 
-# Serve commands
-alias ptserve='python -m SimpleHTTPServer'
-
 # System commands
 alias kernel='uname -r'
 
