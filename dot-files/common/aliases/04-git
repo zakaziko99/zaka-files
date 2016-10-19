@@ -19,9 +19,9 @@ gbdo () { # Delete branch from remote origin
 }
 
 gbdoo () { # Delete branch from remote origin & local repository
-    local checkout2Master=$(gcom 2&>/dev/null)
+    gco master  &> /dev/null
     if [[ -n $1 ]]; then
-        if [ $checkout2Master -eq 0 ]; then
+        if [ $? -eq 0 ]; then
             gbdo $1
             gb -D $1
         fi
@@ -31,9 +31,9 @@ gbdoo () { # Delete branch from remote origin & local repository
 }
 
 gcbo () { # Create new branch with tracking from origin
-    local checkout2Master=$(gcom 2&>/dev/null)
+    gco master  &> /dev/null
     if [[ -n $1 ]]; then
-        if [ $checkout2Master -eq 0 ]; then
+        if [ $? -eq 0 ]; then
             git checkout -b $1 origin/$1
         fi
     else
@@ -42,9 +42,9 @@ gcbo () { # Create new branch with tracking from origin
 }
 
 gcobo () { # Create new branch and create push with remote tracking from origin
-    local checkout2Master=$(gcom 2&>/dev/null)
+    gco master  &> /dev/null
     if [[ -n $1 ]]; then
-        if [ $checkout2Master -eq 0 ]; then
+        if [ $? -eq 0 ]; then
             gcob $1
             gpu origin $1
         fi
@@ -54,9 +54,9 @@ gcobo () { # Create new branch and create push with remote tracking from origin
 }
 
 gbrn_hard () { # Rename a branch, delete remote branch & create brand new one from remote origin
-    local checkout2Master=$(gcom 2&>/dev/null)
+    gco master  &> /dev/null
     if [[ -n $1 ]]; then
-        if [ $checkout2Master -eq 0 ]; then
+        if [ $? -eq 0 ]; then
             gbdo $1
             gb -D $1
             gcobo $1
