@@ -31,9 +31,11 @@ source $BASH_IT/bash_it.sh
 
 # include my personnal customisation bashes
 source ~/bin/dotfiles/common/env
-source ~/bin/dotfiles/common/private-aliases
+if [ -f ~/bin/dotfiles/common/private-aliases ]; then
+    source ~/bin/dotfiles/common/private-aliases
+fi
+source ~/bin/dotfiles/bash/aliases-git
 for file in ~/bin/dotfiles/common/aliases/*
 do
     source "${file}"
 done
-source ~/bin/dotfiles/bash/aliases-git
