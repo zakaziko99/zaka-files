@@ -83,7 +83,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
 # include my personnal customisation aliases
 source ~/bin/dotfiles/common/env
 if [ -f ~/bin/dotfiles/common/private-aliases ]; then
@@ -93,3 +92,8 @@ for file in ~/bin/dotfiles/common/aliases/*
 do
     source "${file}"
 done
+
+# Custom top layer Zsh
+if [ -f ~/.zshrc.local ]; then
+    source ~/.zshrc.local
+fi

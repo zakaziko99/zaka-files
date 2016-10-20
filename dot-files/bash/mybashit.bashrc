@@ -39,3 +39,8 @@ for file in ~/bin/dotfiles/common/aliases/*
 do
     source "${file}"
 done
+
+# Custom top layer Bash
+if [ -f ~/.bashrc.local ]; then
+    source ~/.bashrc.local
+fi
