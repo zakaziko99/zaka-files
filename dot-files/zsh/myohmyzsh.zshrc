@@ -53,8 +53,12 @@ plugins=(command-not-found git sublime symfony2)
 
 # User configuration
 
-  export PATH="/home/zakaria/.gem/ruby/2.2.3/bin:/home/zakaria/.rubies/ruby-2.2.3/lib/ruby/gems/2.2.0/bin:/home/zakaria/.rubies/ruby-2.2.3/bin:/home/zakaria/src/ruby-2.2.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
+
+# Custom top Path Zsh
+if [ -f ~/.zshrc.path ]; then
+    source ~/.zshrc.path
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -82,11 +86,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Custom top Path Zsh
-if [ -f ~/.zshrc.path ]; then
-    source ~/.zshrc.path
-fi
 
 # include my personnal customisation aliases
 source ~/bin/dotfiles/common/env
