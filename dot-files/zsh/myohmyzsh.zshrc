@@ -83,6 +83,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Custom top Path Zsh
+if [ -f ~/.zshrc.path ]; then
+    source ~/.zshrc.path
+fi
+
 # include my personnal customisation aliases
 source ~/bin/dotfiles/common/env
 if [ -f ~/bin/dotfiles/common/private-aliases ]; then

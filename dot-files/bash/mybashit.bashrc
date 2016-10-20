@@ -26,6 +26,11 @@ export SCM_CHECK=true
 # https://github.com/xvzf/vcprompt
 #export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
 
+# Custom top Path Bash
+if [ -f ~/.bashrc.path ]; then
+    source ~/.bashrc.path
+fi
+
 # Load Bash It
 source $BASH_IT/bash_it.sh
 
