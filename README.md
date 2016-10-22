@@ -79,7 +79,7 @@ chmod u+x ./dot-files/update.sh
 ```
 
 ### Your private aliases
-On the folder `~/bin/dotfiles/bash`, you will find the `private-aliases` file wich you may store your own private aliases
+On the folder `~/bin/dotfiles/common`, you will find the `private-aliases` file wich you may store your own private aliases
 
 ### Overwrite the bashrc or zshrc
 You can create the file `~/.bashrc.local` or `~/.zshrc.local` to overwrite some configs if your are using `Bash` or `Zsh`
