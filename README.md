@@ -81,6 +81,13 @@ chmod u+x ./dot-files/update.sh
 ### Your private aliases
 On the folder `~/bin/dotfiles/bash`, you will find the `private-aliases` file wich you may store your own private aliases
 
+### Overwrite the bashrc or zshrc
+You can create the file `~/.bashrc.local` or `~/.zshrc.local` to overwrite some configs if your are using `Bash` or `Zsh`
+
+### Overwrite the PATH system variable
+You can create the file `~/.bashrc.path` or `~/.zshrc.path` to overwrite the PATH variable if you are using `Bash` or `Zsh`
+This is useful if you need some versions of `Ruby` or other things, to be included on the Shell.
+
 ## Sublime text files
   * Preferences
   * Key shortcuts
