@@ -44,4 +44,11 @@ else
     mv ~/myohmyzsh.zshrc ~/.zshrc
     rm -f ~/.oh-my-zsh/themes/agnosterzak.zsh-theme
     ln -s ~/bin/dotfiles/zsh/mytheme ~/.oh-my-zsh/themes/agnosterzak.zsh-theme
+
+    # Apply the changes on the console
+    if [[ ! -z $BASH_VERSION ]]; then
+        source ~/.bashrc
+    elif [[ ! -z $ZSH_VERSION ]]; then
+        source ~/.zshrc
+    fi
 fi

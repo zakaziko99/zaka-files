@@ -8,7 +8,8 @@ alias gpu="git push -u"
 alias gcom="git checkout master"
 alias gstk="git stash -k" # Stash the unstaged changes only
 alias gstu="git stash -u" # Stash the untracked files
-alias gup_master="git checkout master && git fetch origin && git pull origin master"
+alias gupm="git checkout master && git fetch origin && git pull origin master"
+alias gup_master="gupm"
 
 gbdo () { # Delete branch from remote origin
     if [[ -n $1 ]]; then
@@ -19,11 +20,14 @@ gbdo () { # Delete branch from remote origin
 }
 
 gbdoo () { # Delete branch from remote origin & local repository
-    local checkout2Master=$(gcom 2&>/dev/null)
+    echo "switching to the Master branch"
+    gco master  &> /dev/null
     if [[ -n $1 ]]; then
-        if [ $checkout2Master -eq 0 ]; then
+        if [ $? -eq 0 ]; then
             gbdo $1
             gb -D $1
+        else
+            echo "Sorry, failed to switch to the Master branch"
         fi
     else
         echo 'You must provide a branch name to delete from origin remote & local repository'
@@ -31,10 +35,13 @@ gbdoo () { # Delete branch from remote origin & local repository
 }
 
 gcbo () { # Create new branch with tracking from origin
-    local checkout2Master=$(gcom 2&>/dev/null)
+    echo "switching to the Master branch"
+    gco master  &> /dev/null
     if [[ -n $1 ]]; then
-        if [ $checkout2Master -eq 0 ]; then
+        if [ $? -eq 0 ]; then
             git checkout -b $1 origin/$1
+        else
+            echo "Sorry, failed to switch to the Master branch"
         fi
     else
         echo 'You must provide a branch name to pull up from origin remote'
@@ -42,11 +49,14 @@ gcbo () { # Create new branch with tracking from origin
 }
 
 gcobo () { # Create new branch and create push with remote tracking from origin
-    local checkout2Master=$(gcom 2&>/dev/null)
+    echo "switching to the Master branch"
+    gco master  &> /dev/null
     if [[ -n $1 ]]; then
-        if [ $checkout2Master -eq 0 ]; then
+        if [ $? -eq 0 ]; then
             gcob $1
             gpu origin $1
+        else
+            echo "Sorry, failed to switch to the Master branch"
         fi
     else
         echo 'You must provide a branch name to create and push to origin remote'
@@ -54,12 +64,15 @@ gcobo () { # Create new branch and create push with remote tracking from origin
 }
 
 gbrn_hard () { # Rename a branch, delete remote branch & create brand new one from remote origin
-    local checkout2Master=$(gcom 2&>/dev/null)
+    echo "switching to the Master branch"
+    gco master  &> /dev/null
     if [[ -n $1 ]]; then
-        if [ $checkout2Master -eq 0 ]; then
+        if [ $? -eq 0 ]; then
             gbdo $1
             gb -D $1
             gcobo $1
+        else
+            echo "Sorry, failed to switch to the Master branch"
         fi
     else
         echo 'You must provide a branch name to delete from origin remote'

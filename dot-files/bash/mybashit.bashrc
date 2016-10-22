@@ -26,14 +26,26 @@ export SCM_CHECK=true
 # https://github.com/xvzf/vcprompt
 #export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
 
+# Custom top Path Bash
+if [ -f ~/.bashrc.path ]; then
+    source ~/.bashrc.path
+fi
+
 # Load Bash It
 source $BASH_IT/bash_it.sh
 
 # include my personnal customisation bashes
 source ~/bin/dotfiles/common/env
-source ~/bin/dotfiles/common/private-aliases
+if [ -f ~/bin/dotfiles/common/private-aliases ]; then
+    source ~/bin/dotfiles/common/private-aliases
+fi
+source ~/bin/dotfiles/bash/aliases-git
 for file in ~/bin/dotfiles/common/aliases/*
 do
     source "${file}"
 done
-source ~/bin/dotfiles/bash/aliases-git
+
+# Custom top layer Bash
+if [ -f ~/.bashrc.local ]; then
+    source ~/.bashrc.local
+fi
