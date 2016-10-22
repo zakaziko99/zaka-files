@@ -88,6 +88,11 @@ You can create the file `~/.bashrc.local` or `~/.zshrc.local` to overwrite some 
 You can create the file `~/.bashrc.path` or `~/.zshrc.path` to overwrite the PATH variable if you are using `Bash` or `Zsh`
 This is useful if you need some versions of `Ruby` or other things, to be included on the Shell.
 
+The content of the file must look like this:
+```sh
+export PATH="<paths_to_add_separated_by_:>:$PATH"
+```
+
 ## Sublime text files
   * Preferences
   * Key shortcuts
