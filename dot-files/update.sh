@@ -1,3 +1,4 @@
+
 BASEDIR=$(dirname $0)
 
 # Check if the ~/bin/dotfiles directory exists
@@ -46,9 +47,10 @@ else
     ln -s ~/bin/dotfiles/zsh/mytheme ~/.oh-my-zsh/themes/agnosterzak.zsh-theme
 
     # Apply the changes on the console
-    if [[ ! -z $BASH_VERSION ]]; then
+    echo $SHELL
+    if [ $(which $SHELL | grep -c "bash$") -gt 0 ]; then
         source ~/.bashrc
-    elif [[ ! -z $ZSH_VERSION ]]; then
+    elif [ $(which $SHELL | grep -c "zsh$") -gt 0 ]; then
         source ~/.zshrc
     fi
 fi
