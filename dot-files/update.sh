@@ -1,3 +1,4 @@
+
 BASEDIR=$(dirname $0)
 
 # Check if the ~/bin/dotfiles directory exists
@@ -46,9 +47,10 @@ else
     ln -s ~/bin/dotfiles/zsh/mytheme ~/.oh-my-zsh/themes/agnosterzak.zsh-theme
 
     # Apply the changes on the console
-    if [[ ! -z $BASH_VERSION ]]; then
-        source ~/.bashrc
-    elif [[ ! -z $ZSH_VERSION ]]; then
-        source ~/.zshrc
-    fi
+    echo 'use the command "update_rcs" to complete the update process'
+    # if [ $(which $SHELL | grep -c "bash$") -gt 0 ]; then
+    #     . ~/.bashrc
+    # elif [ $(which $SHELL | grep -c "zsh$") -gt 0 ]; then
+    #     . ~/.zshrc
+    # fi
 fi
