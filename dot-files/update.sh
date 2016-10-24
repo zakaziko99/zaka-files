@@ -47,10 +47,10 @@ else
     ln -s ~/bin/dotfiles/zsh/mytheme ~/.oh-my-zsh/themes/agnosterzak.zsh-theme
 
     # Apply the changes on the console
-    echo $SHELL
-    if [ $(which $SHELL | grep -c "bash$") -gt 0 ]; then
-        source ~/.bashrc
-    elif [ $(which $SHELL | grep -c "zsh$") -gt 0 ]; then
-        source ~/.zshrc
-    fi
+    echo 'use the command "update_rcs" to complete the update process'
+    # if [ $(which $SHELL | grep -c "bash$") -gt 0 ]; then
+    #     . ~/.bashrc
+    # elif [ $(which $SHELL | grep -c "zsh$") -gt 0 ]; then
+    #     . ~/.zshrc
+    # fi
 fi
