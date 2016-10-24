@@ -78,6 +78,10 @@ chmod u+x ./dot-files/update.sh
 ./dot-files/update.sh
 ```
 
+```sh
+update_rcs
+```
+
 ### Your private aliases
 On the folder `~/bin/dotfiles/common`, you will find the `private-aliases` file wich you may store your own private aliases
 
