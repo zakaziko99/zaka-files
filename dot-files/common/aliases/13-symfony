@@ -15,7 +15,7 @@ alias sf1_forms='symfony doctrine:build-forms'
 alias sf1_classes='symfony doctrine:build --all-classes'
 alias sf1_build_all='symfony doctrine:build --all --no-confirmation'
 alias sf1_cc='symfony cc'
-alias sf1_clear='sf_cc'
+alias sf1_clear='sf1_cc'
 alias sf1_create_cache='mkdir cache && chmod -R 777 cache'
 alias sf1_create_log='mkdir log && chmod -R 777 log'
 
@@ -30,7 +30,7 @@ sfcn () {
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
 }
-sf_cc () {
+sfcc () {
     if [ -e app/console ]; then
         sudo rm -rf app/cache/* && sudo chmod -R 777 app/cache/ app/logs/
     elif [ -e bin/console ]; then
@@ -39,7 +39,7 @@ sf_cc () {
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
 }
-sf_fix () {
+sffix () {
     if [ -e app/console ]; then
         sudo chown -R $CURRENT_USER:$CURRENT_USER app/cache/ app/logs/
     elif [ -e bin/console ]; then
@@ -48,17 +48,17 @@ sf_fix () {
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
 }
-alias sf_clear='sf_cc'
-sf_cc_fix () {
+alias sfclear='sfcc'
+sfccfix () {
     if [ -e app/console ]; then
-        sf_cc && sf_fix && gco app/cache/.gitkeep app/logs/.gitkeep
+        sfcc && sffix && gco app/cache/.gitkeep app/logs/.gitkeep
     elif [ -e bin/console ]; then
-        sf_cc && sf_fix && gco var/cache/.gitkeep var/logs/.gitkeep
+        sfcc && sffix && gco var/cache/.gitkeep var/logs/.gitkeep
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
 }
-alias sf_project='composer create-project symfony/framework-standard-edition' #Ex: sf_project my-project "2.7.*"
-alias sf_bundle='sfcn generate:bundle' #Ex: sf_bundle --namespace=Acme/TestBundle
-alias sf_server='sfcn server:run'
-alias sf_security='sfcn security:check'
+alias sfproject='composer create-project symfony/framework-standard-edition' #Ex: sfproject my-project "2.7.*"
+alias sfbundle='sfcn generate:bundle' #Ex: sfbundle --namespace=Acme/TestBundle
+alias sfserver='sfcn server:run'
+alias sfsecurity='sfcn security:check'
