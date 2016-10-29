@@ -1,6 +1,9 @@
 # BASIC ALIASES
 # =============
 
+alias -g L='|less'
+alias -g NULL="> /dev/null 2>&1"
+
 alias disks='df -h'
 alias du="du -h"
 alias memory='free -m'
