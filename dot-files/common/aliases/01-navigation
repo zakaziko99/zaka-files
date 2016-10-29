@@ -9,6 +9,9 @@ alias home='cd ~'
 alias back='cd -'
 alias cc='clear'
 
+alias mkdir='mkdir -pv' # Useful when you run: mkdir dir1/dir2 knowing that the two directoreis
+                        # does not exist, the command will create both directories
+
 take () {
     if [[ -n $1 ]]; then
         if [ ! -d $1 ]; then
