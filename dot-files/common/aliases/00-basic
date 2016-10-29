@@ -14,8 +14,14 @@ alias process='top'
 alias top_process="ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 alias destroy='kill -9'
 
-alias ls='ls -F --color=always'
-alias dir='dir -F --color=always'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   alias ls='ls -F --color=always'
+   alias dir='dir -F --color=always'
+elif [[ "$unamestr" == 'FreeBSD' ]]; then
+   alias ls='ls -FG'
+   alias dir='dir -FG'
+fi
 alias ll='ls -lh'
 alias lla='ll -a'
 
