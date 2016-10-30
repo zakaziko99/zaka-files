@@ -23,9 +23,9 @@ alias sf1_create_log='mkdir log && chmod -R 777 log'
 # Symfony2 or Symfony3 commands
 sfcn () {
     if [ -e app/console ]; then
-        php app/console $1
+        php app/console $@
     elif [ -e bin/console ]; then
-        php bin/console $1
+        php bin/console $@
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
