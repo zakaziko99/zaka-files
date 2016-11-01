@@ -62,3 +62,30 @@ alias sfproject='composer create-project symfony/framework-standard-edition' #Ex
 alias sfbundle='sfcn generate:bundle' #Ex: sfbundle --namespace=Acme/TestBundle
 alias sfserver='sfcn server:run'
 alias sfsecurity='sfcn security:check'
+
+sfcreate () {
+    local PROCEED_INSTALL=0
+    local VERSION_INSTALL=''
+    local TARGET_DIRECTORY='project-symfony'
+
+    if [[ -n $2 ]]; then
+        TARGET_DIRECTORY=$2
+    fi
+
+    if [[ "$1" == 'v2' ]]; then
+        PROCEED_INSTALL=1
+        VERSION_INSTALL="2.8.*"
+    elif [[ "$1" == 'v3' ]]; then
+        PROCEED_INSTALL=1
+    else
+        echo "The first parameter must be the version of Symfony project to create. Ex: v2 or v3"
+        echo "The second parameter is the name of the project. It is optional!"
+    fi
+
+    if [[ $PROCEED_INSTALL -eq 1 ]]; then
+        get_composer
+        sfproject $TARGET_DIRECTORY $VERSION_INSTALL
+        mv composer.phar $TARGET_DIRECTORY
+        cd $TARGET_DIRECTORY
+    fi
+}

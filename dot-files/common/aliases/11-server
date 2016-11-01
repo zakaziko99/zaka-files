@@ -1,7 +1,7 @@
 # SERVER ALIASES
 # ==============
 
-xampp version &> /dev/null
+xampp version NULL
 if [ $? -eq 0 ]; then
     alias xampp_logg='tail -f /opt/lampp/logs/error_log'
     alias xampp_vhosts="sudo $MY_EDITOR /opt/lampp/etc/extra/httpd-vhosts.conf"
