@@ -2,7 +2,8 @@
 # =============
 
 alias -g L='|less'
-alias -g NULL="> /dev/null 2>&1"
+# alias -g NULL="> /dev/null 2>&1"
+alias -g NULL="&> /dev/null" # more silent output
 
 alias disks='df -h'
 alias du="du -h"
