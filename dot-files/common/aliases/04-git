@@ -20,8 +20,8 @@ gbdo () { # Delete branch from remote origin
 }
 
 gbdoo () { # Delete branch from remote origin & local repository
-    echo "switching to the Master branch"
-    gco master  &> /dev/null
+    echo "Switch to the Master branch"
+    gco master NULL
     if [[ -n $1 ]]; then
         if [ $? -eq 0 ]; then
             gbdo $1
@@ -35,8 +35,8 @@ gbdoo () { # Delete branch from remote origin & local repository
 }
 
 gcbo () { # Create new branch with tracking from origin
-    echo "switching to the Master branch"
-    gco master  &> /dev/null
+    echo "Switch to the Master branch"
+    gco master NULL
     if [[ -n $1 ]]; then
         if [ $? -eq 0 ]; then
             git checkout -b $1 origin/$1
@@ -49,8 +49,8 @@ gcbo () { # Create new branch with tracking from origin
 }
 
 gcobo () { # Create new branch and create push with remote tracking from origin
-    echo "switching to the Master branch"
-    gco master  &> /dev/null
+    echo "Switch to the Master branch"
+    gco master NULL
     if [[ -n $1 ]]; then
         if [ $? -eq 0 ]; then
             gcob $1
@@ -64,8 +64,8 @@ gcobo () { # Create new branch and create push with remote tracking from origin
 }
 
 gbrn_hard () { # Rename a branch, delete remote branch & create brand new one from remote origin
-    echo "switching to the Master branch"
-    gco master  &> /dev/null
+    echo "Switch to the Master branch"
+    gco master NULL
     if [[ -n $1 ]]; then
         if [ $? -eq 0 ]; then
             gbdo $1
