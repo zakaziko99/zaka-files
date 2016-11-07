@@ -104,5 +104,19 @@ export PATH="<paths_to_add_separated_by_:>:$PATH"
     - Polymer Snippets (HTML & Javascript)
     - Init Functions (Javascript)
 
+### copy the snippets to Sublime Text 3
+Run the copy-to-st3.sh to have all the snippets on your Sublime Text 3
+```sh
+cd <path_to_local_repo>
+```
+
+```sh
+chmod u+x ./sublime-text-3/copy-to-st3.sh
+```
+
+```sh
+./dot-files/copy-to-st3.sh
+```
+
 ## Other files & some useful things
   * My Linux Terminal color scheme (Based on Solaris Dark color scheme)
