@@ -7,7 +7,7 @@ elif [[ "$unamestr" == 'FreeBSD' ]]; then
     TARGET_ST3_SNIPPETS='~/Library/Application Support/Sublime Text 3/Packages/User'
 fi
 
-if [[ -d $TARGET_ST3_SNIPPETS ]]; then
+if [ -d $TARGET_ST3_SNIPPETS ]; then
     # \cp is to unalias temporarily the cp -i command
     yes | \cp -R $BASEDIR/snippets-zakaria $TARGET_ST3_SNIPPETS
 else
