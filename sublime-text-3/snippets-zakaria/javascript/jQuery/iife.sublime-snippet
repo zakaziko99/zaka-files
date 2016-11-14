@@ -1,0 +1,12 @@
+<snippet>
+    <content><![CDATA[
+(function(${1:scripting}) \{
+    ${1:scripting}(${2:window, document, window.jQuery});
+}(function(${3:window, document, \$, undefined}) {
+    ${4:// Your jQuery script here ...}
+\}));
+]]></content>
+    <tabTrigger>iife-jq</tabTrigger>
+    <scope>source.js,source.js.embedded.html</scope>
+    <description>IIFE jquery ready function</description>
+</snippet>

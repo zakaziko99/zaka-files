@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+const ${1:myVar} = ${2:myValue};
+]]></content>
+    <tabTrigger>const</tabTrigger>
+    <scope>source.js</scope>
+    <description>Constant variable declaration ES6</description>
+</snippet>
