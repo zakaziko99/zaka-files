@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+let ${1:myVar} = ${2:myValue};
+]]></content>
+    <tabTrigger>let</tabTrigger>
+    <scope>source.js</scope>
+    <description>Scope variable declaration ES6</description>
+</snippet>
