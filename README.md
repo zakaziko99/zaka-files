@@ -115,10 +115,12 @@ chmod u+x ./sublime-text-3/copy-to-st3.sh
 ```
 
 ```sh
-./dot-files/copy-to-st3.sh
+./sublime-text-3/copy-to-st3.sh
 ```
 
 ### Get from Sublime Text 3, the snippet you want
+The snippet created from Sublime Text 3 must be saved under the folder `snippets-zakaria` under the `Packages/User` ST3 folder
+
 Run the get-from-st3.sh to have the brand new snippet created from Sublime Text 3
 ```sh
 cd <path_to_local_repo>
@@ -129,7 +131,11 @@ chmod u+x ./sublime-text-3/get-from-st3.sh
 ```
 
 ```sh
-./dot-files/get-from-st3.sh <snippet_name_without_extension>
+./sublime-text-3/get-from-st3.sh <relative_path_from_snippets-zakaria_folder/snippet_name>
+```
+Example:
+```sh
+./sublime-text-3/get-from-st3.sh javascript/var.sublime-snippet
 ```
 
 ## Other files & some useful things
