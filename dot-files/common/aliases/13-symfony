@@ -51,7 +51,13 @@ sffix () {
 alias sfclear='sfcc'
 sfccfix () {
     if [ -e app/console ]; then
-        sfcc && sffix && gco app/cache/.gitkeep app/logs/.gitkeep
+        sfcc && sffix
+        if [ -f app/cache/.gitkeep ]; then
+            gco app/cache/.gitkeep
+        fi
+        if [ -f app/logs/.gitkeep ]; then
+            gco app/logs/.gitkeep
+        fi
     elif [ -e bin/console ]; then
         sfcc && sffix && gco var/cache/.gitkeep var/logs/.gitkeep
     else
