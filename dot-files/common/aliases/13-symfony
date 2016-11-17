@@ -59,7 +59,13 @@ sfccfix () {
             gco app/logs/.gitkeep
         fi
     elif [ -e bin/console ]; then
-        sfcc && sffix && gco var/cache/.gitkeep var/logs/.gitkeep
+        sfcc && sffix
+        if [ -f var/cache/.gitkeep ]; then
+            gco var/cache/.gitkeep
+        fi
+        if [ -f var/logs/.gitkeep ]; then
+            gco var/logs/.gitkeep
+        fi
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
