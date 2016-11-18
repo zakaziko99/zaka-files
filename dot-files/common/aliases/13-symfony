@@ -53,24 +53,23 @@ sffix () {
 }
 alias sfclear='sfcc'
 sfccfix () {
+    local SF_VAR_DIR=''
     if [ -e app/console ]; then
-        sfcc && sffix
-        if [ -f app/cache/.gitkeep ]; then
-            gco app/cache/.gitkeep
-        fi
-        if [ -f app/logs/.gitkeep ]; then
-            gco app/logs/.gitkeep
-        fi
+        SF_VAR_DIR='app'
     elif [ -e bin/console ]; then
-        sfcc && sffix
-        if [ -f var/cache/.gitkeep ]; then
-            gco var/cache/.gitkeep
-        fi
-        if [ -f var/logs/.gitkeep ]; then
-            gco var/logs/.gitkeep
-        fi
+        SF_VAR_DIR='var'
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
+    fi
+
+    if [[ "$SF_VAR_DIR" != "" ]]; then
+        sfcc && sffix
+        if [ -f "$SF_VAR_DIR/cache/.gitkeep" ]; then
+            gco "$SF_VAR_DIR/cache/.gitkeep"
+        fi
+        if [ -f "$SF_VAR_DIR/logs/.gitkeep" ]; then
+            gco "$SF_VAR_DIR/logs/.gitkeep"
+        fi
     fi
 }
 alias sfproject='composer create-project symfony/framework-standard-edition' #Ex: sfproject my-project "2.7.*"
