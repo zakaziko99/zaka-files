@@ -34,7 +34,9 @@ sfcc () {
     if [ -e app/console ]; then
         sudo rm -rf app/cache/* && sudo chmod -R 777 app/cache/ app/logs/
     elif [ -e bin/console ]; then
-        sudo rm -rf var/cache/* && sudo chmod -R 777 var/cache/ var/logs/
+        sfcn cache:clear --env=dev
+        # Under Symfony 3, the permissions are fixed
+        # sudo rm -rf var/cache/* && sudo chmod -R 777 var/cache/ var/logs/
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
@@ -43,7 +45,8 @@ sffix () {
     if [ -e app/console ]; then
         sudo chown -R $CURRENT_USER:$CURRENT_USER app/cache/ app/logs/
     elif [ -e bin/console ]; then
-        sudo chown -R $CURRENT_USER:$CURRENT_USER var/cache/ var/logs/
+        # Under Symfony 3, the permissions are fixed
+        # sudo chown -R $CURRENT_USER:$CURRENT_USER var/cache/ var/logs/
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
