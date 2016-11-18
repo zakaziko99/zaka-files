@@ -30,15 +30,28 @@ sfcn () {
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
 }
+sfgco () {
+    if [ -n $1 ]; then
+        gco "$1/cache/.gitkeep" NULL
+        gco "$1/logs/.gitkeep" NULL
+    fi
+}
 sfcc () {
+    local SF_VAR_DIR=''
     if [ -e app/console ]; then
         sudo rm -rf app/cache/* && sudo chmod -R 777 app/cache/ app/logs/
+        SF_VAR_DIR='app'
     elif [ -e bin/console ]; then
         sfcn cache:clear --env=dev
         # Under Symfony 3, the permissions are fixed
         # sudo rm -rf var/cache/* && sudo chmod -R 777 var/cache/ var/logs/
+        SF_VAR_DIR='var'
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
+    fi
+
+    if [[ "$SF_VAR_DIR" != "" ]]; then
+        sfgco $SF_VAR_DIR
     fi
 }
 sffix () {
@@ -51,7 +64,9 @@ sffix () {
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
 }
+
 alias sfclear='sfcc'
+
 sfccfix () {
     local SF_VAR_DIR=''
     if [ -e app/console ]; then
@@ -64,14 +79,10 @@ sfccfix () {
 
     if [[ "$SF_VAR_DIR" != "" ]]; then
         sfcc && sffix
-        if [ -f "$SF_VAR_DIR/cache/.gitkeep" ]; then
-            gco "$SF_VAR_DIR/cache/.gitkeep"
-        fi
-        if [ -f "$SF_VAR_DIR/logs/.gitkeep" ]; then
-            gco "$SF_VAR_DIR/logs/.gitkeep"
-        fi
+        sfgco $SF_VAR_DIR
     fi
 }
+
 alias sfproject='composer create-project symfony/framework-standard-edition' #Ex: sfproject my-project "2.7.*"
 alias sfbundle='sfcn generate:bundle' #Ex: sfbundle --namespace=Acme/TestBundle
 alias sfserver='sfcn server:run'
