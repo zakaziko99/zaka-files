@@ -87,6 +87,8 @@ alias sfproject='composer create-project symfony/framework-standard-edition' #Ex
 alias sfbundle='sfcn generate:bundle' #Ex: sfbundle --namespace=Acme/TestBundle
 alias sfserver='sfcn server:run'
 alias sfsecurity='sfcn security:check'
+alias sfassets='sfcn assets:install'
+alias sfassetwatch='sfcn assetic:watch'
 
 sfcreate () {
     local PROCEED_INSTALL=0
