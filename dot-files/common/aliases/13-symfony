@@ -21,15 +21,26 @@ alias sf1_create_log='mkdir log && chmod -R 777 log'
 
 
 # Symfony2 or Symfony3 commands
-sfcn () {
+sfcn_which () {
+    local WHICH_PHP_TO_USE='php'
+
+    if [ "$1" == "xampp" ]; then
+        WHICH_PHP_TO_USE='xampp_php'
+    fi
+
     if [ -e app/console ]; then
-        php app/console $@
+        $WHICH_PHP_TO_USE app/console $@
     elif [ -e bin/console ]; then
-        php bin/console $@
+        $WHICH_PHP_TO_USE bin/console $@
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
 }
+alias sfcn='sfcn_which'
+sfcn_xampp () {
+    sfcn_which xampp $@
+}
+
 sfgco () {
     if [ -n $1 ]; then
         gco "$1/cache/.gitkeep" NULL
