@@ -9,6 +9,7 @@ alias composer_update='composer self-update'
 # composer commands via xampp
 xampp_php -v NULL
 if [ $? -eq 0 ]; then
+    alias get_xcomposer='curl -sS https://getcomposer.org/installer | xampp_php'
     alias xcomposer='xampp_php composer.phar'
     alias xcomposer_momory='xampp_php --dmemory=2G composer.phar'
     alias xcomposer_update='xcomposer self-update'

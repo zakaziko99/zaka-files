@@ -128,18 +128,30 @@ alias sfassetwatch='sfcn assetic:watch'
 alias sfassetwatch_xampp='sfcn_xampp assetic:watch'
 
 sfcreate () {
+    local VERSION_TO_CHECK=''
+    local TARGET_TO_CHECK=''
     local PROCEED_INSTALL=0
     local VERSION_INSTALL=''
     local TARGET_DIRECTORY='project-symfony'
+    local XAMPP_INSTALL=0
 
-    if [[ -n $2 ]]; then
+    if [[ "$1" == "xampp" ]]; then
+        VERSION_TO_CHECK=$2
+        TARGET_TO_CHECK=$3
+        XAMPP_INSTALL=1
+    else
+        VERSION_TO_CHECK=$1
+        TARGET_TO_CHECK=$2
+    fi
+
+    if [[ "$TARGET_TO_CHECK" != "" ]]; then
         TARGET_DIRECTORY=$2
     fi
 
-    if [[ "$1" == 'v2' ]]; then
+    if [[ "$VERSION_TO_CHECK" == 'v2' ]]; then
         PROCEED_INSTALL=1
         VERSION_INSTALL="2.8.*"
-    elif [[ "$1" == 'v3' ]]; then
+    elif [[ "$VERSION_TO_CHECK" == 'v3' ]]; then
         PROCEED_INSTALL=1
     else
         echo "The first parameter must be the version of Symfony project to create. Ex: v2 or v3"
@@ -147,9 +159,15 @@ sfcreate () {
     fi
 
     if [[ $PROCEED_INSTALL -eq 1 ]]; then
-        get_composer
-        sfproject $TARGET_DIRECTORY $VERSION_INSTALL
+        if [[ $XAMPP_INSTALL -eq 1 ]]; then
+            get_xcomposer
+            sfproject_xampp $TARGET_DIRECTORY $VERSION_INSTALL
+        else
+            get_composer
+            sfproject $TARGET_DIRECTORY $VERSION_INSTALL
+        fi
         mv composer.phar $TARGET_DIRECTORY
         cd $TARGET_DIRECTORY
     fi
 }
+alias sfcreate_xampp='sfcreate xampp'
