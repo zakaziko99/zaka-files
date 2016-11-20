@@ -25,7 +25,7 @@ sfcnwch () {
     local WHICH_PHP_TO_USE='php'
     local INDEX_PARSE_ARGS=1
 
-    if [ "$1" == "xampp" ]; then
+    if [[ "$1" == "xampp" ]]; then
         WHICH_PHP_TO_USE='xampp_php'
         INDEX_PARSE_ARGS=2
     fi
@@ -57,7 +57,11 @@ sfcc () {
         sudo rm -rf app/cache/* && sudo chmod -R 777 app/cache/ app/logs/
         SF_VAR_DIR='app'
     elif [ -e bin/console ]; then
-        sfcn cache:clear --env=dev
+        if [[ "$1" == "xampp" ]]; then
+            sfcn_xampp cache:clear --env=dev
+        else
+            sfcn cache:clear --env=dev
+        fi
         # Under Symfony 3, the permissions are fixed
         # sudo rm -rf var/cache/* && sudo chmod -R 777 var/cache/ var/logs/
         SF_VAR_DIR='var'
@@ -69,6 +73,7 @@ sfcc () {
         sfgco $SF_VAR_DIR
     fi
 }
+alias sfcc_xampp='sfcc xampp'
 sffix () {
     if [ -e app/console ]; then
         sudo chown -R $CURRENT_USER:$CURRENT_USER app/cache/ app/logs/
