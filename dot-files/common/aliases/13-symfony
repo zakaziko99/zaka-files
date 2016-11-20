@@ -21,61 +21,137 @@ alias sf1_create_log='mkdir log && chmod -R 777 log'
 
 
 # Symfony2 or Symfony3 commands
-sfcn () {
+sfcnwch () {
+    local WHICH_PHP_TO_USE='php'
+    local INDEX_PARSE_ARGS=1
+
+    if [[ "$1" == "xampp" ]]; then
+        WHICH_PHP_TO_USE='xampp_php'
+        INDEX_PARSE_ARGS=2
+    fi
+
+
     if [ -e app/console ]; then
-        php app/console $@
+        $WHICH_PHP_TO_USE app/console ${@:$INDEX_PARSE_ARGS}
     elif [ -e bin/console ]; then
-        php bin/console $@
+        $WHICH_PHP_TO_USE bin/console ${@:$INDEX_PARSE_ARGS}
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
+    fi
+}
+alias sfcn='sfcnwch'
+sfcn_xampp () {
+    local XAMPP_ARGS=( $@ )
+    sfcnwch xampp $XAMPP_ARGS
+}
+
+sfgco () {
+    if [ -n $1 ]; then
+        gco "$1/cache/.gitkeep" NULL
+        gco "$1/logs/.gitkeep" NULL
     fi
 }
 sfcc () {
+    local SF_VAR_DIR=''
     if [ -e app/console ]; then
         sudo rm -rf app/cache/* && sudo chmod -R 777 app/cache/ app/logs/
+        SF_VAR_DIR='app'
     elif [ -e bin/console ]; then
-        sudo rm -rf var/cache/* && sudo chmod -R 777 var/cache/ var/logs/
+        if [[ "$1" == "xampp" ]]; then
+            sfcn_xampp cache:clear --env=dev
+        else
+            sfcn cache:clear --env=dev
+        fi
+        # Under Symfony 3, the permissions are fixed
+        # sudo rm -rf var/cache/* && sudo chmod -R 777 var/cache/ var/logs/
+        SF_VAR_DIR='var'
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
+
+    if [[ "$SF_VAR_DIR" != "" ]]; then
+        sfgco $SF_VAR_DIR
+    fi
 }
+alias sfcc_xampp='sfcc xampp'
 sffix () {
     if [ -e app/console ]; then
         sudo chown -R $CURRENT_USER:$CURRENT_USER app/cache/ app/logs/
     elif [ -e bin/console ]; then
-        sudo chown -R $CURRENT_USER:$CURRENT_USER var/cache/ var/logs/
+        # Under Symfony 3, the permissions are fixed
+        # sudo chown -R $CURRENT_USER:$CURRENT_USER var/cache/ var/logs/
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
 }
+
 alias sfclear='sfcc'
+alias sfclear_xampp='sfcc xampp'
+
 sfccfix () {
+    local SF_VAR_DIR=''
     if [ -e app/console ]; then
-        sfcc && sffix && gco app/cache/.gitkeep app/logs/.gitkeep
+        SF_VAR_DIR='app'
     elif [ -e bin/console ]; then
-        sfcc && sffix && gco var/cache/.gitkeep var/logs/.gitkeep
+        SF_VAR_DIR='var'
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
+
+    if [[ "$SF_VAR_DIR" != "" ]]; then
+        if [[ "$1" == "xampp" ]]; then
+            sfcc_xampp && sffix
+        else
+            sfcc && sffix
+        fi
+        sfgco $SF_VAR_DIR
+    fi
 }
+alias sfccfix_xampp='sfccfix xampp'
+
 alias sfproject='composer create-project symfony/framework-standard-edition' #Ex: sfproject my-project "2.7.*"
+alias sfproject_xampp='xcomposer create-project symfony/framework-standard-edition' #Ex: sfproject_xampp my-project "2.7.*"
+
 alias sfbundle='sfcn generate:bundle' #Ex: sfbundle --namespace=Acme/TestBundle
+alias sfbundle_xampp='sfcn_xampp generate:bundle' #Ex: sfbundle_xampp --namespace=Acme/TestBundle
+
 alias sfserver='sfcn server:run'
+alias sfserver_xampp='sfcn_xampp server:run'
+
 alias sfsecurity='sfcn security:check'
+alias sfsecurity_xampp='sfcn_xampp security:check'
+
+alias sfassets='sfcn assets:install'
+alias sfassets_xampp='sfcn_xampp assets:install'
+
+alias sfassetwatch='sfcn assetic:watch'
+alias sfassetwatch_xampp='sfcn_xampp assetic:watch'
 
 sfcreate () {
+    local VERSION_TO_CHECK=''
+    local TARGET_TO_CHECK=''
     local PROCEED_INSTALL=0
     local VERSION_INSTALL=''
     local TARGET_DIRECTORY='project-symfony'
+    local XAMPP_INSTALL=0
 
-    if [[ -n $2 ]]; then
+    if [[ "$1" == "xampp" ]]; then
+        VERSION_TO_CHECK=$2
+        TARGET_TO_CHECK=$3
+        XAMPP_INSTALL=1
+    else
+        VERSION_TO_CHECK=$1
+        TARGET_TO_CHECK=$2
+    fi
+
+    if [[ "$TARGET_TO_CHECK" != "" ]]; then
         TARGET_DIRECTORY=$2
     fi
 
-    if [[ "$1" == 'v2' ]]; then
+    if [[ "$VERSION_TO_CHECK" == 'v2' ]]; then
         PROCEED_INSTALL=1
         VERSION_INSTALL="2.8.*"
-    elif [[ "$1" == 'v3' ]]; then
+    elif [[ "$VERSION_TO_CHECK" == 'v3' ]]; then
         PROCEED_INSTALL=1
     else
         echo "The first parameter must be the version of Symfony project to create. Ex: v2 or v3"
@@ -83,9 +159,15 @@ sfcreate () {
     fi
 
     if [[ $PROCEED_INSTALL -eq 1 ]]; then
-        get_composer
-        sfproject $TARGET_DIRECTORY $VERSION_INSTALL
+        if [[ $XAMPP_INSTALL -eq 1 ]]; then
+            get_xcomposer
+            sfproject_xampp $TARGET_DIRECTORY $VERSION_INSTALL
+        else
+            get_composer
+            sfproject $TARGET_DIRECTORY $VERSION_INSTALL
+        fi
         mv composer.phar $TARGET_DIRECTORY
         cd $TARGET_DIRECTORY
     fi
 }
+alias sfcreate_xampp='sfcreate xampp'

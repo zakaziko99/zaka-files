@@ -15,6 +15,8 @@ alias process='top'
 alias top_process="ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 alias destroy='kill -9'
 
+alias qq='exit'
+
 unamestr=$(uname)
 if [[ "$unamestr" == 'Linux' ]]; then
    alias ls='ls -F --color=always'
