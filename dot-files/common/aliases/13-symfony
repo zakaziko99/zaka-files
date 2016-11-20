@@ -86,6 +86,7 @@ sffix () {
 }
 
 alias sfclear='sfcc'
+alias sfclear_xampp='sfcc xampp'
 
 sfccfix () {
     local SF_VAR_DIR=''
