@@ -110,11 +110,22 @@ sfccfix () {
 alias sfccfix_xampp='sfccfix xampp'
 
 alias sfproject='composer create-project symfony/framework-standard-edition' #Ex: sfproject my-project "2.7.*"
+alias sfproject_xampp='xcomposer create-project symfony/framework-standard-edition' #Ex: sfproject_xampp my-project "2.7.*"
+
 alias sfbundle='sfcn generate:bundle' #Ex: sfbundle --namespace=Acme/TestBundle
+alias sfbundle_xampp='sfcn_xampp generate:bundle' #Ex: sfbundle_xampp --namespace=Acme/TestBundle
+
 alias sfserver='sfcn server:run'
+alias sfserver_xampp='sfcn_xampp server:run'
+
 alias sfsecurity='sfcn security:check'
+alias sfsecurity_xampp='sfcn_xampp security:check'
+
 alias sfassets='sfcn assets:install'
+alias sfassets_xampp='sfcn_xampp assets:install'
+
 alias sfassetwatch='sfcn assetic:watch'
+alias sfassetwatch_xampp='sfcn_xampp assetic:watch'
 
 sfcreate () {
     local PROCEED_INSTALL=0
