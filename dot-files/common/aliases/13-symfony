@@ -21,24 +21,28 @@ alias sf1_create_log='mkdir log && chmod -R 777 log'
 
 
 # Symfony2 or Symfony3 commands
-sfcn_which () {
+sfcnwch () {
     local WHICH_PHP_TO_USE='php'
+    local INDEX_PARSE_ARGS=1
 
     if [ "$1" == "xampp" ]; then
         WHICH_PHP_TO_USE='xampp_php'
+        INDEX_PARSE_ARGS=2
     fi
 
+
     if [ -e app/console ]; then
-        $WHICH_PHP_TO_USE app/console $@
+        $WHICH_PHP_TO_USE app/console ${@:$INDEX_PARSE_ARGS}
     elif [ -e bin/console ]; then
-        $WHICH_PHP_TO_USE bin/console $@
+        $WHICH_PHP_TO_USE bin/console ${@:$INDEX_PARSE_ARGS}
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
 }
-alias sfcn='sfcn_which'
+alias sfcn='sfcnwch'
 sfcn_xampp () {
-    sfcn_which xampp $@
+    local XAMPP_ARGS=( $@ )
+    sfcnwch xampp $XAMPP_ARGS
 }
 
 sfgco () {
