@@ -99,10 +99,15 @@ sfccfix () {
     fi
 
     if [[ "$SF_VAR_DIR" != "" ]]; then
-        sfcc && sffix
+        if [[ "$1" == "xampp" ]]; then
+            sfcc_xampp && sffix
+        else
+            sfcc && sffix
+        fi
         sfgco $SF_VAR_DIR
     fi
 }
+alias sfccfix_xampp='sfccfix xampp'
 
 alias sfproject='composer create-project symfony/framework-standard-edition' #Ex: sfproject my-project "2.7.*"
 alias sfbundle='sfcn generate:bundle' #Ex: sfbundle --namespace=Acme/TestBundle
