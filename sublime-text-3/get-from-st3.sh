@@ -27,7 +27,7 @@ if [ -d $TARGET_ST3_SNIPPETS ]; then
                 fi
 
                 if [ -d "$TARGET_ST3_SNIPPETS/snippets-zakaria/$TEMP_FOLDER_PATH" ]; then
-                    echo "$BASEDIR/snippets-zakaria/$TEMP_FOLDER_PATH would be created"
+                    # echo "$BASEDIR/snippets-zakaria/$TEMP_FOLDER_PATH would be created"
                     if [[ $CREATE_FOLDER_STATE -eq 1 ]]; then
                         mkdir "$BASEDIR/snippets-zakaria/$TEMP_FOLDER_PATH"
                     elif [ ! -d "$BASEDIR/snippets-zakaria/$TEMP_FOLDER_PATH" ]; then
