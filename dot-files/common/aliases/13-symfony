@@ -57,7 +57,7 @@ sfgco () {
 sfcc () {
     local SF_VAR_DIR=''
     if [ -e app/console ]; then
-        sudo rm -rf app/cache/* && sudo chmod -R 777 app/cache/ app/logs/
+        sudo rm -rf app/cache/* NULL && sudo chmod -R 777 app/cache/ app/logs/
         SF_VAR_DIR='app'
     elif [ -e bin/console ]; then
         if [[ "$1" == "xampp" ]]; then
