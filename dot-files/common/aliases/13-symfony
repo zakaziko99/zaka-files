@@ -133,6 +133,12 @@ alias sfassets_xampp='sfcn_xampp assets:install'
 alias sfassetwatch='sfcn assetic:watch'
 alias sfassetwatch_xampp='sfcn_xampp assetic:watch'
 
+alias sfschcre='sfcn doctrine:schema:create'
+alias sfschcre_xampp='sfcn_xampp doctrine:schema:create'
+
+alias sfschupd='sfcn doctrine:schema:update'
+alias sfschupd_xampp='sfcn_xampp doctrine:schema:update'
+
 sfcreate () {
     local VERSION_TO_CHECK=''
     local TARGET_TO_CHECK=''
