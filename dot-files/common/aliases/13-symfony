@@ -139,6 +139,12 @@ alias sfschcre_xampp='sfcn_xampp doctrine:schema:create'
 alias sfschupd='sfcn doctrine:schema:update'
 alias sfschupd_xampp='sfcn_xampp doctrine:schema:update'
 
+alias sfdbcre='sfcn doctrine:database:create'
+alias sfdbcre_xampp='sfcn_xampp doctrine:database:create'
+
+alias sfdbdrp='sfcn doctrine:database:drop'
+alias sfdbdrp_xampp='sfcn_xampp doctrine:database:drop'
+
 sfcreate () {
     local VERSION_TO_CHECK=''
     local TARGET_TO_CHECK=''
