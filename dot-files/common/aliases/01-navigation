@@ -22,3 +22,19 @@ take () {
         echo 'You must provide a name for the new directory'
     fi
 }
+
+p () {
+    if [[ -z $MY_PROJECTS_FOLDER ]]; then
+        if [[ -d $MY_PROJECTS_FOLDER ]]; then
+            if [[ -n $1 ]]; then
+                # To complete the search of project
+            else
+                cd $MY_PROJECTS_FOLDER
+            fi
+        else
+            echo "The path defined on the variable 'MY_PROJECTS_FOLDER' does not exist"
+        fi
+    else
+        echo "You must define the variable 'MY_PROJECTS_FOLDER' in your private aliases file"
+    fi
+}

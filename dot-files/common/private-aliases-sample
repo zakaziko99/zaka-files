@@ -1,10 +1,10 @@
 MY_EDITOR='nano'
 
 #PHP_INI_PATH='/etc/php/7.0/cli/php.ini'
+#MY_PROJECTS_FOLDER='~/projects'
 
 ## Navigation shortcuts suggestions
 
 #alias h='cd ~'
 #alias dl='cd ~/Downloads'
-#alias p='cd ~/projects'
 #alias s='cd ~/sites'
