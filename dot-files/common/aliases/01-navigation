@@ -24,12 +24,31 @@ take () {
 }
 
 p () {
-    if [[ -z $MY_PROJECTS_FOLDER ]]; then
+    if [[ -n $MY_PROJECTS_FOLDER ]]; then
         if [[ -d $MY_PROJECTS_FOLDER ]]; then
+            cd $MY_PROJECTS_FOLDER
             if [[ -n $1 ]]; then
-                # To complete the search of project
-            else
-                cd $MY_PROJECTS_FOLDER
+                # The flag 'f' to disable colors
+                # The flag 'd' to show only directories on 'MY_PROJECTS_FOLDER'
+                local SEARCH_PROJECT=$(ls -fd * | grep $1)
+                local NB_SEARCH_PROJECT=$(wc -l <<< "${SEARCH_PROJECT}")
+                local TMP_SEARCH_PROJECT=''
+
+                if [[ $NB_SEARCH_PROJECT -gt 1 ]]; then
+                    echo "The keyword '$1' is not too specific, please be more specific with another keyword"
+                    for fIndex in 0 .. $((NB_SEARCH_PROJECT - 1)); do
+                        TMP_SEARCH_PROJECT=${SEARCH_PROJECT[$fIndex]}
+                        #echo "**$fIndex**"
+                        echo ${TMP_SEARCH_PROJECT:2}
+                    done
+                else
+                    TMP_SEARCH_PROJECT=${SEARCH_PROJECT[0]}
+                    if [[ -z $TMP_SEARCH_PROJECT ]]; then
+                        echo "There is no project with the keyword '$1', please retry with another keyword"
+                    else
+                        cd ${TMP_SEARCH_PROJECT:2}
+                    fi
+                fi
             fi
         else
             echo "The path defined on the variable 'MY_PROJECTS_FOLDER' does not exist"
