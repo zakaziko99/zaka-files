@@ -32,21 +32,21 @@ p () {
                 # The flag 'd' to show only directories on 'MY_PROJECTS_FOLDER'
                 local SEARCH_PROJECT=$(ls -fd * | grep $1)
                 local NB_SEARCH_PROJECT=$(wc -l <<< "${SEARCH_PROJECT}")
-                local TMP_SEARCH_PROJECT=''
+                local SEARCH_NOT_EMPTY=0
 
                 if [[ $NB_SEARCH_PROJECT -gt 1 ]]; then
-                    echo "The keyword '$1' is not too specific, please be more specific with another keyword"
-                    for fIndex in 0 .. $((NB_SEARCH_PROJECT - 1)); do
-                        TMP_SEARCH_PROJECT=${SEARCH_PROJECT[$fIndex]}
-                        #echo "**$fIndex**"
-                        echo ${TMP_SEARCH_PROJECT:2}
+                    echo "Please be more specific with another keyword than '$1'"
+                    for rFolder in $(tr '\n' ' ' <<< "$SEARCH_PROJECT"); do
+                        echo ${rFolder:2}
                     done
                 else
-                    TMP_SEARCH_PROJECT=${SEARCH_PROJECT[0]}
-                    if [[ -z $TMP_SEARCH_PROJECT ]]; then
+                    for cLetter in $SEARCH_PROJECT; do
+                        SEARCH_NOT_EMPTY=1
+                    done
+                    if [[ $SEARCH_NOT_EMPTY -eq 0 ]]; then
                         echo "There is no project with the keyword '$1', please retry with another keyword"
                     else
-                        cd ${TMP_SEARCH_PROJECT:2}
+                        cd ${SEARCH_PROJECT:2}
                     fi
                 fi
             fi
