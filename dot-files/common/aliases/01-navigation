@@ -22,3 +22,38 @@ take () {
         echo 'You must provide a name for the new directory'
     fi
 }
+
+p () {
+    if [[ -n $MY_PROJECTS_FOLDER ]]; then
+        if [[ -d $MY_PROJECTS_FOLDER ]]; then
+            cd $MY_PROJECTS_FOLDER
+            if [[ -n $1 ]]; then
+                # The flag 'f' to disable colors
+                # The flag 'd' to show only directories on 'MY_PROJECTS_FOLDER'
+                local SEARCH_PROJECT=$(ls -fd * | grep $1)
+                local NB_SEARCH_PROJECT=$(wc -l <<< "${SEARCH_PROJECT}")
+                local SEARCH_NOT_EMPTY=0
+
+                if [[ $NB_SEARCH_PROJECT -gt 1 ]]; then
+                    echo "Please be more specific with another keyword than '$1'"
+                    for rFolder in $(tr '\n' ' ' <<< "$SEARCH_PROJECT"); do
+                        echo ${rFolder:2}
+                    done
+                else
+                    for cLetter in $SEARCH_PROJECT; do
+                        SEARCH_NOT_EMPTY=1
+                    done
+                    if [[ $SEARCH_NOT_EMPTY -eq 0 ]]; then
+                        echo "There is no project with the keyword '$1', please retry with another keyword"
+                    else
+                        cd ${SEARCH_PROJECT:2}
+                    fi
+                fi
+            fi
+        else
+            echo "The path defined on the variable 'MY_PROJECTS_FOLDER' does not exist"
+        fi
+    else
+        echo "You must define the variable 'MY_PROJECTS_FOLDER' in your private aliases file"
+    fi
+}

@@ -2,7 +2,9 @@
 # ================
 
 alias agi="apt-get install"
-alias agua="apt-get update"
+alias agiy="apt-get install -y"
+alias agu="apt-get update"
+alias aguy="apt-get update -y"
 alias agup="apt-get upgrade"
 alias aguap="apt-get update && apt-get upgrade"
 alias adel=" apt-get remove"

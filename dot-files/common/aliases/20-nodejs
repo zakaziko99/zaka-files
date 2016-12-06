@@ -7,3 +7,14 @@ alias get_latest_npm='sudo npm cache clean -f && sudo npm install -g n && sudo n
 # Usefull fixes
 alias grunt_watch_fix='echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p'
 #This is to fix grunt watch task with the warning watch ENOSPC
+
+# NPM commands
+alias npmi='npm install'
+alias npmd='npm install --save-dev'
+alias npmdev='npm install --save-dev'
+alias npmg='npm install -g'
+alias npmglob='npm install -g'
+alias npmst='npm run start'
+alias npmstart='npm run start'
+alias npmts='npm run test'
+alias npmtest='npm run test'

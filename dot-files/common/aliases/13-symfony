@@ -1,5 +1,8 @@
 # SYMFONY ALIASES
 # ===============
+alias -g EDEV="--env=dev" # cab be useful fon symfony tasks
+alias -g EPREX="--env=prex" # cab be useful fon symfony tasks
+alias -g EPROD="--env=prod" # cab be useful fon symfony tasks
 
 CURRENT_USER=$(whoami)
 NOT_SYMFONY_DIRECTORY_TEXT="This directory is not a root Symfony2 or higher project"
@@ -22,19 +25,22 @@ alias sf1_create_log='mkdir log && chmod -R 777 log'
 
 # Symfony2 or Symfony3 commands
 sfcnwch () {
-    local WHICH_PHP_TO_USE='php'
     local INDEX_PARSE_ARGS=1
-
-    if [[ "$1" == "xampp" ]]; then
-        WHICH_PHP_TO_USE='xampp_php'
-        INDEX_PARSE_ARGS=2
-    fi
-
+    local TARGET_CONSOLE=''
 
     if [ -e app/console ]; then
-        $WHICH_PHP_TO_USE app/console ${@:$INDEX_PARSE_ARGS}
+        TARGET_CONSOLE='app/console'
     elif [ -e bin/console ]; then
-        $WHICH_PHP_TO_USE bin/console ${@:$INDEX_PARSE_ARGS}
+        TARGET_CONSOLE='bin/console'
+    fi
+
+    if [[ $TARGET_CONSOLE != '' ]]; then
+        if [[ "$1" == "xampp" ]]; then
+            INDEX_PARSE_ARGS=2
+            xampp_php $TARGET_CONSOLE ${@:$INDEX_PARSE_ARGS}
+        else
+            php $TARGET_CONSOLE ${@:$INDEX_PARSE_ARGS}
+        fi
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
@@ -54,13 +60,13 @@ sfgco () {
 sfcc () {
     local SF_VAR_DIR=''
     if [ -e app/console ]; then
-        sudo rm -rf app/cache/* && sudo chmod -R 777 app/cache/ app/logs/
+        sudo rm -rf app/cache/* NULL && sudo chmod -R 777 app/cache/ app/logs/
         SF_VAR_DIR='app'
     elif [ -e bin/console ]; then
         if [[ "$1" == "xampp" ]]; then
-            sfcn_xampp cache:clear --env=dev
+            sfcn_xampp cache:clear EDEV
         else
-            sfcn cache:clear --env=dev
+            sfcn cache:clear EDEV
         fi
         # Under Symfony 3, the permissions are fixed
         # sudo rm -rf var/cache/* && sudo chmod -R 777 var/cache/ var/logs/
@@ -126,6 +132,18 @@ alias sfassets_xampp='sfcn_xampp assets:install'
 
 alias sfassetwatch='sfcn assetic:watch'
 alias sfassetwatch_xampp='sfcn_xampp assetic:watch'
+
+alias sfschcre='sfcn doctrine:schema:create'
+alias sfschcre_xampp='sfcn_xampp doctrine:schema:create'
+
+alias sfschupd='sfcn doctrine:schema:update'
+alias sfschupd_xampp='sfcn_xampp doctrine:schema:update'
+
+alias sfdbcre='sfcn doctrine:database:create'
+alias sfdbcre_xampp='sfcn_xampp doctrine:database:create'
+
+alias sfdbdrp='sfcn doctrine:database:drop'
+alias sfdbdrp_xampp='sfcn_xampp doctrine:database:drop'
 
 sfcreate () {
     local VERSION_TO_CHECK=''

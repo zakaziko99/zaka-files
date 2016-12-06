@@ -6,6 +6,7 @@ if [ $? -eq 0 ]; then
     alias xampp_logg='tail -f /opt/lampp/logs/error_log'
     alias xampp_vhosts="sudo $MY_EDITOR /opt/lampp/etc/extra/httpd-vhosts.conf"
     alias xampp_php="/opt/lampp/bin/php"
+    alias xampp_modules="xampp_php -m"
     alias xampp_phpini="sudo $MY_EDITOR /opt/lampp/etc/php.ini"
 else
     alias xampp='service apache2'
