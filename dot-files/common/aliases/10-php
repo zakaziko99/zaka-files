@@ -12,4 +12,6 @@ alias hosts="sudo $MY_EDITOR /etc/hosts"
 # PHP
 alias phpini_cli="sudo $MY_EDITOR $PHP_INI_PATH"
 alias php_version='php -v'
+alias phpv='php -v'
 alias php_modules='php -m'
+alias phpm='php -m'
