@@ -10,7 +10,11 @@ alias grunt_watch_fix='echo fs.inotify.max_user_watches=524288 | sudo tee -a /et
 
 # NPM commands
 alias npmi='npm install'
+alias npmd='npm install --save-dev'
 alias npmdev='npm install --save-dev'
+alias npmg='npm install -g'
 alias npmglob='npm install -g'
+alias npmst='npm run start'
 alias npmstart='npm run start'
+alias npmts='npm run test'
 alias npmtest='npm run test'
