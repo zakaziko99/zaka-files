@@ -43,6 +43,7 @@ sfcnwch () {
         fi
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
+        return 1
     fi
 }
 alias sfcn='sfcnwch'
@@ -73,6 +74,7 @@ sfcc () {
         SF_VAR_DIR='var'
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
+        return 1
     fi
 
     if [[ "$SF_VAR_DIR" != "" ]]; then
@@ -102,6 +104,7 @@ sfccfix () {
         SF_VAR_DIR='var'
     else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
+        return 1
     fi
 
     if [[ "$SF_VAR_DIR" != "" ]]; then
@@ -174,6 +177,7 @@ sfcreate () {
     else
         echo "The first parameter must be the version of Symfony project to create. Ex: v2 or v3"
         echo "The second parameter is the name of the project. It is optional!"
+        return 1
     fi
 
     if [[ $PROCEED_INSTALL -eq 1 ]]; then

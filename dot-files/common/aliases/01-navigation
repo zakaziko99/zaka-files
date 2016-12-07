@@ -20,6 +20,7 @@ take () {
         cd $1
     else
         echo 'You must provide a name for the new directory'
+        return 1
     fi
 }
 
@@ -52,8 +53,10 @@ p () {
             fi
         else
             echo "The path defined on the variable 'MY_PROJECTS_FOLDER' does not exist"
+            return 2
         fi
     else
         echo "You must define the variable 'MY_PROJECTS_FOLDER' in your private aliases file"
+        return 1
     fi
 }

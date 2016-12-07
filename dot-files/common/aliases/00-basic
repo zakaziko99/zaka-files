@@ -42,6 +42,7 @@ sdate () {
         sudo date -s "$1 $(date +%H:%M:%S)"
     else
         echo "You must provide a date to set according to this format YYYY-MM-DD"
+        return 1
     fi
 }
 
@@ -53,9 +54,9 @@ fi
 
 # Update Bash & Zsh rcs if they exists
 update_rcs() {
-    if [[ ! -z $BASH_VERSION ]]; then
+    if [[ -n $BASH_VERSION ]]; then
         source ~/.bashrc
-    elif [[ ! -z $ZSH_VERSION ]]; then
+    elif [[ -n $ZSH_VERSION ]]; then
         source ~/.zshrc
     fi
 }

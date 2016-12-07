@@ -16,6 +16,7 @@ gbdo () { # Delete branch from remote origin
         git push origin :$1
     else
         echo 'You must provide a branch name to delete from origin remote'
+        return 1
     fi
 }
 
@@ -28,9 +29,11 @@ gbdoo () { # Delete branch from remote origin & local repository
             gb -D $1
         else
             echo "Sorry, failed to switch to the Master branch"
+            return 2
         fi
     else
         echo 'You must provide a branch name to delete from origin remote & local repository'
+        return 1
     fi
 }
 
@@ -42,9 +45,11 @@ gcbo () { # Create new branch with tracking from origin
             git checkout -b $1 origin/$1
         else
             echo "Sorry, failed to switch to the Master branch"
+            return 2
         fi
     else
         echo 'You must provide a branch name to pull up from origin remote'
+        return 1
     fi
 }
 
@@ -57,9 +62,11 @@ gcobo () { # Create new branch and create push with remote tracking from origin
             gpu origin $1
         else
             echo "Sorry, failed to switch to the Master branch"
+            return 2
         fi
     else
         echo 'You must provide a branch name to create and push to origin remote'
+        return 1
     fi
 }
 
@@ -73,8 +80,10 @@ gbrn_hard () { # Rename a branch, delete remote branch & create brand new one fr
             gcobo $1
         else
             echo "Sorry, failed to switch to the Master branch"
+            return 2
         fi
     else
         echo 'You must provide a branch name to delete from origin remote'
+        return 1
     fi
 }
