@@ -38,7 +38,7 @@ p () {
                 if [[ $NB_SEARCH_PROJECT -gt 1 ]]; then
                     echo "Please be more specific with another keyword than '$1'"
                     for rFolder in $(tr '\n' ' ' <<< "$SEARCH_PROJECT"); do
-                        echo ${rFolder:2}
+                        echo $rFolder | sed -e 's/^[0-9]\{1,3\}://'
                     done
                 else
                     for cLetter in $SEARCH_PROJECT; do
@@ -47,7 +47,7 @@ p () {
                     if [[ $SEARCH_NOT_EMPTY -eq 0 ]]; then
                         echo "There is no project with the keyword '$1', please retry with another keyword"
                     else
-                        cd ${SEARCH_PROJECT:2}
+                        cd $(echo $SEARCH_PROJECT | sed -e 's/^[0-9]\{1,3\}://')
                     fi
                 fi
             fi
