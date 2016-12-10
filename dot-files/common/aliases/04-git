@@ -20,71 +20,78 @@ gbdo () { # Delete branch from remote origin
     fi
 }
 
-gbdoo () { # Delete branch from remote origin & local repository
-    if [[ -n $1 ]]; then
-        echo "Switch to the Master branch"
-        git checkout master NULL
-        if [ "$?" -eq "0" ]; then
-            git push origin :$1
-            git branch -D $1
+gmasterflow () { # skeleton for several git functions below
+    local MSG_ERROR_1=''
+    local PROCEED_COMMANDS=1
+    local MAIN_OPERATION=$1
+
+    case "$MAIN_OPERATION" in
+        "delete_branch_origin")
+            MSG_ERROR_1='You must provide a branch name to delete from origin remote & local repository'
+            ;;
+        "create_branch_from_origin")
+            MSG_ERROR_1='You must provide a branch name to pull up from origin remote'
+            ;;
+        "create_branch_to_origin")
+            ;;
+            MSG_ERROR_1='You must provide a branch name to create and push to origin remote'
+        "rename_branch_from_origin")
+            MSG_ERROR_1='You must provide a branch name to rename from origin remote'
+            ;;
+        *)
+            PROCEED_COMMANDS=0
+            ;;
+    esac
+
+    shift
+
+    if [[ $PROCEED_COMMANDS -eq 1 ]]; then
+        if [[ -n $1 ]]; then
+            echo "Switch to the Master branch"
+            git checkout master NULL
+            if [ "$?" -eq "0" ]; then
+                case "$MAIN_OPERATION" in
+                    "delete_branch_origin")
+                        git push origin :$1
+                        git branch -D $1
+                        ;;
+                    "create_branch_from_origin")
+                        git checkout -b $1 origin/$1
+                        ;;
+                    "create_branch_to_origin")
+                        git checkout -b $1
+                        git push -u origin $1
+                        ;;
+                    "rename_branch_from_origin")
+                        git push origin :$1
+                        git branch -D $1
+                        git checkout -b $1
+                        git push -u origin $1
+                        ;;
+                esac
+            else
+                echo "Sorry, failed to switch to the Master branch"
+                return 2
+            fi
         else
-            echo "Sorry, failed to switch to the Master branch"
-            return 2
+            echo $MSG_ERROR_1
+            return 1
         fi
-    else
-        echo 'You must provide a branch name to delete from origin remote & local repository'
-        return 1
     fi
+}
+
+gbdoo () { # Delete branch from remote origin & local repository
+    gmasterflow "delete_branch_origin" $1
 }
 
 gcbo () { # Create new branch with tracking from origin
-    if [[ -n $1 ]]; then
-        echo "Switch to the Master branch"
-        git checkout master NULL
-        if [ "$?" -eq "0" ]; then
-            git checkout -b $1 origin/$1
-        else
-            echo "Sorry, failed to switch to the Master branch"
-            return 2
-        fi
-    else
-        echo 'You must provide a branch name to pull up from origin remote'
-        return 1
-    fi
+    gmasterflow "create_branch_from_origin" $1
 }
 
 gcobo () { # Create new branch and create push with remote tracking from origin
-    if [[ -n $1 ]]; then
-        echo "Switch to the Master branch"
-        git checkout master NULL
-        if [ "$?" -eq "0" ]; then
-            git checkout -b $1
-            git push -u origin $1
-        else
-            echo "Sorry, failed to switch to the Master branch"
-            return 2
-        fi
-    else
-        echo 'You must provide a branch name to create and push to origin remote'
-        return 1
-    fi
+    gmasterflow "create_branch_to_origin" $1
 }
 
 gbrn_hard () { # Rename a branch, delete remote branch & create brand new one from remote origin
-    if [[ -n $1 ]]; then
-        echo "Switch to the Master branch"
-        git checkout master NULL
-        if [ "$?" -eq "0" ]; then
-            git push origin :$1
-            git branch -D $1
-            git checkout -b $1
-            git push -u origin $1
-        else
-            echo "Sorry, failed to switch to the Master branch"
-            return 2
-        fi
-    else
-        echo 'You must provide a branch name to delete from origin remote'
-        return 1
-    fi
+    gmasterflow "rename_branch_from_origin" $1
 }
