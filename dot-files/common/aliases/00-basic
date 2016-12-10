@@ -26,9 +26,9 @@ elif [[ "$unamestr" == 'FreeBSD' ]]; then
    alias dir='dir -FG'
 fi
 alias ll='ls -lh'
-alias lla='ll -a'
+alias lla='ls -lha'
 alias lr='ls -ltr'
-alias lra='lr -a'
+alias lra='ls -ltra'
 
 alias cp='cp -i'
 #alias rm='rm -i'
