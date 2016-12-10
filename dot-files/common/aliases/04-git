@@ -21,12 +21,12 @@ gbdo () { # Delete branch from remote origin
 }
 
 gbdoo () { # Delete branch from remote origin & local repository
-    echo "Switch to the Master branch"
-    gco master NULL
     if [[ -n $1 ]]; then
-        if [ $? -eq 0 ]; then
-            gbdo $1
-            gb -D $1
+        echo "Switch to the Master branch"
+        git checkout master NULL
+        if [ "$?" -eq "0" ]; then
+            git push origin :$1
+            git branch -D $1
         else
             echo "Sorry, failed to switch to the Master branch"
             return 2
@@ -38,10 +38,10 @@ gbdoo () { # Delete branch from remote origin & local repository
 }
 
 gcbo () { # Create new branch with tracking from origin
-    echo "Switch to the Master branch"
-    gco master NULL
     if [[ -n $1 ]]; then
-        if [ $? -eq 0 ]; then
+        echo "Switch to the Master branch"
+        git checkout master NULL
+        if [ "$?" -eq "0" ]; then
             git checkout -b $1 origin/$1
         else
             echo "Sorry, failed to switch to the Master branch"
@@ -54,12 +54,12 @@ gcbo () { # Create new branch with tracking from origin
 }
 
 gcobo () { # Create new branch and create push with remote tracking from origin
-    echo "Switch to the Master branch"
-    gco master NULL
     if [[ -n $1 ]]; then
-        if [ $? -eq 0 ]; then
-            gcob $1
-            gpu origin $1
+        echo "Switch to the Master branch"
+        git checkout master NULL
+        if [ "$?" -eq "0" ]; then
+            git checkout -b $1
+            git push -u origin $1
         else
             echo "Sorry, failed to switch to the Master branch"
             return 2
@@ -71,13 +71,14 @@ gcobo () { # Create new branch and create push with remote tracking from origin
 }
 
 gbrn_hard () { # Rename a branch, delete remote branch & create brand new one from remote origin
-    echo "Switch to the Master branch"
-    gco master NULL
     if [[ -n $1 ]]; then
-        if [ $? -eq 0 ]; then
-            gbdo $1
-            gb -D $1
-            gcobo $1
+        echo "Switch to the Master branch"
+        git checkout master NULL
+        if [ "$?" -eq "0" ]; then
+            git push origin :$1
+            git branch -D $1
+            git checkout -b $1
+            git push -u origin $1
         else
             echo "Sorry, failed to switch to the Master branch"
             return 2
