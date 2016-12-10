@@ -13,11 +13,17 @@ alias mkdir='mkdir -pv' # Useful when you run: mkdir dir1/dir2 knowing that the 
                         # does not exist, the command will create both directories
 
 take () {
+    local LAST_STATUS=0
     if [[ -n $1 ]]; then
         if [ ! -d $1 ]; then
             mkdir $1
+            LAST_STATUS=$?
         fi
-        cd $1
+        if [[ "$LAST_STATUS" == "0" ]]; then
+            cd $1
+        else
+            return 2
+        fi
     else
         echo 'You must provide a name for the new directory'
         return 1
