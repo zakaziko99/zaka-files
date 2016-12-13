@@ -33,8 +33,8 @@ gmasterflow () { # skeleton for several git functions below
             MSG_ERROR_1='You must provide a branch name to pull up from origin remote'
             ;;
         "create_branch_to_origin")
-            ;;
             MSG_ERROR_1='You must provide a branch name to create and push to origin remote'
+            ;;
         "rename_branch_from_origin")
             MSG_ERROR_1='You must provide a branch name to rename from origin remote'
             ;;

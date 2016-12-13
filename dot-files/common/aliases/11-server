@@ -9,14 +9,17 @@ if [ $? -eq 0 ]; then
     alias xampp_modules="xampp_php -m"
     alias xampp_version="xampp_php -v"
     alias xampp_phpini="sudo $MY_EDITOR /opt/lampp/etc/php.ini"
+    alias xampp_start='sudo xampp start'
+    alias xampp_stop='sudo xampp stop'
+    alias xampp_restart='sudo xampp restart'
 else
     alias xampp='service apache2'
     alias xampp_error_logg='tail -f /var/logs/apache2/error.log'
     alias xampp_access_logg='tail -f /var/logs/apache2/access.log'
+    alias xampp_start='sudo service apache2 start'
+    alias xampp_stop='sudo service apache2 stop'
+    alias xampp_restart='sudo service apache2 restart'
 fi
-alias xampp_start='sudo xampp start'
-alias xampp_stop='sudo xampp stop'
-alias xampp_restart='sudo xampp restart'
 
 # Serve commands
 alias ptserve='python -m SimpleHTTPServer'
