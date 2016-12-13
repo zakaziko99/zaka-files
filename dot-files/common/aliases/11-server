@@ -21,5 +21,9 @@ else
     alias xampp_restart='sudo service apache2 restart'
 fi
 
+alias srvst='service apache2 start'
+alias srvstp='service apache2 stop'
+alias srvsrl='service apache2 reload'
+
 # Serve commands
 alias ptserve='python -m SimpleHTTPServer'
