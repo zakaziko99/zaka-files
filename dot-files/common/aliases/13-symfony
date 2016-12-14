@@ -18,7 +18,7 @@ alias sf1_forms='symfony doctrine:build-forms'
 alias sf1_classes='symfony doctrine:build --all-classes'
 alias sf1_build_all='symfony doctrine:build --all --no-confirmation'
 alias sf1_cc='symfony cc'
-alias sf1_clear='sf1_cc'
+alias sf1_clear='symfony cc'
 alias sf1_create_cache='mkdir cache && chmod -R 777 cache'
 alias sf1_create_log='mkdir log && chmod -R 777 log'
 
