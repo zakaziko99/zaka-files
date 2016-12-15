@@ -111,7 +111,7 @@ sfccfix () {
         if [[ "$1" == "xampp" ]]; then
             sfcc_xampp && sffix
         else
-            sfcc && sffix
+            sfcc
         fi
         sfgco $SF_VAR_DIR
     fi
