@@ -3,7 +3,8 @@
 
 xampp version NULL
 if [ $? -eq 0 ]; then
-    alias xampp_logg='tail -f /opt/lampp/logs/error_log'
+    alias xampp_error_logg='tail -f /opt/lampp/log/error_log'
+    alias xampp_access_logg='tail -f /opt/lampp/log/error_log'
     alias xampp_vhosts="sudo $MY_EDITOR /opt/lampp/etc/extra/httpd-vhosts.conf"
     alias xampp_php="/opt/lampp/bin/php"
     alias xampp_modules="xampp_php -m"
