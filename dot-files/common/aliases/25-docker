@@ -2,3 +2,6 @@ alias dkrun='docker run'
 alias dkbuild='docker build -ti'
 alias dkhelp='docker --help'
 alias dkimg='docker images'
+alias dkrm='docker rm'
+alias dkrmi='docker rmi'
+
