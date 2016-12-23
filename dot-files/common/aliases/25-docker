@@ -4,4 +4,6 @@ alias dkhelp='docker --help'
 alias dkimg='docker images'
 alias dkrm='docker rm'
 alias dkrmi='docker rmi'
-
+alias dkcmt='docker commit'
+alias dktag='docker tag'
+alias dkpull='docker pull'
