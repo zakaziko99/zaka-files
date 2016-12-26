@@ -12,3 +12,8 @@ alias dkrun='docker run'
 alias dkstart='docker start'
 alias dkstop='docker stop'
 alias dktag='docker tag'
+
+dklstart () {
+    local LAST_ID_CONTAINER=$(docker ps -lq)
+    docker start $LAST_ID_CONTAINER
+}
