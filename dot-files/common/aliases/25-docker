@@ -22,3 +22,8 @@ dklstop () {
     local LAST_ID_CONTAINER=$(docker ps -lq)
     docker stop $LAST_ID_CONTAINER
 }
+
+dklkill () {
+    local LAST_ID_CONTAINER=$(docker ps -lq)
+    docker kill $LAST_ID_CONTAINER
+}
