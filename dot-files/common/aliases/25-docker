@@ -17,3 +17,8 @@ dklstart () {
     local LAST_ID_CONTAINER=$(docker ps -lq)
     docker start $LAST_ID_CONTAINER
 }
+
+dklstop () {
+    local LAST_ID_CONTAINER=$(docker ps -lq)
+    docker stop $LAST_ID_CONTAINER
+}
