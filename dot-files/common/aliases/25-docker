@@ -12,6 +12,7 @@ alias dkrun='docker run'
 alias dkstart='docker start'
 alias dkstop='docker stop'
 alias dktag='docker tag'
+alias dklog='docker logs'
 
 dklstart () {
     local LAST_ID_CONTAINER=$(docker ps -lq)
@@ -26,4 +27,9 @@ dklstop () {
 dklkill () {
     local LAST_ID_CONTAINER=$(docker ps -lq)
     docker kill $LAST_ID_CONTAINER
+}
+
+dkllog () {
+    local LAST_ID_CONTAINER=$(docker ps -lq)
+    docker logs $LAST_ID_CONTAINER
 }
