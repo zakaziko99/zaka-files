@@ -14,22 +14,46 @@ alias dkstop='docker stop'
 alias dktag='docker tag'
 alias dklog='docker logs'
 
-dklstart () {
+docker_last_operation () {
+    local OPERATION_CODE=$1
     local LAST_ID_CONTAINER=$(docker ps -lq)
-    docker start $LAST_ID_CONTAINER
+
+    if [[ "$LAST_ID_CONTAINER" == "" ]]; then
+        echo "The is no ID container to work with"
+        return 1
+    else
+        case "$OPERATION_CODE" in
+            "start")
+                docker start $LAST_ID_CONTAINER
+                ;;
+            "stop")
+                docker stop $LAST_ID_CONTAINER
+                ;;
+            "kill")
+                docker kill $LAST_ID_CONTAINER
+                ;;
+            "logs")
+                docker logs $LAST_ID_CONTAINER
+                ;;
+            *)
+                return 2
+                ;;
+        esac
+    fi
+}
+
+dklstart () {
+    docker_last_operation start
 }
 
 dklstop () {
-    local LAST_ID_CONTAINER=$(docker ps -lq)
-    docker stop $LAST_ID_CONTAINER
+    docker_last_operation stop
 }
 
 dklkill () {
-    local LAST_ID_CONTAINER=$(docker ps -lq)
-    docker kill $LAST_ID_CONTAINER
+    docker_last_operation kill
 }
 
 dkllog () {
-    local LAST_ID_CONTAINER=$(docker ps -lq)
-    docker logs $LAST_ID_CONTAINER
+    docker_last_operation logs
 }
