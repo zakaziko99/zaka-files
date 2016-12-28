@@ -1,0 +1,13 @@
+<snippet>
+    <content><![CDATA[
+${1:Alias /sf "/${2:var/www/symfony1/symfony}/data/web/sf"
+<Directory "/${2:var/www/symfony1/symfony}/data/web/sf">
+    Require all granted
+    AllowOverride All
+    Allow from All
+</Directory>}
+]]></content>
+    <tabTrigger>sf1alias</tabTrigger>
+    <description>Symfony1.4 Alias directory</description>
+    <scope>source.apacheconf</scope>
+</snippet>
