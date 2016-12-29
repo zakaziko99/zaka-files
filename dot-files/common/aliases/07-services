@@ -1,0 +1,2 @@
+alias msqstart='sudo service mysql start'
+alias msqstop='sudo service mysql stop'
