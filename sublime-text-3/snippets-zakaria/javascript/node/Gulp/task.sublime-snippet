@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+gulp.task('${1:myTask}'${3:, [${2}]}${5:, function() \{
+    ${4:// define my task}
+\}});
+]]></content>
+    <tabTrigger>task</tabTrigger>
+    <description>Gulp task</description>
+    <scope>source.js.gulpfile,storage.type.js</scope>
+</snippet>
