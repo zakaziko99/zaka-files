@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+var ${1:myPackage} = require('${2:package}');
+]]></content>
+    <tabTrigger>require</tabTrigger>
+    <description>Node require</description>
+    <scope>source.js.gulpfile,storage.type.js</scope>
+</snippet>
