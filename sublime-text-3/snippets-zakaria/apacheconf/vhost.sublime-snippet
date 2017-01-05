@@ -1,0 +1,18 @@
+<snippet>
+    <content><![CDATA[
+<VirtualHost ${1:urlhost.dev.local}:80>
+    ServerName ${1:urlhost.dev.local}
+    DocumentRoot "/${2:path/to/project}"
+    DirectoryIndex "${3:index.php}"
+
+    <Directory "/${2:path/to/project}">
+        Require all granted
+        AllowOverride All
+        Allow from All
+    </Directory>
+</VirtualHost>
+]]></content>
+    <tabTrigger>vhost</tabTrigger>
+    <description>Normal apacheconf</description>
+    <scope>source.apacheconf,punctuation.definition.tag.apacheconf</scope>
+</snippet>
