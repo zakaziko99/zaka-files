@@ -88,11 +88,11 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # include my personnal customisation aliases
-source ~/bin/dotfiles/common/env
-if [ -f ~/bin/dotfiles/common/private-aliases ]; then
-    source ~/bin/dotfiles/common/private-aliases
+source ~/bin/dotfiles/common/env.zdf
+if [ -f ~/bin/dotfiles/common/private-aliases.zdf ]; then
+    source ~/bin/dotfiles/common/private-aliases.zdf
 fi
-for file in ~/bin/dotfiles/common/aliases/*
+for file in ~/bin/dotfiles/common/aliases/*.zdf
 do
     source "${file}"
 done
