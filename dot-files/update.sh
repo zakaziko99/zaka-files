@@ -1,11 +1,13 @@
+#!/bin/bash
 
 BASEDIR=$(dirname $0)
+MSG_ENABLE_FIRST='You must run the enable commande first! For more information check the README file'
 
 # Check if the ~/bin/dotfiles directory exists
 if [ ! -d ~/bin ]; then
-    echo -n 'You must run the enable commande first! For more information check the README file'
+    echo -n $MSG_ENABLE_FIRST
 elif [ ! -d ~/bin/dotfiles ]; then
-    echo -n 'You must run the enable commande first! For more information check the README file'
+    echo -n $MSG_ENABLE_FIRST
 else
     rm -f ~/bin/dotfiles/bash/env
     rm -f ~/bin/dotfiles/bash/aliases-common
