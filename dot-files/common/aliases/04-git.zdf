@@ -57,6 +57,8 @@ gmasterflow () { # skeleton for several git functions below
                         ;;
                     "create_branch_from_origin")
                         git checkout -b $1 origin/$1
+                        # git checkout -b $1
+                        # git pull -u origin/$1
                         ;;
                     "create_branch_to_origin")
                         git checkout -b $1
