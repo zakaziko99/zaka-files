@@ -1,2 +1,4 @@
 alias smsqstart='sudo service mysql start'
 alias smsqstop='sudo service mysql stop'
+alias sapchstart='sudo service mysql start'
+alias sapchstop='sudo service mysql stop'
