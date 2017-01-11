@@ -52,6 +52,8 @@ if [[ -z $MY_EDITOR ]]; then
     MY_EDITOR='nano'
 fi
 
+alias hosts="sudo $MY_EDITOR /etc/hosts"
+
 # Update Bash & Zsh rcs if they exists
 update_rcs() {
     if [[ -n $BASH_VERSION ]]; then

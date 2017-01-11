@@ -7,8 +7,6 @@ if [[ -z $PHP_INI_PATH ]]; then
     PHP_INI_PATH='/etc/php5/cli/php.ini'
 fi
 
-alias hosts="sudo $MY_EDITOR /etc/hosts"
-
 # PHP
 alias phpini_cli="sudo $MY_EDITOR $PHP_INI_PATH"
 alias php_version='php -v'
