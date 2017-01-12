@@ -46,7 +46,7 @@ else
     cp -f ~/bin/dotfiles/zsh/myohmyzsh.zshrc ~
     mv ~/myohmyzsh.zshrc ~/.zshrc
     rm -f ~/.oh-my-zsh/themes/agnosterzak.zsh-theme
-    ln -s ~/bin/dotfiles/zsh/mytheme ~/.oh-my-zsh/themes/agnosterzak.zsh-theme
+    ln -s ~/bin/dotfiles/zsh/mytheme.zdf ~/.oh-my-zsh/themes/agnosterzak.zsh-theme
 
     # Apply the changes on the console
     echo 'use the command "update_rcs" to complete the update process'
