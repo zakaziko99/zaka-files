@@ -41,4 +41,4 @@ fi
 cp -f ~/bin/dotfiles/zsh/myohmyzsh.zshrc ~
 mv ~/myohmyzsh.zshrc ~/.zshrc
 rm -f ~/.oh-my-zsh/themes/agnosterzak.zsh-theme
-ln -s ~/bin/dotfiles/zsh/mytheme ~/.oh-my-zsh/themes/agnosterzak.zsh-theme
+ln -s ~/bin/dotfiles/zsh/mytheme.zdf ~/.oh-my-zsh/themes/agnosterzak.zsh-theme
