@@ -1,3 +1,5 @@
+#!/bin/bash
+
 BASEDIR=$(dirname $0)
 
 # Check if the ~/bin/dotfiles directory exists
