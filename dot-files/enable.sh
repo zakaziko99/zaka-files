@@ -38,6 +38,10 @@ cp ~/bin/dotfiles/git/.gitconfig ~
 if [ -f ~/.zshrc ]; then
     mv -f ~/.zshrc ~/.zshrc.bak
 fi
+if [ ! -f ~/.zshrc.path ]; then
+    cp -f ~/bin/dotfiles/zsh/path.zshrc ~
+    mv ~/path.zshrc ~/.zshrc.path
+fi
 cp -f ~/bin/dotfiles/zsh/myohmyzsh.zshrc ~
 mv ~/myohmyzsh.zshrc ~/.zshrc
 rm -f ~/.oh-my-zsh/themes/agnosterzak.zsh-theme
