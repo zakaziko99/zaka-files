@@ -1,50 +1,54 @@
 #!/bin/bash
 
 BASEDIR=$(dirname $0)
+CURRENT_PWD=$(pwd)
+cd ~
+HOME_PWD=$(pwd)
+cd $CURRENT_PWD
 
 # Check if the ~/bin/dotfiles directory exists
-if [ ! -d ~/bin ]; then
-    mkdir ~/bin
-    mkdir ~/bin/dotfiles
-elif [ ! -d ~/bin/dotfiles ]; then
-    mkdir ~/bin/dotfiles
+if [ ! -d $HOME_PWD/bin ]; then
+    mkdir $HOME_PWD/bin
+    mkdir $HOME_PWD/bin/dotfiles
+elif [ ! -d $HOME_PWD/bin/dotfiles ]; then
+    mkdir $HOME_PWD/bin/dotfiles
 fi
 
 # Copy the dot files to bin dotfiles directory
-cp -Rf $BASEDIR/* ~/bin/dotfiles/
-rm ~/bin/dotfiles/enable.sh
-rm ~/bin/dotfiles/update.sh
+cp -Rf $BASEDIR/* $HOME_PWD/bin/dotfiles/
+rm $HOME_PWD/bin/dotfiles/enable.sh
+rm $HOME_PWD/bin/dotfiles/update.sh
 
 # Link mybashit to the home bashrc
-if [ -f ~/.bashrc ]; then # file exists & not symlink
-    mv -f ~/.bashrc ~/.bashrc.bak
-elif [ -L ~/.bashrc ]; then #file exists & it is symlink
-    rm ~/.bashrc
+if [ -f $HOME_PWD/.bashrc ]; then # file exists & not symlink
+    mv -f $HOME_PWD/.bashrc "$HOME_PWD/$(date +%Y%m%d%H%M%S).bashrc.bak"
+elif [ -L $HOME_PWD/.bashrc ]; then #file exists & it is symlink
+    rm $HOME_PWD/.bashrc
 fi
-ln -s ~/bin/dotfiles/bash/mybashit.bashrc ~/.bashrc
+ln -s $HOME_PWD/bin/dotfiles/bash/mybashit.bashrc $HOME_PWD/.bashrc
 
 # Create private aliases file sample if there's no file ~/bin/dotfiles/common/private-aliases
-if [ -L ~/bin/dotfiles/bash/private-aliases.zdf ]; then #file exists
-    mv -f ~/bin/dotfiles/bash/private-aliases.zdf ~/bin/dotfiles/common/private-aliases.zdf
-elif [ ! -f ~/bin/dotfiles/common/private-aliases.zdf ]; then
-    mv ~/bin/dotfiles/common/private-aliases-sample.zdf ~/bin/dotfiles/common/private-aliases.zdf
+if [ -L $HOME_PWD/bin/dotfiles/bash/private-aliases.zdf ]; then #file exists
+    mv -f $HOME_PWD/bin/dotfiles/bash/private-aliases.zdf $HOME_PWD/bin/dotfiles/common/private-aliases.zdf
+elif [ ! -f $HOME_PWD/bin/dotfiles/common/private-aliases.zdf ]; then
+    mv $HOME_PWD/bin/dotfiles/common/private-aliases-sample.zdf $HOME_PWD/bin/dotfiles/common/private-aliases.zdf
 fi
 
 # Copy the gitconfig file to the home directory
-if [ -f ~/.gitconfig ]; then
-    mv -f ~/.gitconfig ~/.gitconfig.bak
+if [ -f $HOME_PWD/.gitconfig ]; then
+    mv -f $HOME_PWD/.gitconfig "$HOME_PWD/$(date +%Y%m%d%H%M%S).gitconfig.bak"
 fi
-cp ~/bin/dotfiles/git/.gitconfig ~
+cp $HOME_PWD/bin/dotfiles/git/.gitconfig $HOME_PWD
 
 # Copy the zshrc file to the home directory & link the theme
-if [ -f ~/.zshrc ]; then
-    mv -f ~/.zshrc ~/.zshrc.bak
+if [ -f $HOME_PWD/.zshrc ]; then
+    mv -f $HOME_PWD/.zshrc "$HOME_PWD/$(date +%Y%m%d%H%M%S).zshrc.bak"
 fi
-if [ ! -f ~/.zshrc.path ]; then
-    cp -f ~/bin/dotfiles/zsh/path.zshrc ~
-    mv ~/path.zshrc ~/.zshrc.path
+if [ ! -f $HOME_PWD/.zshrc.path ]; then
+    cp -f $HOME_PWD/bin/dotfiles/zsh/path.zshrc $HOME_PWD
+    mv $HOME_PWD/path.zshrc $HOME_PWD/.zshrc.path
 fi
-cp -f ~/bin/dotfiles/zsh/myohmyzsh.zshrc ~
-mv ~/myohmyzsh.zshrc ~/.zshrc
-rm -f ~/.oh-my-zsh/themes/agnosterzak.zsh-theme
-ln -s ~/bin/dotfiles/zsh/mytheme.zdf ~/.oh-my-zsh/themes/agnosterzak.zsh-theme
+cp -f $HOME_PWD/bin/dotfiles/zsh/myohmyzsh.zshrc $HOME_PWD
+mv $HOME_PWD/myohmyzsh.zshrc $HOME_PWD/.zshrc
+rm -f $HOME_PWD/.oh-my-zsh/themes/agnosterzak.zsh-theme
+ln -s $HOME_PWD/bin/dotfiles/zsh/mytheme.zdf $HOME_PWD/.oh-my-zsh/themes/agnosterzak.zsh-theme
