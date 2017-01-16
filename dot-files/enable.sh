@@ -34,11 +34,15 @@ elif [ ! -f $HOME_PWD/bin/dotfiles/common/private-aliases.zdf ]; then
     mv $HOME_PWD/bin/dotfiles/common/private-aliases-sample.zdf $HOME_PWD/bin/dotfiles/common/private-aliases.zdf
 fi
 
-# Copy the gitconfig file to the home directory
+# Copy the gitconfig file and its dependencies to the home directory
 if [ -f $HOME_PWD/.gitconfig ]; then
     mv -f $HOME_PWD/.gitconfig "$HOME_PWD/$(date +%Y%m%d%H%M%S).gitconfig.bak"
 fi
+if [ -f $HOME_PWD/.global_gitignore ]; then
+    mv -f $HOME_PWD/.global_gitignore "$HOME_PWD/$(date +%Y%m%d%H%M%S).global_gitignore.bak"
+fi
 cp $HOME_PWD/bin/dotfiles/git/.gitconfig $HOME_PWD
+cp $HOME_PWD/bin/dotfiles/git/.global_gitignore $HOME_PWD
 
 # Copy the zshrc file to the home directory & link the theme
 if [ -f $HOME_PWD/.zshrc ]; then
