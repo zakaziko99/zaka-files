@@ -13,6 +13,10 @@ if [ ! -d $HOME_PWD/bin ]; then
 elif [ ! -d $HOME_PWD/bin/dotfiles ]; then
     echo -n $MSG_ENABLE_FIRST
 else
+    if [ ! -d $HOME_PWD/bin/backups ]; then
+        mkdir $HOME_PWD/bin/backups
+    fi
+
     rm -f $HOME_PWD/bin/dotfiles/bash/env
     rm -f $HOME_PWD/bin/dotfiles/bash/aliases-common
 
@@ -30,22 +34,15 @@ else
 
     # Link mybashit to the home bashrc
     if [ -f $HOME_PWD/.bashrc ]; then # file exists & not symlink
-        mv -f $HOME_PWD/.bashrc "$HOME_PWD/$(date +%Y%m%d%H%M%S).bashrc.bak"
+        mv -f $HOME_PWD/.bashrc "$HOME_PWD/bin/backups/$(date +%Y%m%d%H%M%S).bashrc.bak"
     elif [ -L $HOME_PWD/.bashrc ]; then #file exists & it is symlink
         rm $HOME_PWD/.bashrc
     fi
     ln -s $HOME_PWD/bin/dotfiles/bash/mybashit.bashrc $HOME_PWD/.bashrc
 
-
-    # Copy the gitconfig file to the home directory
-    # if [ -f ~/.gitconfig ]; then
-    #     mv -f ~/.gitconfig ~/.gitconfig.bak
-    # fi
-    # cp ~/bin/dotfiles/git/.gitconfig ~
-
     # Copy the zshrc file to the home directory & link the theme
     if [ -f $HOME_PWD/.zshrc ]; then
-        mv -f $HOME_PWD/.zshrc "$HOME_PWD/$(date +%Y%m%d%H%M%S).zshrc.bak"
+        mv -f $HOME_PWD/.zshrc "$HOME_PWD/bin/backups/$(date +%Y%m%d%H%M%S).zshrc.bak"
     fi
     if [ ! -f $HOME_PWD/.zshrc.path ]; then
         cp -f $HOME_PWD/bin/dotfiles/zsh/path.zshrc $HOME_PWD
@@ -58,9 +55,4 @@ else
 
     # Apply the changes on the console
     echo 'use the command "update_rcs" to complete the update process'
-    # if [ $(which $SHELL | grep -c "bash$") -gt 0 ]; then
-    #     . ~/.bashrc
-    # elif [ $(which $SHELL | grep -c "zsh$") -gt 0 ]; then
-    #     . ~/.zshrc
-    # fi
 fi

@@ -14,6 +14,10 @@ elif [ ! -d $HOME_PWD/bin/dotfiles ]; then
     mkdir $HOME_PWD/bin/dotfiles
 fi
 
+if [ ! -d $HOME_PWD/bin/backups ]; then
+    mkdir $HOME_PWD/bin/backups
+fi
+
 # Copy the dot files to bin dotfiles directory
 cp -Rf $BASEDIR/* $HOME_PWD/bin/dotfiles/
 rm $HOME_PWD/bin/dotfiles/enable.sh
@@ -21,7 +25,7 @@ rm $HOME_PWD/bin/dotfiles/update.sh
 
 # Link mybashit to the home bashrc
 if [ -f $HOME_PWD/.bashrc ]; then # file exists & not symlink
-    mv -f $HOME_PWD/.bashrc "$HOME_PWD/$(date +%Y%m%d%H%M%S).bashrc.bak"
+    mv -f $HOME_PWD/.bashrc "$HOME_PWD/bin/backups/$(date +%Y%m%d%H%M%S).bashrc.bak"
 elif [ -L $HOME_PWD/.bashrc ]; then #file exists & it is symlink
     rm $HOME_PWD/.bashrc
 fi
@@ -36,17 +40,17 @@ fi
 
 # Copy the gitconfig file and its dependencies to the home directory
 if [ -f $HOME_PWD/.gitconfig ]; then
-    mv -f $HOME_PWD/.gitconfig "$HOME_PWD/$(date +%Y%m%d%H%M%S).gitconfig.bak"
+    mv -f $HOME_PWD/.gitconfig "$HOME_PWD/bin/backups/$(date +%Y%m%d%H%M%S).gitconfig.bak"
 fi
 if [ -f $HOME_PWD/.global_gitignore ]; then
-    mv -f $HOME_PWD/.global_gitignore "$HOME_PWD/$(date +%Y%m%d%H%M%S).global_gitignore.bak"
+    mv -f $HOME_PWD/.global_gitignore "$HOME_PWD/bin/backups/$(date +%Y%m%d%H%M%S).global_gitignore.bak"
 fi
 cp $HOME_PWD/bin/dotfiles/git/.gitconfig $HOME_PWD
 cp $HOME_PWD/bin/dotfiles/git/.global_gitignore $HOME_PWD
 
 # Copy the zshrc file to the home directory & link the theme
 if [ -f $HOME_PWD/.zshrc ]; then
-    mv -f $HOME_PWD/.zshrc "$HOME_PWD/$(date +%Y%m%d%H%M%S).zshrc.bak"
+    mv -f $HOME_PWD/.zshrc "$HOME_PWD/bin/backups/$(date +%Y%m%d%H%M%S).zshrc.bak"
 fi
 if [ ! -f $HOME_PWD/.zshrc.path ]; then
     cp -f $HOME_PWD/bin/dotfiles/zsh/path.zshrc $HOME_PWD
