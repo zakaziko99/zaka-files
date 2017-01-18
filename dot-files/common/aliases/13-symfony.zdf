@@ -56,6 +56,7 @@ sfgco () {
     if [ -n $1 ]; then
         gco "$1/cache/.gitkeep" NULL
         gco "$1/logs/.gitkeep" NULL
+        gco "$1/sessions/.gitkeep" NULL
     fi
 }
 sfcc () {
