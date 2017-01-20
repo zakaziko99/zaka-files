@@ -157,6 +157,7 @@ sfcreate () {
     local VERSION_INSTALL=''
     local TARGET_DIRECTORY='project-symfony'
     local XAMPP_INSTALL=0
+    local GITKEEP_TARGET=''
 
     if [[ "$1" == "xampp" ]]; then
         VERSION_TO_CHECK=$2
@@ -173,9 +174,11 @@ sfcreate () {
 
     if [[ "$VERSION_TO_CHECK" == 'v2' ]]; then
         PROCEED_INSTALL=1
+        GITKEEP_TARGET='app'
         VERSION_INSTALL="2.8.*"
     elif [[ "$VERSION_TO_CHECK" == 'v3' ]]; then
         PROCEED_INSTALL=1
+        GITKEEP_TARGET='var'
     else
         echo "The first parameter must be the version of Symfony project to create. Ex: v2 or v3"
         echo "The second parameter is the name of the project. It is optional!"
@@ -191,7 +194,33 @@ sfcreate () {
             sfproject $TARGET_DIRECTORY $VERSION_INSTALL
         fi
         mv composer.phar $TARGET_DIRECTORY
+
         cd $TARGET_DIRECTORY
+
+        # create cache, logs & sessions directories with gitkeep files
+        if [ ! -d "$GITKEEP_TARGET/cache" ]; then
+            mkdir $GITKEEP_TARGET/cache
+        fi
+        chmod -R 777 $GITKEEP_TARGET/cache
+        if [ ! -f "$GITKEEP_TARGET/cache/.gitkeep" ]; then
+            touch $GITKEEP_TARGET/cache/.gitkeep
+        fi
+        if [ ! -d "$GITKEEP_TARGET/logs" ]; then
+            mkdir $GITKEEP_TARGET/logs
+        fi
+        chmod -R 777 $GITKEEP_TARGET/logs
+        if [ ! -f "$GITKEEP_TARGET/logs/.gitkeep" ]; then
+            touch $GITKEEP_TARGET/logs/.gitkeep
+        fi
+        if [ "$VERSION_TO_CHECK" == 'v3' ]; then
+            if [ ! -d "$GITKEEP_TARGET/sessions" ]; then
+                mkdir $GITKEEP_TARGET/sessions
+            fi
+            chmod -R 777 $GITKEEP_TARGET/sessions
+            if [ ! -f "$GITKEEP_TARGET/sessions/.gitkeep" ]; then
+                touch $GITKEEP_TARGET/sessions/.gitkeep
+            fi
+        fi
     fi
 }
 alias sfcreate_xampp='sfcreate xampp'
