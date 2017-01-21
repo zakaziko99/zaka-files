@@ -150,6 +150,34 @@ alias sfdbcre_xampp='sfcn_xampp doctrine:database:create'
 alias sfdbdrp='sfcn doctrine:database:drop'
 alias sfdbdrp_xampp='sfcn_xampp doctrine:database:drop'
 
+sfgitkeepdir () {
+    local TARGET_DIRECTORY=$1
+    local GITKEEP_TARGET=$2
+    local FOLDER_TARGET=$3
+
+    if [ -n $1 ]; then
+        if [ -n $2 ]; then
+            if [ -n $3 ]; then
+                if [ ! -d "$TARGET_DIRECTORY/$GITKEEP_TARGET/$FOLDER_TARGET" ]; then
+                    mkdir $TARGET_DIRECTORY/$GITKEEP_TARGET/$FOLDER_TARGET
+                fi
+                chmod -R 777 $TARGET_DIRECTORY/$GITKEEP_TARGET/$FOLDER_TARGET
+                if [ ! -f "$TARGET_DIRECTORY/$GITKEEP_TARGET/$FOLDER_TARGET/.gitkeep" ]; then
+                    touch $TARGET_DIRECTORY/$GITKEEP_TARGET/$FOLDER_TARGET/.gitkeep
+                fi
+            else
+                echo "You must introduce the gitkeep directory target"
+                return 3
+            fi
+        else
+            echo "You must introduce the gitkeep parent directories target"
+            return 2
+        fi
+    else
+        echo "You must introduce the directory target"
+        return 1
+    fi
+}
 sfcreate () {
     local VERSION_TO_CHECK=''
     local TARGET_TO_CHECK=''
@@ -158,6 +186,7 @@ sfcreate () {
     local TARGET_DIRECTORY='project-symfony'
     local XAMPP_INSTALL=0
     local GITKEEP_TARGET=''
+    local CURRENT_DIR=''
 
     if [[ "$1" == "xampp" ]]; then
         VERSION_TO_CHECK=$2
@@ -198,28 +227,11 @@ sfcreate () {
         cd $TARGET_DIRECTORY
 
         # create cache, logs & sessions directories with gitkeep files
-        if [ ! -d "$GITKEEP_TARGET/cache" ]; then
-            mkdir $GITKEEP_TARGET/cache
-        fi
-        chmod -R 777 $GITKEEP_TARGET/cache
-        if [ ! -f "$GITKEEP_TARGET/cache/.gitkeep" ]; then
-            touch $GITKEEP_TARGET/cache/.gitkeep
-        fi
-        if [ ! -d "$GITKEEP_TARGET/logs" ]; then
-            mkdir $GITKEEP_TARGET/logs
-        fi
-        chmod -R 777 $GITKEEP_TARGET/logs
-        if [ ! -f "$GITKEEP_TARGET/logs/.gitkeep" ]; then
-            touch $GITKEEP_TARGET/logs/.gitkeep
-        fi
-        if [ "$VERSION_TO_CHECK" == 'v3' ]; then
-            if [ ! -d "$GITKEEP_TARGET/sessions" ]; then
-                mkdir $GITKEEP_TARGET/sessions
-            fi
-            chmod -R 777 $GITKEEP_TARGET/sessions
-            if [ ! -f "$GITKEEP_TARGET/sessions/.gitkeep" ]; then
-                touch $GITKEEP_TARGET/sessions/.gitkeep
-            fi
+        CURRENT_DIR=$(pwd)
+        sfgitkeepdir $CURRENT_DIR $GITKEEP_TARGET cache
+        sfgitkeepdir $CURRENT_DIR $GITKEEP_TARGET logs
+        if [[ "$VERSION_TO_CHECK" == 'v3' ]]; then
+            sfgitkeepdir $CURRENT_DIR $GITKEEP_TARGET sessions
         fi
     fi
 }
