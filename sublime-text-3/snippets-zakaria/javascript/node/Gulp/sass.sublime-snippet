@@ -1,0 +1,36 @@
+<snippet>
+    <content><![CDATA[
+'use strict';
+
+var gulp         = require('gulp');
+var sass         = require('gulp-sass');
+var sourcemaps   = require('gulp-sourcemaps');
+var autoprefixer = require('gulp-autoprefixer');
+var size         = require('gulp-size');
+
+var AUTOPREFIXER_BROWSERS = [
+    'ie >= 9',
+    'ie_mob >= 10',
+    'ff >= 30',
+    'chrome >= 34',
+    'safari >= 7',
+    'opera >= 23',
+    'ios >= 7',
+    'android >= 4.4',
+    'bb >= 10'
+];
+
+gulp.task('${1:styles}', function() {
+    return gulp.src('${2:./assets/styles/main.sass}')
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer(AUTOPREFIXER_BROWSERS, {cascade: true}))
+        .pipe(sourcemaps.write('${3:./maps}'))
+        .pipe(gulp.dest('${4:./web/css}'))
+        .pipe(size({title: '${5:Styles}'}));
+});
+]]></content>
+    <tabTrigger>sass</tabTrigger>
+    <description>Gulp SASS styles task</description>
+    <scope>source.js.gulpfile,source.js</scope>
+</snippet>
