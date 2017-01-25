@@ -1,0 +1,58 @@
+<snippet>
+    <content><![CDATA[
+var gulp      = require('gulp');
+var svgSprite = require('gulp-svg-sprite');
+var rename    = require('gulp-rename');
+var del       = require('del');
+
+var spriteConfig = {
+    mode: {
+        css: {
+            sprite: '${1:sprite.svg}',
+            render: {
+                sass: {
+                    template: '${2:./assets/styles/sprite}/template.sass'
+                }
+            }
+        }
+    }
+};
+
+gulp.task('${3:beginCleanSprite}', function() {
+    return del([
+            '${4:./assets/temp/sprite}',
+            '${5:./web/images/sprite}'
+        ]);
+});
+
+gulp.task('${6:createSprite}', ['${3:beginCleanSprite}'], function() {
+    return gulp.src('${7:./web/images/icons}/**/*.svg')
+        .pipe(svgSprite(spriteConfig))
+        .pipe(gulp.dest('${4:./assets/temp/sprite}'));
+});
+
+gulp.task('${8:copySpriteGraphic}', ['${6:createSprite}'], function() {
+    return gulp.src('${4:./assets/temp/sprite}/css/**/*.svg')
+        .pipe(gulp.dest('${5:./web/images/sprite}'));
+});
+
+gulp.task('${9:copySpriteSASS}', ['${6:createSprite}'] , function() {
+    return gulp.src('${4:./assets/temp/sprite}/css/*.sass')
+        .pipe(rename('${10:_sprite.sass}'))
+        .pipe(gulp.dest('${2:./assets/styles/sprite}'));
+});
+
+gulp.task('${11:endCleanSprite}', ['${8:copySpriteGraphic}', '${9:copySpriteSASS}'], function() {
+    return del(['${4:./assets/temp/sprite}']);
+});
+
+gulp.task('${12:svgIcons}', [
+        '${3:beginCleanSprite}',
+        '${6:createSprite}', '${8:copySpriteGraphic}', '${9:copySpriteSASS}',
+        '${11:endCleanSprite}'
+    ]);
+]]></content>
+    <tabTrigger>sprite</tabTrigger>
+    <description>Gulp Sprite SASS tasks</description>
+    <scope>source.js.gulpfile,source.js</scope>
+</snippet>
