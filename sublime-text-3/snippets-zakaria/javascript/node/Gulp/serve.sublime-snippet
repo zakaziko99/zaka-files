@@ -14,12 +14,12 @@ gulp.task('${1:serve}', function() {
         // Note: this uses an unsigned certificate which on first access
         //       will present a certificate warning in the browser.
         // https: true,
-        ${5:base: '${4:app}'}
+        ${5:base: './${4:app}'}
         ${7:proxy: '${6:your_project.dev.local}'}
     });
 
-    gulp.watch('${8:app}/**/*.html', browserSync.reload);
-    ${9}
+    gulp.watch('${4:app}/**/*.html', browserSync.reload);
+    ${8}
 });
 
 ]]></content>
