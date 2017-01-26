@@ -1,0 +1,16 @@
+<snippet>
+    <content><![CDATA[
+=placeholder-mixin
+    &::-webkit-input-placeholder
+        @content
+    &:-moz-placeholder
+        @content
+    &::-moz-placeholder
+        @content
+    &:-ms-input-placeholder
+        @content
+]]></content>
+    <tabTrigger>placeholder</tabTrigger>
+    <description>Placeholder SASS Mixin</description>
+    <scope>source.sass</scope>
+</snippet>
