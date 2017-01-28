@@ -1,0 +1,21 @@
+<snippet>
+    <content><![CDATA[
+\$font-size-base: ${1:16px}
+
+\$mobile-large: ${2:320px}
+\$tablet-small: ${3:480px}
+\$tablet-large: ${4:640px}
+\$screen-small: ${5:768px}
+\$screen-large: ${6:920px}
+\$screen-extra: ${7:1280px}
+\$screen-ultra: ${8:1600px}
+\$screen-supra: ${9:2200px}
+
+\$screen-small-landscape: ${10:800px}
+
+\$animation-timing-function: ${11:cubic-bezier(0.55, 0, 0.1, 1)}
+]]></content>
+    <tabTrigger>vars</tabTrigger>
+    <description>Initial SASS variables</description>
+    <scope>source.sass</scope>
+</snippet>
