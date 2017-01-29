@@ -1,0 +1,31 @@
+<snippet>
+    <content><![CDATA[
+body
+    position: relative
+    color: ${1:\$text-color}
+    font:
+        family: ${2:Arial, sans-serif}
+        size: ${3:\$font-size-base}
+        feature-settings: 'kern' 1
+        kerning: normal
+    text-rendering: optimizeLegibility
+
+ul
+    margin: 0
+    padding: 0
+    list-style-type: none
+
+a
+    cursor: pointer
+    text-decoration: none
+    &:hover, &:focus
+        text-decoration: underline
+
+img
+    max-width: 100%
+    height: auto
+]]></content>
+    <tabTrigger>global</tabTrigger>
+    <description>Initial global SASS</description>
+    <scope>source.sass</scope>
+</snippet>
