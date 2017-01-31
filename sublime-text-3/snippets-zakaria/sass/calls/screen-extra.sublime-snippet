@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
++onScreenExtra
+    ${1}
+]]></content>
+    <tabTrigger>scextra</tabTrigger>
+    <description>Call scE resolution SASS mixin</description>
+    <scope>source.sass</scope>
+</snippet>

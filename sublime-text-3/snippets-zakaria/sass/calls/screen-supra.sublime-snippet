@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
++onScreenSupra
+    ${1}
+]]></content>
+    <tabTrigger>scsupra</tabTrigger>
+    <description>Call scP resolution SASS mixin</description>
+    <scope>source.sass</scope>
+</snippet>

@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
++onLandscapeMobileLarge
+    ${1}
+]]></content>
+    <tabTrigger>mblargelandscape</tabTrigger>
+    <description>Call mbLLs resolution SASS mixin</description>
+    <scope>source.sass</scope>
+</snippet>

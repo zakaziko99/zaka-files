@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
++onResolution(${1:property-name}, (init:${2}${4:,mbL:${3}}${6:,tbS:${5}}${8:,tbL:${7}}${10:,scS:${9}}${12:,scL:${11}}${14:,scE:${13}}${16:,scU:${15}}${18:,scP:${17}}))
+]]></content>
+    <tabTrigger>resolution</tabTrigger>
+    <description>Call resolution SASS mixin</description>
+    <scope>source.sass</scope>
+</snippet>

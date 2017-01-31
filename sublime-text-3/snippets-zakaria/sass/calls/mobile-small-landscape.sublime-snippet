@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
++onLandscapeMobileSmall
+    ${1}
+]]></content>
+    <tabTrigger>mbsmalllandscape</tabTrigger>
+    <description>Call mbSLs resolution SASS mixin</description>
+    <scope>source.sass</scope>
+</snippet>
