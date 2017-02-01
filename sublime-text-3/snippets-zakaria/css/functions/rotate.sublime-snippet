@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+rotate(${1:90deg}${3:, ${2:90deg}})
+]]></content>
+    <tabTrigger>rotate</tabTrigger>
+    <description>rotate CSS function</description>
+    <scope>source.css,source.sass</scope>
+</snippet>

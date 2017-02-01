@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+rgba(${4:${1:255}, ${2:255}, ${3:255}}, ${5:10}%)
+]]></content>
+    <tabTrigger>rgba</tabTrigger>
+    <description>rgba SASS function</description>
+    <scope>source.sass</scope>
+</snippet>

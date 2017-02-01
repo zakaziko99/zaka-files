@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+lighten(${1:#555}, ${2:10}%)
+]]></content>
+    <tabTrigger>lighten</tabTrigger>
+    <description>lighten SASS function</description>
+    <scope>source.sass</scope>
+</snippet>

@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+translate(${1:-50%}, ${2:-50%})
+]]></content>
+    <tabTrigger>translate</tabTrigger>
+    <description>translate CSS function</description>
+    <scope>source.css,source.sass</scope>
+</snippet>
