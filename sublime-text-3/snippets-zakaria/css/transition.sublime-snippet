@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+transition: ${1:0.5s} ${2:all} ${3:ease-out}
+]]></content>
+    <tabTrigger>transition</tabTrigger>
+    <description>transition CSS property</description>
+    <scope>source.css,source.sass</scope>
+</snippet>
