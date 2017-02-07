@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+export default ${1:myPackage};
+]]></content>
+    <tabTrigger>export</tabTrigger>
+    <description>ES6 export</description>
+    <scope>source.js</scope>
+</snippet>
