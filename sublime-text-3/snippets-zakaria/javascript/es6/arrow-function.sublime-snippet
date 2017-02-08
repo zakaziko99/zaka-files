@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+${2:(${1:arguments})} => ${4:{
+    ${3://}
+}}
+]]></content>
+    <tabTrigger>arrowfunction</tabTrigger>
+    <description>ES6 arrow function</description>
+    <scope>source.js</scope>
+</snippet>
