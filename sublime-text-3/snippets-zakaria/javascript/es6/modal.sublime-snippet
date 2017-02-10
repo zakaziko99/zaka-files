@@ -1,0 +1,46 @@
+<snippet>
+    <content><![CDATA[
+import \$ from 'jquery';
+
+class ${1:customModal} {
+    constructor() {
+        this.modals       = \$('${2:.dm73-modal}');
+        this.triggerModal = \$('${3:a.trigger-modal}');
+
+        if (!this.modals.length) {
+            return;
+        }
+
+        this.btnCloseModal = \$('${4:a.dm73-modal__close}');
+        this.classVisibleModal = '${5:dm73-modal--is-visible}';
+
+        this.events();
+    }
+
+    events() {
+        this.triggerModal.on('click', this.openModal.bind(this));
+        this.btnCloseModal.on('click', this.closeModal.bind(this));
+        \$(document).on('keyup', this.keypressModalHandler.bind(this));
+    }
+
+    keypressModalHandler(event) {
+        if (event.code === 27 || event.which === 27) {
+            this.closeModal();
+        }
+    }
+
+    openModal() {
+        this.modals.addClass(this.classVisibleModal);
+    }
+
+    closeModal() {
+        this.modals.removeClass(this.classVisibleModal);
+    }
+}
+
+export default ${1:customModal};
+]]></content>
+    <tabTrigger>modal</tabTrigger>
+    <description>ES6 modal class</description>
+    <scope>source.js</scope>
+</snippet>
