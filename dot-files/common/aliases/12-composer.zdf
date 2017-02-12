@@ -7,7 +7,12 @@ alias composer_momory='php --dmemory=2G composer.phar'
 alias composer_update='php composer.phar self-update'
 
 # composer commands via xampp
-xampp_php -v NULL
+if [[ -n $ZSH_VERSION ]]; then
+    xampp_php -v NULL
+else
+    xampp_php -v &> /dev/null
+fi
+
 if [ $? -eq 0 ]; then
     alias get_xcomposer='curl -sS https://getcomposer.org/installer | xampp_php'
     alias xcomposer='xampp_php composer.phar'

@@ -1,9 +1,11 @@
 # BASIC ALIASES
 # =============
 
-alias -g L='|less'
-# alias -g NULL="> /dev/null 2>&1"
-alias -g NULL="&> /dev/null" # more silent output
+if [[ -n $ZSH_VERSION ]]; then
+    alias -g L='|less'
+    # alias -g NULL="> /dev/null 2>&1"
+    alias -g NULL="&> /dev/null" # more silent output
+fi
 
 alias disks='df -h'
 alias du="du -h"
@@ -19,11 +21,11 @@ alias qq='exit'
 
 unamestr=$(uname)
 if [[ "$unamestr" == 'Linux' ]]; then
-   alias ls='ls -F --color=always'
-   alias dir='dir -F --color=always'
+    alias ls='ls -F --color=always'
+    alias dir='dir -F --color=always'
 elif [[ "$unamestr" == 'FreeBSD' ]]; then
-   alias ls='ls -FG'
-   alias dir='dir -FG'
+    alias ls='ls -FG'
+    alias dir='dir -FG'
 fi
 alias ll='ls -lh'
 alias lla='ls -lha'

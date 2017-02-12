@@ -1,7 +1,12 @@
 # SERVER ALIASES
 # ==============
 
-xampp version NULL
+if [[ -n $ZSH_VERSION ]]; then
+    xampp version NULL
+else
+    xampp version &> /dev/null
+fi
+
 if [ $? -eq 0 ]; then
     alias xampp_error_logg='tail -f /opt/lampp/log/error_log'
     alias xampp_access_logg='tail -f /opt/lampp/log/error_log'

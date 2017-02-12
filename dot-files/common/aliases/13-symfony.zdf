@@ -1,8 +1,11 @@
 # SYMFONY ALIASES
 # ===============
-alias -g EDEV="--env=dev" # cab be useful fon symfony tasks
-alias -g EPREX="--env=prex" # cab be useful fon symfony tasks
-alias -g EPROD="--env=prod" # cab be useful fon symfony tasks
+
+if [[ -n $ZSH_VERSION ]]; then
+    alias -g EDEV="--env=dev" # cab be useful fon symfony tasks
+    alias -g EPREX="--env=prex" # cab be useful fon symfony tasks
+    alias -g EPROD="--env=prod" # cab be useful fon symfony tasks
+fi
 
 CURRENT_USER=$(whoami)
 NOT_SYMFONY_DIRECTORY_TEXT="This directory is not a root Symfony2 or higher project"
@@ -54,22 +57,22 @@ sfcn_xampp () {
 
 sfgco () {
     if [ -n $1 ]; then
-        gco "$1/cache/.gitkeep" NULL
-        gco "$1/logs/.gitkeep" NULL
-        gco "$1/sessions/.gitkeep" NULL
+        gco "$1/cache/.gitkeep" &> /dev/null
+        gco "$1/logs/.gitkeep" &> /dev/null
+        gco "$1/sessions/.gitkeep" &> /dev/null
     fi
 }
 sfcc () {
     local SF_VAR_DIR=''
     if [ -e app/console ]; then
-        sudo rm -rf app/cache/* NULL
-        sudo chmod -R 777 app/cache/ app/logs/ NULL
+        sudo rm -rf app/cache/* &> /dev/null
+        sudo chmod -R 777 app/cache/ app/logs/ &> /dev/null
         SF_VAR_DIR='app'
     elif [ -e bin/console ]; then
         if [[ "$1" == "xampp" ]]; then
-            sfcn_xampp cache:clear EDEV
+            sfcn_xampp cache:clear --env=dev
         else
-            sfcn cache:clear EDEV
+            sfcn cache:clear --env=dev
         fi
         # Under Symfony 3, the permissions are fixed
         # sudo rm -rf var/cache/* && sudo chmod -R 777 var/cache/ var/logs/
