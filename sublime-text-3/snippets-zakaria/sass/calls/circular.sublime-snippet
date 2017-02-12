@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
++circularBox(${1:20px})
+]]></content>
+    <tabTrigger>circular</tabTrigger>
+    <description>Call circular SASS mixin</description>
+    <scope>source.sass</scope>
+</snippet>

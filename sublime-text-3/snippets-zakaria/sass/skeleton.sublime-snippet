@@ -1,0 +1,35 @@
+<snippet>
+    <content><![CDATA[
+// This is the single file output by sass. It is intended to ONLY @import other files.
+
+// Reset
+@import 'components/normalize'
+
+// Components
+// @import 'components/bootstrap'
+
+// Base
+@import 'base/vars'
+@import 'base/colors'
+@import 'base/mixins'
+// @import 'base/animations'
+
+// Fonts
+@import 'fonts/fonts'
+
+// Global styles
+@import 'base/global'
+
+// Sprite SVG
+@import 'sprite/sprite'
+
+// Modules
+@import 'modules/header'
+@import 'modules/buttons'
+@import 'modules/footer'
+// @import 'modules/animate'
+]]></content>
+    <tabTrigger>skeleton</tabTrigger>
+    <description>Main SASS skeleton</description>
+    <scope>source.sass</scope>
+</snippet>

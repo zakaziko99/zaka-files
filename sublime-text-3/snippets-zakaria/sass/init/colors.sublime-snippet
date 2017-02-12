@@ -1,0 +1,23 @@
+<snippet>
+    <content><![CDATA[
+\$white-color:      #FFFFFF
+\$black-color:      #000000
+\$grey-color:       #999999
+
+\$text-color:       #${1:353535}
+
+\$first-color:      #${2:FF0000}
+\$second-color:     #${3:00FF00}
+\$third-color:      #${4:0000FF}
+
+\$facebook-color:   #3D5B96
+\$twitter-color:    #29A7DE
+\$googleplus-color: #DC3535
+\$linkedin-color:   #004879
+
+\$border-color:     #${5:CCCCCC}
+]]></content>
+    <tabTrigger>colors</tabTrigger>
+    <description>Initial SASS colors</description>
+    <scope>source.sass</scope>
+</snippet>

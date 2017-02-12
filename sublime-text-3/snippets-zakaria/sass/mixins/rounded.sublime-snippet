@@ -1,0 +1,15 @@
+<snippet>
+    <content><![CDATA[
+=roundedBox(\$dimensionX: ${1:20px}, \$dimensionY: ${2:20px}, \$radius: ${3:50%})
+    overflow: hidden
+    width: \$dimensionX
+    height: \$dimensionY
+    border-radius: \$radius
+
+=circularBox(\$dimension: ${4:20px})
+    +roundedBox(\$dimension, \$dimension)
+]]></content>
+    <tabTrigger>rounded</tabTrigger>
+    <description>Rounded SASS mixins</description>
+    <scope>source.sass</scope>
+</snippet>

@@ -46,7 +46,7 @@
     untracked       = cyan
 [core]
     autocrlf        = input
-    excludesfile    = ~/.gitglobalexclude
+    excludesfile    = ~/.global_gitignore
     pager           = less
 [branch]
     autosetupmerge  = true

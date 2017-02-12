@@ -1,0 +1,18 @@
+<snippet>
+    <content><![CDATA[
+new Waypoint({
+    element: ${1:elementDOM},
+    handler: function(${2:direction}) {
+        if (${2:direction} === 'down') {
+            ${4:// actions to do if scrolling down}
+        }${6: else {
+            ${5:// actions to do if scrolling up}
+        \}}
+    },
+    offset: '${3:50%}'
+});
+]]></content>
+    <tabTrigger>waypoint</tabTrigger>
+    <description>add Waypoint entry</description>
+    <scope>source.js</scope>
+</snippet>

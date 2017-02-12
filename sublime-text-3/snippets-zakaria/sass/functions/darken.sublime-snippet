@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+darken(${1:#CCC}, ${2:10}%)
+]]></content>
+    <tabTrigger>darken</tabTrigger>
+    <description>darken SASS function</description>
+    <scope>source.sass</scope>
+</snippet>

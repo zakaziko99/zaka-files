@@ -1,0 +1,24 @@
+<snippet>
+    <content><![CDATA[
+class ${1:myClass} {
+    constructor() {
+        this.${2:myVariable} = ${3:myValue};
+
+        if (!this.${2:myVariable}) {
+            return;
+        }
+
+        this.${4:myFunction}();
+    }
+
+    ${4:myFunction}() {
+        //
+    }
+}
+
+export default ${1:myClass};
+]]></content>
+    <tabTrigger>class</tabTrigger>
+    <description>ES6 class</description>
+    <scope>source.js</scope>
+</snippet>

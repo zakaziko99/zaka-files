@@ -1,0 +1,20 @@
+<snippet>
+    <content><![CDATA[
+=animate(\$name: null, \$duration: ${1:1s}, \$timingFunction: ${2:\$animation-timing-function}, \$iteration: ${3:1}, \$delay: null)
+    animation:
+        name: \$name
+        duration: \$duration
+        timing-function: \$timingFunction
+        iteration-count: \$iteration
+
+    @if \$name != null
+        animation-name: \$name
+
+    @if \$delay != null
+        animation-delay: \$delay
+
+]]></content>
+    <tabTrigger>animate</tabTrigger>
+    <description>animate SASS mixin</description>
+    <scope>source.sass</scope>
+</snippet>

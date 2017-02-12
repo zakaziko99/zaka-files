@@ -1,9 +1,11 @@
 # BASIC ALIASES
 # =============
 
-alias -g L='|less'
-# alias -g NULL="> /dev/null 2>&1"
-alias -g NULL="&> /dev/null" # more silent output
+if [[ -n $ZSH_VERSION ]]; then
+    alias -g L='|less'
+    # alias -g NULL="> /dev/null 2>&1"
+    alias -g NULL="&> /dev/null" # more silent output
+fi
 
 alias disks='df -h'
 alias du="du -h"
@@ -19,16 +21,16 @@ alias qq='exit'
 
 unamestr=$(uname)
 if [[ "$unamestr" == 'Linux' ]]; then
-   alias ls='ls -F --color=always'
-   alias dir='dir -F --color=always'
+    alias ls='ls -F --color=always'
+    alias dir='dir -F --color=always'
 elif [[ "$unamestr" == 'FreeBSD' ]]; then
-   alias ls='ls -FG'
-   alias dir='dir -FG'
+    alias ls='ls -FG'
+    alias dir='dir -FG'
 fi
 alias ll='ls -lh'
-alias lla='ll -a'
+alias lla='ls -lha'
 alias lr='ls -ltr'
-alias lra='lr -a'
+alias lra='ls -ltra'
 
 alias cp='cp -i'
 #alias rm='rm -i'
@@ -42,6 +44,7 @@ sdate () {
         sudo date -s "$1 $(date +%H:%M:%S)"
     else
         echo "You must provide a date to set according to this format YYYY-MM-DD"
+        return 1
     fi
 }
 
@@ -51,11 +54,13 @@ if [[ -z $MY_EDITOR ]]; then
     MY_EDITOR='nano'
 fi
 
+alias hosts="sudo $MY_EDITOR /etc/hosts"
+
 # Update Bash & Zsh rcs if they exists
 update_rcs() {
-    if [[ ! -z $BASH_VERSION ]]; then
+    if [[ -n $BASH_VERSION ]]; then
         source ~/.bashrc
-    elif [[ ! -z $ZSH_VERSION ]]; then
+    elif [[ -n $ZSH_VERSION ]]; then
         source ~/.zshrc
     fi
 }

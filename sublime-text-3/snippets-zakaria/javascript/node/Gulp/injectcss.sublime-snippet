@@ -1,0 +1,11 @@
+<snippet>
+    <content><![CDATA[
+gulp.task('${1:injectCSS}', ['${2:styles}'], function() {
+    return gulp.src('${3:./web/css/main.css}')
+        .pipe(browserSync.stream());
+});
+]]></content>
+    <tabTrigger>injectCSS</tabTrigger>
+    <description>Gulp Inject CSS task</description>
+    <scope>source.js.gulpfile,source.js</scope>
+</snippet>

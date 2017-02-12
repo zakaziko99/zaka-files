@@ -1,0 +1,27 @@
+<snippet>
+    <content><![CDATA[
+<VirtualHost ${1:urlhost.dev.local}:80>
+    ServerName ${1:urlhost.dev.local}
+    DocumentRoot "/${2:path/to/symfony/project}/web"
+    DirectoryIndex "${3:index.php}"
+
+    <Directory "/${2:path/to/symfony1/project}/web">
+        Require all granted
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride None
+        Order allow,deny
+        allow from all
+        <IfModule mod_rewrite.c>
+            RewriteEngine On
+            RewriteCond %\{REQUEST_FILENAME\} !-f
+            RewriteRule ^(.*)\$ /${3:index.php} [QSA,L]
+            RewriteCond %\{HTTP:Authorization\} ^(.*)
+            RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+        </IfModule>
+    </Directory>
+</VirtualHost>
+]]></content>
+    <tabTrigger>sfvhost</tabTrigger>
+    <description>Symofony apacheconf</description>
+    <scope>source.apacheconf,punctuation.definition.tag.apacheconf</scope>
+</snippet>

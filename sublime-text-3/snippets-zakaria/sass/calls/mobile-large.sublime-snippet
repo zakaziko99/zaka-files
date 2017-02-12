@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
++onMobileLarge
+    ${1}
+]]></content>
+    <tabTrigger>mblarge</tabTrigger>
+    <description>Call mbL resolution SASS mixin</description>
+    <scope>source.sass</scope>
+</snippet>

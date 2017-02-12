@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
++onScreenSmall
+    ${1}
+]]></content>
+    <tabTrigger>scsmall</tabTrigger>
+    <description>Call scS resolution SASS mixin</description>
+    <scope>source.sass</scope>
+</snippet>

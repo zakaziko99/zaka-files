@@ -1,0 +1,6 @@
+alias smsqstart='sudo service mysql start'
+alias smsqstop='sudo service mysql stop'
+alias sapchstart='sudo service apache2 start'
+alias sapchstop='sudo service apache2 stop'
+alias smngstart='sudo service mongo start'
+alias smngstop='sudo service mongo stop'

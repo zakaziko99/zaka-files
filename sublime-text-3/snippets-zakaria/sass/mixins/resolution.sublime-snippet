@@ -1,0 +1,88 @@
+<snippet>
+    <content><![CDATA[
+=onMobileLarge
+    @media (min-width: ${1:\$mobile-large})
+        @content
+
+=onTabletSmall
+    @media (min-width: ${2:\$tablet-small})
+        @content
+
+=onTabletLarge
+    @media (min-width: ${3:\$tablet-large})
+        @content
+
+=onScreenSmall
+    @media (min-width: ${4:\$screen-small})
+        @content
+
+=onScreenLarge
+    @media (min-width: ${5:\$screen-large})
+        @content
+
+=onScreenExtra
+    @media (min-width: ${6:\$screen-extra})
+        @content
+
+=onScreenUltra
+    @media (min-width: ${7:\$screen-ultra})
+        @content
+
+=onScreenSupra
+    @media (min-width: ${8:\$screen-supra})
+        @content
+
+=onMonitor20
+    @media (min-width: ${7:\$screen-ultra}) and (min-aspect-ratio: 16/7)
+        @content
+
+=onLandscapeTabletLarge
+    @media (max-width: ${6:\$screen-extra}) and (orientation: landscape)
+        @content
+
+=onLandscapeTabletSmall
+    @media (max-width: ${9:\$screen-small-landscape}) and (orientation: landscape)
+        @content
+
+=onLandscapeMobileLarge
+    @media (max-width: ${3:\$tablet-large}) and (orientation: landscape)
+        @content
+
+=onLandscapeMobileSmall
+    @media (max-width: ${2:\$tablet-small}) and (orientation: landscape)
+        @content
+
+=onResolution(\$propertyName, \$propertyConfigs)
+    @each \$res, \$value in \$propertyConfigs
+        @if \$res == init
+            #{\$propertyName}: \$value
+        @else if \$res == mbL
+            +onMobileLarge
+                #{\$propertyName}: \$value
+        @else if \$res == tbS
+            +onTabletSmall
+                #{\$propertyName}: \$value
+        @else if \$res == tbL
+            +onTabletLarge
+                #{\$propertyName}: \$value
+        @else if \$res == scS
+            +onScreenSmall
+                #{\$propertyName}: \$value
+        @else if \$res == scL
+            +onScreenLarge
+                #{\$propertyName}: \$value
+        @else if \$res == scE
+            +onScreenExtra
+                #{\$propertyName}: \$value
+        @else if \$res == scU
+            +onScreenUltra
+                #{\$propertyName}: \$value
+        @else if \$res == scP
+            +onScreenSupra
+                #{\$propertyName}: \$value
+
+]]></content>
+    <tabTrigger>resolution</tabTrigger>
+    <description>resolution SASS mixins</description>
+    <scope>source.sass</scope>
+</snippet>

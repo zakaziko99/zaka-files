@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
++animate(${1:anim-name}, ${2:1s}, ${3:\$animation-timing-function}, ${4:1}${6:, ${5:0s}})
+]]></content>
+    <tabTrigger>animate</tabTrigger>
+    <description>Call animate SASS mixin</description>
+    <scope>source.sass</scope>
+</snippet>

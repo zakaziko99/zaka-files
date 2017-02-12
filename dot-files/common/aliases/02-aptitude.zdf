@@ -1,0 +1,11 @@
+# APTITUDE ALIASES
+# ================
+
+alias agi="sudo apt-get install"
+alias agiy="sudo apt-get install -y"
+alias agu="sudo apt-get update"
+alias aguy="sudo apt-get update -y"
+alias agup="sudo apt-get upgrade"
+alias aguap="sudo apt-get update && sudo apt-get upgrade"
+alias adel=" sudo apt-get remove"
+alias asearch="sudo apt-cache search"

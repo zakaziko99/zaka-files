@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
++onScreenUltra
+    ${1}
+]]></content>
+    <tabTrigger>scultra</tabTrigger>
+    <description>Call scU resolution SASS mixin</description>
+    <scope>source.sass</scope>
+</snippet>

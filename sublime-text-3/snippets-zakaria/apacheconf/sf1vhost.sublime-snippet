@@ -1,0 +1,46 @@
+<snippet>
+    <content><![CDATA[
+<VirtualHost ${1:urlhost.dev.local}:80>
+    ServerName ${1:urlhost.dev.local}
+    DocumentRoot "/${2:path/to/symfony1/project}/web"
+    DirectoryIndex "${3:index.php}"
+
+    SetEnv ENV_APP ${4:frontend}
+    SetEnv ENV ${5:dev}
+    ${6:SetEnv ENV_DEBUG true
+    SetEnv ENV_PATH_CONF "${7:/var/www/Projects}"}
+
+    <Directory "/${2:path/to/symfony1/project}/web">
+        Require all granted
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Allow from all
+
+        RewriteEngine On
+
+        RewriteRule ^ads(.*)\$ http://xml.fr.overture.com/d/search/p/standard/eu/xml/rlb/?affilData=ua\%3d\$1\%26ip\%3d%\{REMOTE_HOST\} [P,QSA,NE,L]
+
+        RewriteCond %\{HTTP_HOST\} local\.(.*)\$
+        RewriteRule ^ - [E=site:%1]
+        RewriteCond %\{REQUEST_URI\} ^/prnt.*
+        RewriteRule ^(prnt.*)/?(.*)\$ /\$2 [co=partner:\$1:%\{ENV:site\}:525600,NE,R,L]
+
+        RewriteRule ^\$ /index.html [QSA]
+        RewriteRule ^([^.]+)\$ /\$1.html [QSA]
+
+        RewriteCond %\{REQUEST_FILENAME\} !-f
+        RewriteRule ^(.*)\$ /${3:index.php} [QSA,L]
+    </Directory>
+
+    ${8:Alias /sf "/${9:var/www/symfony1/symfony}/data/web/sf"
+    <Directory "/${9:var/www/symfony1/symfony}/data/web/sf">
+        Require all granted
+        AllowOverride All
+        Allow from All
+    </Directory>}
+</VirtualHost>
+]]></content>
+    <tabTrigger>sf1vhost</tabTrigger>
+    <description>Symofony1.4 apacheconf</description>
+    <scope>source.apacheconf,punctuation.definition.tag.apacheconf</scope>
+</snippet>

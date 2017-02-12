@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
++roundedBox(${1:20px}, ${2:20px}${4:, ${3:50%}})
+]]></content>
+    <tabTrigger>rounded</tabTrigger>
+    <description>Call Rounded SASS mixin</description>
+    <scope>source.sass</scope>
+</snippet>

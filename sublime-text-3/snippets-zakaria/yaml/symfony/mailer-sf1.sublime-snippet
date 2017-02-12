@@ -1,0 +1,17 @@
+<snippet>
+    <content><![CDATA[
+mailer:
+  param:
+    transport:
+      class: Swift_SmtpTransport
+      param:
+        host:       ${1:smtp.gmail.com}
+        port:       465
+        encryption: ssl
+        username:   ${2:adress@gmail.com}
+        password:   ${3:**********}
+]]></content>
+    <tabTrigger>mailer</tabTrigger>
+    <description>Symfony1 Mailer config</description>
+    <scope>source.yaml</scope>
+</snippet>

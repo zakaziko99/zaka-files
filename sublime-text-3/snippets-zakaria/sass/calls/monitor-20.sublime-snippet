@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
++onMonitor20
+    ${1}
+]]></content>
+    <tabTrigger>monitor20</tabTrigger>
+    <description>Call monitor20 resolution SASS mixin</description>
+    <scope>source.sass</scope>
+</snippet>

@@ -1,0 +1,63 @@
+<snippet>
+    <content><![CDATA[
+@keyframes fade
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+
+@keyframes doubleLight
+    30%, 40%
+        opacity: 0
+    35%, 55%
+        opacity: 1
+
+@keyframes columnReveal
+    0%
+        opacity: 0
+        transform: scale(1.15)
+    100%
+        opacity: 1
+        transform: scale(1)
+
+@keyframes textExpand
+    0%
+        width: 0
+    100%
+        width: auto
+
+@keyframes textPopDown
+    0%
+        opacity: 0
+        transform: translate(0, -700%)
+    50%
+        opacity: 0
+    100%
+        opacity: 1
+        transform: translate(0, 0)
+
+@keyframes textPopUp
+    0%
+        opacity: 0
+        transform: translate(0, 700%)
+    50%
+        opacity: 0
+    100%
+        opacity: 1
+        transform: translate(0, 0)
+
+@keyframes popIn
+    0%
+        opacity: 0
+        transform: scale(.8)
+    65.5%
+        transform: scale(1.03)
+    100%
+        opacity: 1
+        transform: scale(1)
+
+]]></content>
+    <tabTrigger>animations</tabTrigger>
+    <description>Initial SASS animations</description>
+    <scope>source.sass</scope>
+</snippet>

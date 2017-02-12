@@ -1,0 +1,12 @@
+<snippet>
+    <content><![CDATA[
+.${1:hide-until-animate}
+    visibility: hidden
+    &.${2:is-animated}
+        visibility: visible
+
+]]></content>
+    <tabTrigger>animvisibility</tabTrigger>
+    <description>Visibility animations SASS classes</description>
+    <scope>source.sass</scope>
+</snippet>

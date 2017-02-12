@@ -1,0 +1,29 @@
+<snippet>
+    <content><![CDATA[
+'use strict';
+
+var gulp         = require('gulp');
+var browserSync  = require('browser-sync').create();
+
+gulp.task('${1:serve}', function() {
+    browserSync.init({
+        port: ${2:5000},
+        notify: false,
+        logPrefix: '${3:THE PROJECT}',
+        // Run as an https by uncommenting 'https: true'
+        // Note: this uses an unsigned certificate which on first access
+        //       will present a certificate warning in the browser.
+        // https: true,
+        ${5:base: './${4:app}'}
+        ${7:proxy: '${6:your_project.dev.local}'}
+    });
+
+    gulp.watch('${4:app}/**/*.html', browserSync.reload);
+    ${8}
+});
+
+]]></content>
+    <tabTrigger>serve</tabTrigger>
+    <description>Gulp BrowserSync task</description>
+    <scope>source.js.gulpfile,source.js</scope>
+</snippet>

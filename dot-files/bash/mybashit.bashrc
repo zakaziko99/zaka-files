@@ -35,12 +35,12 @@ fi
 source $BASH_IT/bash_it.sh
 
 # include my personnal customisation bashes
-source ~/bin/dotfiles/common/env
-if [ -f ~/bin/dotfiles/common/private-aliases ]; then
-    source ~/bin/dotfiles/common/private-aliases
+source ~/bin/dotfiles/common/env.zdf
+if [ -f ~/bin/dotfiles/common/private-aliases.zdf ]; then
+    source ~/bin/dotfiles/common/private-aliases.zdf
 fi
-source ~/bin/dotfiles/bash/aliases-git
-for file in ~/bin/dotfiles/common/aliases/*
+source ~/bin/dotfiles/bash/aliases-git.zdf
+for file in ~/bin/dotfiles/common/aliases/*.zdf
 do
     source "${file}"
 done

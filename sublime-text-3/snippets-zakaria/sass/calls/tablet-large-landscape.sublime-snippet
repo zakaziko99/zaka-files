@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
++onLandscapeTabletLarge
+    ${1}
+]]></content>
+    <tabTrigger>tblargelandscape</tabTrigger>
+    <description>Call tbLLs resolution SASS mixin</description>
+    <scope>source.sass</scope>
+</snippet>

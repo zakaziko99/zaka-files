@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+module.exports = ${1:function(${2:argument}) {
+    ${3:// node code exports}
+\}};
+]]></content>
+    <tabTrigger>exports</tabTrigger>
+    <scope>source.js</scope>
+    <description>Node module exports</description>
+</snippet>

@@ -13,13 +13,20 @@ alias mkdir='mkdir -pv' # Useful when you run: mkdir dir1/dir2 knowing that the 
                         # does not exist, the command will create both directories
 
 take () {
+    local LAST_STATUS=0
     if [[ -n $1 ]]; then
         if [ ! -d $1 ]; then
             mkdir $1
+            LAST_STATUS=$?
         fi
-        cd $1
+        if [[ "$LAST_STATUS" == "0" ]]; then
+            cd $1
+        else
+            return 2
+        fi
     else
         echo 'You must provide a name for the new directory'
+        return 1
     fi
 }
 
@@ -30,14 +37,14 @@ p () {
             if [[ -n $1 ]]; then
                 # The flag 'f' to disable colors
                 # The flag 'd' to show only directories on 'MY_PROJECTS_FOLDER'
-                local SEARCH_PROJECT=$(ls -fd * | grep $1)
+                local SEARCH_PROJECT=$(ls -fd */ | grep $1)
                 local NB_SEARCH_PROJECT=$(wc -l <<< "${SEARCH_PROJECT}")
                 local SEARCH_NOT_EMPTY=0
 
                 if [[ $NB_SEARCH_PROJECT -gt 1 ]]; then
                     echo "Please be more specific with another keyword than '$1'"
                     for rFolder in $(tr '\n' ' ' <<< "$SEARCH_PROJECT"); do
-                        echo ${rFolder:2}
+                        echo $rFolder | sed -e 's/^[0-9]\{1,3\}://' | sed -e 's/\/\{1\}//'
                     done
                 else
                     for cLetter in $SEARCH_PROJECT; do
@@ -46,14 +53,16 @@ p () {
                     if [[ $SEARCH_NOT_EMPTY -eq 0 ]]; then
                         echo "There is no project with the keyword '$1', please retry with another keyword"
                     else
-                        cd ${SEARCH_PROJECT:2}
+                        cd $(echo $SEARCH_PROJECT | sed -e 's/^[0-9]\{1,3\}://' | sed -e 's/\/\{1\}//')
                     fi
                 fi
             fi
         else
             echo "The path defined on the variable 'MY_PROJECTS_FOLDER' does not exist"
+            return 2
         fi
     else
         echo "You must define the variable 'MY_PROJECTS_FOLDER' in your private aliases file"
+        return 1
     fi
 }
