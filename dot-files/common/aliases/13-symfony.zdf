@@ -90,10 +90,9 @@ alias sfcc_xampp='sfcc xampp'
 sffix () {
     if [ -e app/console ]; then
         sudo chown -R $CURRENT_USER:$CURRENT_USER app/cache/ app/logs/
-    elif [ -e bin/console ]; then
+    elif [ ! -e bin/console ]; then
         # Under Symfony 3, the permissions are fixed
         # sudo chown -R $CURRENT_USER:$CURRENT_USER var/cache/ var/logs/
-    else
         echo $NOT_SYMFONY_DIRECTORY_TEXT
     fi
 }
