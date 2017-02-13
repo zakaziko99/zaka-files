@@ -1,0 +1,32 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "css.lint.zeroUnits": "warning",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.renderIndentGuides": true,
+    "editor.rulers": [100],
+    "editor.wordWrap": true,
+    "editor.wrappingColumn": 150,
+    "extensions.autoUpdate": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/node_modules": true,
+        "**/.directory": true,
+        "**/.DS_Store": true
+    },
+    "files.insertFinalNewline": true,
+    "html.format.endWithNewline": true,
+    "html.format.indentInnerHtml": true,
+    "less.lint.zeroUnits": "warning",
+    "scss.lint.zeroUnits": "warning",
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/cache": true
+    },
+    "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
+    "terminal.integrated.fontSize": 12,
+    "window.showFullPath": true,
+    "vsicons.projectDetection.autoReload": true
+}
