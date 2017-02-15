@@ -12,5 +12,10 @@
     {
         "key": "ctrl+k ctrl+l",
         "command": "editor.action.transformToLowercase"
+    },
+    {
+        "key": "ctrl+d ctrl+d",
+        "command": "editor.action.deleteLines",
+        "when": "editorTextFocus && !editorReadOnly"
     }
 ]
