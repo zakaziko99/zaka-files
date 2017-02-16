@@ -17,5 +17,10 @@
         "key": "ctrl+d ctrl+d",
         "command": "editor.action.deleteLines",
         "when": "editorTextFocus && !editorReadOnly"
+    },
+    {
+        "key": "ctrl+r ctrl+d",
+        "command": "editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
     }
 ]
