@@ -32,5 +32,10 @@
         "key": "ctrl+shift+alt+right",
         "command": "editor.action.indentLines",
         "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+alt+left",
+        "command": "editor.action.outdentLines",
+        "when": "editorTextFocus && !editorReadonly"
     }
 ]
