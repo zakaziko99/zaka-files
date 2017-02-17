@@ -37,5 +37,10 @@
         "key": "ctrl+shift+alt+left",
         "command": "editor.action.outdentLines",
         "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+l",
+        "command": "editor.action.selectHighlights",
+        "when": "editorFocus"
     }
 ]
