@@ -16,6 +16,7 @@
         "**/.DS_Store": true
     },
     "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
     "html.format.endWithNewline": true,
     "html.format.indentInnerHtml": true,
     "less.lint.zeroUnits": "warning",
