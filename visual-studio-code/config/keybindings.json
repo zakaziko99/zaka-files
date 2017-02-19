@@ -52,5 +52,15 @@
         "key": "ctrl+shift+space",
         "command": "editor.action.triggerParameterHints",
         "when": "editorHasSignatureHelpProvider && editorTextFocus"
-    }
+    },
+    {
+        "key": "ctrl+z ctrl+z",
+        "command": "editor.fold",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+e ctrl+e",
+        "command": "editor.unfold",
+        "when": "editorTextFocus"
+    },
 ]
