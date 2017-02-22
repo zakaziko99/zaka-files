@@ -72,5 +72,17 @@
         "key": "ctrl+e ctrl+e",
         "command": "editor.unfold",
         "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+k m",
+        "command": "workbench.action.editor.changeLanguageMode"
+    },
+    {
+        "key": "ctrl+k p",
+        "command": "workbench.action.files.copyPathOfActiveFile"
+    },
+    {
+        "key": "ctrl+k r",
+        "command":"workbench.action.files.revealActiveFileInWindows"
     }
 ]
