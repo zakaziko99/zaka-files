@@ -14,9 +14,19 @@
         "command": "editor.action.transformToLowercase"
     },
     {
-        "key": "ctrl+d ctrl+d",
+        "key": "ctrl+e ctrl+d",
         "command": "editor.action.deleteLines",
         "when": "editorTextFocus && !editorReadOnly"
+    },
+    {
+        "key": "ctrl+backspace",
+        "command": "deleteWordLeft",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+delete",
+        "command": "deleteWordRight",
+        "when": "editorTextFocus && !editorReadonly"
     },
     {
         "key": "ctrl+r ctrl+d",
@@ -54,7 +64,7 @@
         "when": "editorHasSignatureHelpProvider && editorTextFocus"
     },
     {
-        "key": "ctrl+z ctrl+z",
+        "key": "ctrl+e ctrl+z",
         "command": "editor.fold",
         "when": "editorTextFocus"
     },
@@ -63,4 +73,16 @@
         "command": "editor.unfold",
         "when": "editorTextFocus"
     },
+    {
+        "key": "ctrl+k m",
+        "command": "workbench.action.editor.changeLanguageMode"
+    },
+    {
+        "key": "ctrl+k p",
+        "command": "workbench.action.files.copyPathOfActiveFile"
+    },
+    {
+        "key": "ctrl+k r",
+        "command":"workbench.action.files.revealActiveFileInWindows"
+    }
 ]
