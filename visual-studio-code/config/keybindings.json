@@ -14,7 +14,7 @@
         "command": "editor.action.transformToLowercase"
     },
     {
-        "key": "ctrl+d ctrl+d",
+        "key": "ctrl+e ctrl+d",
         "command": "editor.action.deleteLines",
         "when": "editorTextFocus && !editorReadOnly"
     },
@@ -54,7 +54,7 @@
         "when": "editorHasSignatureHelpProvider && editorTextFocus"
     },
     {
-        "key": "ctrl+z ctrl+z",
+        "key": "ctrl+e ctrl+z",
         "command": "editor.fold",
         "when": "editorTextFocus"
     },
@@ -62,5 +62,5 @@
         "key": "ctrl+e ctrl+e",
         "command": "editor.unfold",
         "when": "editorTextFocus"
-    },
+    }
 ]
