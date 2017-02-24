@@ -92,5 +92,9 @@
     {
         "key": "ctrl+k ctrl+right",
         "command": "workbench.action.focusNextGroup"
+    },
+    {
+        "key": "ctrl+k ctrl+left",
+        "command": "workbench.action.focusPreviousGroup"
     }
 ]
