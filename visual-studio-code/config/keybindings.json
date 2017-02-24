@@ -83,6 +83,10 @@
     },
     {
         "key": "ctrl+k r",
-        "command":"workbench.action.files.revealActiveFileInWindows"
+        "command": "workbench.action.files.revealActiveFileInWindows"
+    },
+    {
+        "key": "ctrl+k o",
+        "command": "workbench.action.files.showOpenedFileInNewWindow"
     }
 ]
