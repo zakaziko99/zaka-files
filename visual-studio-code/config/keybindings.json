@@ -88,5 +88,9 @@
     {
         "key": "ctrl+k o",
         "command": "workbench.action.files.showOpenedFileInNewWindow"
+    },
+    {
+        "key": "ctrl+k ctrl+right",
+        "command": "workbench.action.focusNextGroup"
     }
 ]
