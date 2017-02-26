@@ -104,5 +104,9 @@
     {
         "key": "ctrl+g",
         "command": "workbench.action.gotoLine"
+    },
+    {
+        "key": "ctrl+shift+o",
+        "command": "workbench.action.gotoSymbol"
     }
 ]
