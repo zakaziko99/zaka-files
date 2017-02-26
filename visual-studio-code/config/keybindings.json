@@ -100,5 +100,9 @@
     {
         "key": "ctrl+0",
         "command": "workbench.action.focusSideBar"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "workbench.action.gotoLine"
     }
 ]
