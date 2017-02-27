@@ -108,5 +108,9 @@
     {
         "key": "ctrl+shift+o",
         "command": "workbench.action.gotoSymbol"
+    },
+    {
+        "key": "ctrl+k left",
+        "command": "workbench.action.moveActiveEditorGroupLeft"
     }
 ]
