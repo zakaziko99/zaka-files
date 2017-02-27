@@ -112,5 +112,9 @@
     {
         "key": "ctrl+k left",
         "command": "workbench.action.moveActiveEditorGroupLeft"
+    },
+    {
+        "key": "ctrl+k right",
+        "command": "workbench.action.moveActiveEditorGroupRight"
     }
 ]
