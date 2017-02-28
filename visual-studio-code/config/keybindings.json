@@ -116,5 +116,9 @@
     {
         "key": "ctrl+k right",
         "command": "workbench.action.moveActiveEditorGroupRight"
+    },
+    {
+        "key": "ctrl+alt+right",
+        "command": "workbench.action.moveEditorToNextGroup"
     }
 ]
