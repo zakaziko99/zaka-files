@@ -120,5 +120,9 @@
     {
         "key": "ctrl+alt+right",
         "command": "workbench.action.moveEditorToNextGroup"
+    },
+    {
+        "key": "ctrl+alt+left",
+        "command": "workbench.action.moveEditorToPreviousGroup"
     }
 ]
