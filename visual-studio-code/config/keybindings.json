@@ -124,5 +124,9 @@
     {
         "key": "ctrl+alt+left",
         "command": "workbench.action.moveEditorToPreviousGroup"
+    },
+    {
+        "key": "ctrl+pagedown",
+        "command": "workbench.action.nextEditor"
     }
 ]
