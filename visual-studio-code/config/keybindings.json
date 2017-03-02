@@ -128,5 +128,9 @@
     {
         "key": "ctrl+pagedown",
         "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "workbench.action.openRecent"
     }
 ]
