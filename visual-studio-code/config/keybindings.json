@@ -132,5 +132,9 @@
     {
         "key": "ctrl+r",
         "command": "workbench.action.openRecent"
+    },
+    {
+        "key": "ctrl+k ctrl+h",
+        "command": "workbench.action.output.toggleOutput"
     }
 ]
