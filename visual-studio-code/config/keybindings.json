@@ -136,5 +136,9 @@
     {
         "key": "ctrl+k ctrl+h",
         "command": "workbench.action.output.toggleOutput"
+    },
+    {
+        "key": "ctrl+shift+t",
+        "command": "workbench.action.reopenClosedEditor"
     }
 ]
