@@ -140,5 +140,9 @@
     {
         "key": "ctrl+shift+t",
         "command": "workbench.action.reopenClosedEditor"
+    },
+    {
+        "key": "ctrl+k ctrl+t",
+        "command": "workbench.action.selectTheme"
     }
 ]
