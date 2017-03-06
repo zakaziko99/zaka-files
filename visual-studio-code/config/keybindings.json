@@ -144,5 +144,9 @@
     {
         "key": "ctrl+k ctrl+t",
         "command": "workbench.action.selectTheme"
+    },
+    {
+        "key": "ctrl+k ctrl+s",
+        "command": "workbench.action.splitEditor"
     }
 ]
