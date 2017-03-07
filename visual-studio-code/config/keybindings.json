@@ -148,5 +148,9 @@
     {
         "key": "ctrl+k ctrl+s",
         "command": "workbench.action.splitEditor"
+    },
+    {
+        "key": "ctrl+alt+t",
+        "command": "workbench.action.terminal.toggleTerminal"
     }
 ]
