@@ -160,5 +160,9 @@
     {
         "key": "ctrl+shift+e",
         "command": "workbench.view.explorer"
+    },
+    {
+        "key": "ctrl+shift+x",
+        "command": "workbench.view.extensions"
     }
 ]
