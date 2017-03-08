@@ -152,5 +152,9 @@
     {
         "key": "ctrl+alt+t",
         "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+shift+d",
+        "command": "workbench.view.debug"
     }
 ]
