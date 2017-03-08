@@ -164,5 +164,9 @@
     {
         "key": "ctrl+shift+x",
         "command": "workbench.view.extensions"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "workbench.view.git"
     }
 ]
