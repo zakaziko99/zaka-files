@@ -156,5 +156,9 @@
     {
         "key": "ctrl+shift+d",
         "command": "workbench.view.debug"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "workbench.view.explorer"
     }
 ]
