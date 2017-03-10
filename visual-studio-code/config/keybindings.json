@@ -172,5 +172,10 @@
     {
         "key": "ctrl+k z",
         "command": "workbench.action.toggleZenMode"
+    },
+    {
+        "key": "alt+=",
+        "command": "alignment.align",
+        "when": "editorHasSelection"
     }
 ]
