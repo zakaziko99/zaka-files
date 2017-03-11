@@ -177,5 +177,9 @@
         "key": "alt+=",
         "command": "alignment.align",
         "when": "editorHasSelection"
+    },
+    {
+        "key": "ctrl+alt+d ctrl+alt+c",
+        "command": "docthis.documentThis"
     }
 ]
