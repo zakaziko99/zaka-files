@@ -181,5 +181,10 @@
     {
         "key": "ctrl+alt+d ctrl+alt+c",
         "command": "docthis.documentThis"
+    },
+    {
+        "key": "shift+alt+=",
+        "command": "alignment.alignFirst",
+        "when": "editorHasSelection"
     }
 ]
