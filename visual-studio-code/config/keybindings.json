@@ -186,5 +186,10 @@
         "key": "shift+alt+=",
         "command": "alignment.alignFirst",
         "when": "editorHasSelection"
+    },
+    {
+        "key": "ctrl+shift+alt+=",
+        "command": "alignment.alignWhitespace",
+        "when": "editorHasSelection"
     }
 ]
