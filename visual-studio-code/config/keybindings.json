@@ -191,5 +191,16 @@
         "key": "ctrl+shift+alt+=",
         "command": "alignment.alignWhitespace",
         "when": "editorHasSelection"
+    },
+    {
+        "key": "ctrl+alt+d left",
+        "command": "deleteAllLeft"
     }
 ]
+
+// - deleteAllLeft
+// - deleteAllRight
+// - deleteWordEndLeft
+// - deleteWordEndRight
+// - deleteWordStartLeft
+// - deleteWordStartRight
