@@ -207,6 +207,10 @@
     {
         "key": "ctrl+alt+d m",
         "command": "deleteWordEndRight"
+    },
+    {
+        "key": "ctrl+alt+d j",
+        "command": "deleteWordStartLeft"
     }
 ]
 
