@@ -203,6 +203,10 @@
     {
         "key": "ctrl+alt+d l",
         "command": "deleteWordEndLeft"
+    },
+    {
+        "key": "ctrl+alt+d m",
+        "command": "deleteWordEndRight"
     }
 ]
 
