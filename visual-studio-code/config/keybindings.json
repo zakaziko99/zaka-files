@@ -195,6 +195,10 @@
     {
         "key": "ctrl+alt+d left",
         "command": "deleteAllLeft"
+    },
+    {
+        "key": "ctrl+alt+d right",
+        "command": "deleteAllRight"
     }
 ]
 
