@@ -199,6 +199,10 @@
     {
         "key": "ctrl+alt+d right",
         "command": "deleteAllRight"
+    },
+    {
+        "key": "ctrl+alt+d l",
+        "command": "deleteWordEndLeft"
     }
 ]
 
