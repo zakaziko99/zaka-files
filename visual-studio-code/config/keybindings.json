@@ -219,13 +219,15 @@
     {
         "key": "ctrl+alt+u",
         "command": "editor.emmet.action.decrementNumberByOne"
+    },
+    {
+        "key": "ctrl+alt+i",
+        "command": "editor.emmet.action.incrementNumberByOne"
     }
 ]
 
-// - editor.emmet.action.decrementNumberByOne
 // - editor.emmet.action.decrementNumberByOneTenth
 // - editor.emmet.action.decrementNumberByTen
 // - editor.emmet.action.evaluateMath
-// - editor.emmet.action.incrementNumberByOne
 // - editor.emmet.action.incrementNumberByOneTenth
 // - editor.emmet.action.incrementNumberByTen
