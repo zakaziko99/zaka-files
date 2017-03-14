@@ -235,6 +235,10 @@
     {
         "key": "ctrl+alt+u y",
         "command": "editor.emmet.action.decrementNumberByTen"
+    },
+    {
+        "key": "ctrl+alt+i o",
+        "command": "editor.emmet.action.incrementNumberByTen"
     }
 ]
 
