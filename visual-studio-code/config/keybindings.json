@@ -227,6 +227,10 @@
     {
         "key": "ctrl+alt+u j",
         "command": "editor.emmet.action.decrementNumberByOneTenth"
+    },
+    {
+        "key": "ctrl+alt+i k",
+        "command": "editor.emmet.action.incrementNumberByOneTenth"
     }
 ]
 
