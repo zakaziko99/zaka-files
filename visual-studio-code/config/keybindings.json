@@ -215,12 +215,17 @@
     {
         "key": "ctrl+alt+d k",
         "command": "deleteWordStartRight"
+    },
+    {
+        "key": "ctrl+alt+u",
+        "command": "editor.emmet.action.decrementNumberByOne"
     }
 ]
 
-// - deleteAllLeft
-// - deleteAllRight
-// - deleteWordEndLeft
-// - deleteWordEndRight
-// - deleteWordStartLeft
-// - deleteWordStartRight
+// - editor.emmet.action.decrementNumberByOne
+// - editor.emmet.action.decrementNumberByOneTenth
+// - editor.emmet.action.decrementNumberByTen
+// - editor.emmet.action.evaluateMath
+// - editor.emmet.action.incrementNumberByOne
+// - editor.emmet.action.incrementNumberByOneTenth
+// - editor.emmet.action.incrementNumberByTen
