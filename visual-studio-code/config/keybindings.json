@@ -239,6 +239,10 @@
     {
         "key": "ctrl+alt+i o",
         "command": "editor.emmet.action.incrementNumberByTen"
+    },
+    {
+        "key": "ctrl+alt+y",
+        "command": "editor.emmet.action.evaluateMath"
     }
 ]
 
