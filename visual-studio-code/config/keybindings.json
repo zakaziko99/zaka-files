@@ -245,9 +245,3 @@
         "command": "editor.emmet.action.evaluateMath"
     }
 ]
-
-// - editor.emmet.action.decrementNumberByOneTenth
-// - editor.emmet.action.decrementNumberByTen
-// - editor.emmet.action.evaluateMath
-// - editor.emmet.action.incrementNumberByOneTenth
-// - editor.emmet.action.incrementNumberByTen
