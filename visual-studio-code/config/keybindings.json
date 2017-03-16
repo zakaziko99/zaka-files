@@ -247,5 +247,9 @@
     {
         "key": "ctrl+alt+ù",
         "command": "editor.emmet.action.removeTag"
+    },
+    {
+        "key": "ctrl+alt+*",
+        "command": "editor.emmet.action.updateTag"
     }
 ]
