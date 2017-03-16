@@ -243,5 +243,9 @@
     {
         "key": "ctrl+alt+y",
         "command": "editor.emmet.action.evaluateMath"
+    },
+    {
+        "key": "ctrl+alt+ù",
+        "command": "editor.emmet.action.removeTag"
     }
 ]
