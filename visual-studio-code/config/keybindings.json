@@ -251,5 +251,9 @@
     {
         "key": "ctrl+alt+*",
         "command": "editor.emmet.action.updateTag"
+    },
+    {
+        "key": "ctrl+shift+alt+n",
+        "command": "workbench.action.files.newFile"
     }
 ]
