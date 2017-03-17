@@ -255,5 +255,9 @@
     {
         "key": "ctrl+shift+alt+n",
         "command": "workbench.action.files.newFile"
+    },
+    {
+        "key": "ctrl+shift+alt+f",
+        "command": "workbench.action.files.newFolder"
     }
 ]
