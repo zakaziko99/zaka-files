@@ -29,12 +29,12 @@
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+r ctrl+d",
+        "key": "ctrl+shift+i",
         "command": "editor.action.formatDocument",
         "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+r ctrl+s",
+        "key": "ctrl+k ctrl+f",
         "command": "editor.action.formatSelection",
         "when": "editorHasDocumentSelectionFormattingProvider && editorHasSelection && editorTextFocus && !editorReadonly"
     },
@@ -259,5 +259,9 @@
     {
         "key": "ctrl+shift+alt+f",
         "command": "workbench.action.files.newFolder"
+    },
+    {
+        "key": "ctrl+shift+r",
+        "command": "toggleExperimentalScreenReaderSupport"
     }
 ]
