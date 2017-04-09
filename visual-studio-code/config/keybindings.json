@@ -29,12 +29,12 @@
         "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+r ctrl+d",
+        "key": "ctrl+shift+i",
         "command": "editor.action.formatDocument",
         "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+r ctrl+s",
+        "key": "ctrl+k ctrl+f",
         "command": "editor.action.formatSelection",
         "when": "editorHasDocumentSelectionFormattingProvider && editorHasSelection && editorTextFocus && !editorReadonly"
     },
@@ -83,6 +83,185 @@
     },
     {
         "key": "ctrl+k r",
-        "command":"workbench.action.files.revealActiveFileInWindows"
+        "command": "workbench.action.files.revealActiveFileInWindows"
+    },
+    {
+        "key": "ctrl+k o",
+        "command": "workbench.action.files.showOpenedFileInNewWindow"
+    },
+    {
+        "key": "ctrl+k ctrl+right",
+        "command": "workbench.action.focusNextGroup"
+    },
+    {
+        "key": "ctrl+k ctrl+left",
+        "command": "workbench.action.focusPreviousGroup"
+    },
+    {
+        "key": "ctrl+0",
+        "command": "workbench.action.focusSideBar"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "workbench.action.gotoLine"
+    },
+    {
+        "key": "ctrl+shift+o",
+        "command": "workbench.action.gotoSymbol"
+    },
+    {
+        "key": "ctrl+k left",
+        "command": "workbench.action.moveActiveEditorGroupLeft"
+    },
+    {
+        "key": "ctrl+k right",
+        "command": "workbench.action.moveActiveEditorGroupRight"
+    },
+    {
+        "key": "ctrl+alt+right",
+        "command": "workbench.action.moveEditorToNextGroup"
+    },
+    {
+        "key": "ctrl+alt+left",
+        "command": "workbench.action.moveEditorToPreviousGroup"
+    },
+    {
+        "key": "ctrl+pagedown",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "workbench.action.openRecent"
+    },
+    {
+        "key": "ctrl+k ctrl+h",
+        "command": "workbench.action.output.toggleOutput"
+    },
+    {
+        "key": "ctrl+shift+t",
+        "command": "workbench.action.reopenClosedEditor"
+    },
+    {
+        "key": "ctrl+k ctrl+t",
+        "command": "workbench.action.selectTheme"
+    },
+    {
+        "key": "ctrl+k ctrl+s",
+        "command": "workbench.action.splitEditor"
+    },
+    {
+        "key": "ctrl+alt+t",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+shift+d",
+        "command": "workbench.view.debug"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "workbench.view.explorer"
+    },
+    {
+        "key": "ctrl+shift+x",
+        "command": "workbench.view.extensions"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "workbench.view.git"
+    },
+    {
+        "key": "ctrl+k z",
+        "command": "workbench.action.toggleZenMode"
+    },
+    {
+        "key": "alt+=",
+        "command": "alignment.align",
+        "when": "editorHasSelection"
+    },
+    {
+        "key": "ctrl+alt+d ctrl+alt+c",
+        "command": "docthis.documentThis"
+    },
+    {
+        "key": "shift+alt+=",
+        "command": "alignment.alignFirst",
+        "when": "editorHasSelection"
+    },
+    {
+        "key": "ctrl+shift+alt+=",
+        "command": "alignment.alignWhitespace",
+        "when": "editorHasSelection"
+    },
+    {
+        "key": "ctrl+alt+d left",
+        "command": "deleteAllLeft"
+    },
+    {
+        "key": "ctrl+alt+d right",
+        "command": "deleteAllRight"
+    },
+    {
+        "key": "ctrl+alt+d l",
+        "command": "deleteWordEndLeft"
+    },
+    {
+        "key": "ctrl+alt+d m",
+        "command": "deleteWordEndRight"
+    },
+    {
+        "key": "ctrl+alt+d j",
+        "command": "deleteWordStartLeft"
+    },
+    {
+        "key": "ctrl+alt+d k",
+        "command": "deleteWordStartRight"
+    },
+    {
+        "key": "ctrl+alt+u",
+        "command": "editor.emmet.action.decrementNumberByOne"
+    },
+    {
+        "key": "ctrl+alt+i",
+        "command": "editor.emmet.action.incrementNumberByOne"
+    },
+    {
+        "key": "ctrl+alt+u j",
+        "command": "editor.emmet.action.decrementNumberByOneTenth"
+    },
+    {
+        "key": "ctrl+alt+i k",
+        "command": "editor.emmet.action.incrementNumberByOneTenth"
+    },
+    {
+        "key": "ctrl+alt+u y",
+        "command": "editor.emmet.action.decrementNumberByTen"
+    },
+    {
+        "key": "ctrl+alt+i o",
+        "command": "editor.emmet.action.incrementNumberByTen"
+    },
+    {
+        "key": "ctrl+alt+y",
+        "command": "editor.emmet.action.evaluateMath"
+    },
+    {
+        "key": "ctrl+alt+ù",
+        "command": "editor.emmet.action.removeTag"
+    },
+    {
+        "key": "ctrl+alt+*",
+        "command": "editor.emmet.action.updateTag"
+    },
+    {
+        "key": "ctrl+shift+alt+n",
+        "command": "workbench.action.files.newFile"
+    },
+    {
+        "key": "ctrl+shift+alt+f",
+        "command": "workbench.action.files.newFolder"
+    },
+    {
+        "key": "ctrl+shift+r",
+        "command": "toggleExperimentalScreenReaderSupport"
     }
 ]
