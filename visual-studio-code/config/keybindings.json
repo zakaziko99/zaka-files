@@ -118,8 +118,12 @@
         "command": "workbench.action.moveEditorToPreviousGroup"
     },
     {
-        "key": "ctrl+pagedown",
+        "key": "ctrl+alt+up",
         "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+alt+down",
+        "command": "workbench.action.previousEditor"
     },
     {
         "key": "ctrl+r",
