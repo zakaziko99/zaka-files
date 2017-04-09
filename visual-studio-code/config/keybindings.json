@@ -250,10 +250,10 @@
     },
     {
         "key": "ctrl+shift+alt+n",
-        "command": "workbench.action.files.newFile"
+        "command": "explorer.newFile"
     },
     {
         "key": "ctrl+shift+alt+f",
-        "command": "workbench.action.files.newFolder"
+        "command": "explorer.newFolder"
     }
 ]
