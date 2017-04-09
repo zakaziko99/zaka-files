@@ -166,7 +166,7 @@
         "command": "workbench.view.git"
     },
     {
-        "key": "ctrl+k z",
+        "key": "ctrl+shift+alt+enter",
         "command": "workbench.action.toggleZenMode"
     },
     {
