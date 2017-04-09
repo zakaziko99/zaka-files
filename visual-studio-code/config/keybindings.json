@@ -213,27 +213,27 @@
         "command": "deleteWordStartRight"
     },
     {
-        "key": "ctrl+alt+u",
+        "key": "ctrl+shift+numpad_subtract",
         "command": "editor.emmet.action.decrementNumberByOne"
     },
     {
-        "key": "ctrl+alt+i",
+        "key": "ctrl+shift+numpad_add",
         "command": "editor.emmet.action.incrementNumberByOne"
     },
     {
-        "key": "ctrl+alt+u j",
+        "key": "shift+alt+numpad_subtract",
         "command": "editor.emmet.action.decrementNumberByOneTenth"
     },
     {
-        "key": "ctrl+alt+i k",
+        "key": "shift+alt+numpad_add",
         "command": "editor.emmet.action.incrementNumberByOneTenth"
     },
     {
-        "key": "ctrl+alt+u y",
+        "key": "ctrl+shift+alt+numpad_subtract",
         "command": "editor.emmet.action.decrementNumberByTen"
     },
     {
-        "key": "ctrl+alt+i o",
+        "key": "ctrl+shift+alt+numpad_add",
         "command": "editor.emmet.action.incrementNumberByTen"
     },
     {
@@ -241,11 +241,11 @@
         "command": "editor.emmet.action.evaluateMath"
     },
     {
-        "key": "ctrl+alt+ù",
+        "key": "ctrl+alt+;",
         "command": "editor.emmet.action.removeTag"
     },
     {
-        "key": "ctrl+alt+*",
+        "key": "ctrl+alt+,",
         "command": "editor.emmet.action.updateTag"
     },
     {
@@ -255,9 +255,5 @@
     {
         "key": "ctrl+shift+alt+f",
         "command": "workbench.action.files.newFolder"
-    },
-    {
-        "key": "ctrl+shift+r",
-        "command": "toggleExperimentalScreenReaderSupport"
     }
 ]
